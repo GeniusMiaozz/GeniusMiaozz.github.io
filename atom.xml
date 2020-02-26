@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://geniusmiaozz.github.io/</id>
+    <id>http://geniusmiaozz.github.io</id>
     <title>Gridea</title>
-    <updated>2020-02-26T02:08:35.627Z</updated>
+    <updated>2020-02-26T02:09:08.086Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://geniusmiaozz.github.io/"/>
-    <link rel="self" href="https://geniusmiaozz.github.io/atom.xml"/>
+    <link rel="alternate" href="http://geniusmiaozz.github.io"/>
+    <link rel="self" href="http://geniusmiaozz.github.io/atom.xml"/>
     <subtitle>GeniusMiao&apos;s blog.</subtitle>
-    <logo>https://geniusmiaozz.github.io/images/avatar.png</logo>
-    <icon>https://geniusmiaozz.github.io/favicon.ico</icon>
+    <logo>http://geniusmiaozz.github.io/images/avatar.png</logo>
+    <icon>http://geniusmiaozz.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Gridea</rights>
     <entry>
         <title type="html"><![CDATA[GeniusMiao-OS各代码文件简要说明]]></title>
-        <id>https://geniusmiaozz.github.io/post/geniusmiao-os-ge-dai-ma-wen-jian-jian-yao-shuo-ming/</id>
-        <link href="https://geniusmiaozz.github.io/post/geniusmiao-os-ge-dai-ma-wen-jian-jian-yao-shuo-ming/">
+        <id>http://geniusmiaozz.github.io/post/geniusmiao-os-ge-dai-ma-wen-jian-jian-yao-shuo-ming/</id>
+        <link href="http://geniusmiaozz.github.io/post/geniusmiao-os-ge-dai-ma-wen-jian-jian-yao-shuo-ming/">
         </link>
         <updated>2020-02-25T07:53:26.000Z</updated>
         <content type="html"><![CDATA[<h1 id="geniusmiao-os各代码文件简要说明">GeniusMiao-OS各代码文件简要说明</h1>
@@ -206,8 +206,8 @@ LGDT	[ESP+6]         第一个32位数高16位的地址开始的输入加载至�
     </entry>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>https://geniusmiaozz.github.io/post/hello-gridea/</id>
-        <link href="https://geniusmiaozz.github.io/post/hello-gridea/">
+        <id>http://geniusmiaozz.github.io/post/hello-gridea/</id>
+        <link href="http://geniusmiaozz.github.io/post/hello-gridea/">
         </link>
         <updated>2018-12-11T16:00:00.000Z</updated>
         <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
