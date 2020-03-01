@@ -5,7 +5,7 @@
 <title>GeniusMiao&#39;s blog.</title>
 <meta name="description" content="while(1)
 time++;" />
-<link rel="shortcut icon" href="https://geniusmiaozz.github.io/favicon.ico?v=1582714316272">
+<link rel="shortcut icon" href="https://geniusmiaozz.github.io/favicon.ico?v=1583067830089">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
@@ -24,7 +24,7 @@ time++;" />
       <div class="flex lg:block p-4 lg:px-0 items-center fixed lg:static lg:block top-0 right-0 left-0 bg-white z-50">
         <i class="ri-menu-2-line lg:mt-4 text-2xl cursor-pointer animated fadeIn" onclick="openMenu()"></i>
         <a href="https://geniusmiaozz.github.io">
-          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://geniusmiaozz.github.io/images/avatar.png?v=1582714316272" alt="">
+          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://geniusmiaozz.github.io/images/avatar.png?v=1583067830089" alt="">
         </a>
         <h1 class="animated fadeInLeft lg:text-4xl font-extrabold lg:mt-8 mt-0 text-xl" style="animation-delay: 0.2s">GeniusMiao&#39;s blog.</h1>
       </div>
@@ -35,7 +35,7 @@ time++;" />
           </p>
           <div class="toc-container hidden lg:block">
             <ul class="markdownIt-TOC">
-<li><a href="#geniusmiao-os%E5%90%84%E4%BB%A3%E7%A0%81%E6%96%87%E4%BB%B6%E7%AE%80%E8%A6%81%E8%AF%B4%E6%98%8E">GeniusMiao-OS各代码文件简要说明</a>
+<li><a href="#30%E5%A4%A9%E8%87%AA%E5%88%B6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-oscodefile%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01-7%E5%A4%A9%E5%86%85%E5%AE%B9">30天自制操作系统-OSCodeFile学习笔记(1-7天内容)</a>
 <ul>
 <li><a href="#%E5%85%B3%E9%94%AE%E6%A6%82%E5%BF%B5">关键概念</a></li>
 <li><a href="#%E4%BB%A3%E7%A0%81%E8%AF%B4%E6%98%8E">代码说明</a>
@@ -55,6 +55,7 @@ time++;" />
 <li><a href="#graphicc">graphic.c</a></li>
 <li><a href="#dsctblc">dsctbl.c</a></li>
 <li><a href="#intc">int.c</a></li>
+<li><a href="#fifoc">fifo.c</a></li>
 </ul>
 </li>
 </ul>
@@ -107,28 +108,16 @@ time++;" />
 <div class="mask" onclick="closeMenu()">
 </div>
       <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
-        <h1 class="text-3xl font-bold lg:mt-16">GeniusMiao-OS各代码文件简要说明</h1>
+        <h1 class="text-3xl font-bold lg:mt-16">30天自制操作系统-OSCodeFile学习笔记(1-7天内容)</h1>
         <div class="text-sm text-gray-700 lg:my-8">
-          2020-02-25 / 9 min read
+          2020-02-25 / 11 min read
         </div>
         
           <img class="post-feature-image rounded-lg mx-auto my-4" src="https://geniusmiaozz.github.io/post-images/geniusmiao-os-ge-dai-ma-wen-jian-jian-yao-shuo-ming.png" alt="">
         
         <div class="post-content yue">
-          <h1 id="geniusmiao-os各代码文件简要说明">GeniusMiao-OS各代码文件简要说明</h1>
-<blockquote>
-<p><strong>markdown文件格式</strong></p>
-<p># 一级标题</p>
-<p>## 二级标题</p>
-<p>&gt; 一级引用文字</p>
-<p>&gt;&gt; 二级引用文字</p>
-<p>** 粗体文字 **</p>
-<p>* 斜体文字 *</p>
-<p>*** 斜体加粗文字 ***</p>
-<p>~~ 删除线文字 ~~</p>
-<p>- * + 列表</p>
-<p>***为分割线</p>
-</blockquote>
+          <h1 id="30天自制操作系统-oscodefile学习笔记1-7天内容">30天自制操作系统-OSCodeFile学习笔记(1-7天内容)</h1>
+<p>👉整篇阅读时间约12分钟</p>
 <h2 id="关键概念">关键概念</h2>
 <ul>
 <li>
@@ -139,6 +128,9 @@ time++;" />
 </li>
 <li>
 <p>在整个操作系统中，全局描述符表GDT只有一张（一个CPU对应一个GDT）。GDT可以被放在内存的任何位置，但CPU必须知道GDT的入口，也就是基地址放在哪里，Intel的设计者门提供了一个寄存器GDTR用来存放GDT的入口地址，程序员将GDT设定在内存中某个位置之后，可以通过LGDT指令将GDT的入口地址装入此积存器，从此以后，CPU就根据此寄存器中的内容作为GDT的入口来访问GDT了。GDTR中存放的是GDT在内存中的基地址和其表长界限。</p>
+</li>
+<li>
+<p>如何令操作系统对鼠标与键盘这些外设的活动做出响应？首先要对GDT、IDT初始化，即将数据排列在内存的某个地方，然后将这个地方在内存中的位置的起始地址和有效设定个数写入GDTR/IDTR寄存器；然后PIC进行初始化，使CPU能够接受来自不同地方的中断信号；然后完成鼠标和键盘在IDT中的注册，如果鼠标键盘进行操作发生了中断，CPU会自动调用中断函数进行处理。</p>
 </li>
 </ul>
 <h2 id="代码说明">代码说明</h2>
@@ -161,13 +153,16 @@ time++;" />
 <blockquote>
 <p><em>0x7c00-0x7dff为规定的启动区内容装载地址。(书P40)</em></p>
 <ul>
-<li>DAY_3：创建ipl10.nas，当前的整个启动区代码文件。</li>
+<li>
+<p>DAY_3</p>
+<p>创建ipl10.nas，当前的整个启动区代码文件。</p>
+</li>
 </ul>
 </blockquote>
 <h4 id="ipl10nas">ipl10.nas</h4>
 <ul>
 <li>
-<p>DAY_3-读盘，按扇区读依次读入每一个扇区（共计10个扇区），同时完成读入过程中的纠错工作。</p>
+<p>DAY_3：读盘，按扇区读依次读入每一个扇区（共计10个扇区），同时完成读入过程中的纠错工作。</p>
 <p>启动区读盘完毕后JMP至0xc200号地址处。</p>
 </li>
 </ul>
@@ -179,19 +174,23 @@ time++;" />
 <p><em><strong>删除线意为此项功能在实际项目中已经完成过，但在后续编写中删掉了该功能或在其基础上对其升级，完成了更高级的功能。</strong></em></p>
 <ul>
 <li>
-<p>DAY_3：创建asmhead.nas，程序区代码的前半部分。</p>
+<p>DAY_3</p>
+<p>创建asmhead.nas，程序区代码的前半部分。</p>
 <p>创建bookpack.c，程序区代码的后半部分。</p>
 <p>创建naskfunc.nas，汇编完成的部分功能函数。</p>
 </li>
 <li>
-<p>DAY_4：修改naskfunc.nas、bookpack.c。</p>
-</li>
-<li>
-<p>DAY_5：添加hankaku.txt文件，OSASK字体信息文件。</p>
+<p>DAY_4</p>
 <p>修改naskfunc.nas、bookpack.c。</p>
 </li>
 <li>
-<p>DAY_6：拆分bootpack.c为三个子文件：</p>
+<p>DAY_5</p>
+<p>添加hankaku.txt文件，OSASK字体信息文件。</p>
+<p>修改naskfunc.nas、bookpack.c。</p>
+</li>
+<li>
+<p>DAY_6</p>
+<p>拆分bootpack.c为三个子文件：</p>
 <p>创建graphic.c，包含程序区代码的后半部分的部分功能函数。</p>
 <p>创建dsctbl.c，包含程序区代码的后半部分的部分功能函数。</p>
 <p>创建新的bootpack.c，包含程序区代码的后半部分的主函数。</p>
@@ -200,7 +199,9 @@ time++;" />
 <p>修改naskfunc.nas。</p>
 </li>
 <li>
-<p>DAY_7：</p>
+<p>DAY_7</p>
+<p>创建fifo.c，包含自制FIFO缓冲区主要功能函数。</p>
+<p>修改int.c。</p>
 </li>
 </ul>
 </blockquote>
@@ -268,7 +269,16 @@ LGDT	[ESP+6]         第一个32位数高16位的地址开始的输入加载至�
 <p><s>8.利用类调色板初始化的思路对GDT和TDT进行初步初始化。</s></p>
 </li>
 <li>
-<p>DAY_6：<em><strong>只保留主函数中对各功能的调用、变量及函数的生命，其余功能函数的具体实现分隔为两个文件graphic.c和dsctbl.c。</strong></em></p>
+<p>DAY_6：主要完善的功能：</p>
+<p><em><strong>1.只保留主函数中对各功能的调用、变量及函数的生命，其余功能函数的具体实现分隔为两个文件graphic.c和dsctbl.c。</strong></em></p>
+<p>2.修改了PIC的IMR，以便接受来自键盘和鼠标的中断。</p>
+</li>
+<li>
+<p>DAY_7：主要完善的功能：</p>
+<p>1.完成等待并检测键盘控制电路准备完毕的功能。</p>
+<p>2.完成初始化键盘控制电路的功能。</p>
+<p>3.完成激活鼠标的功能。</p>
+<p>4.完成从鼠标获取数据的功能，如果二者缓冲区都为空，则执行HLT；如果有任一缓冲区不为空，则优先取键盘缓冲区数据出来显示。</p>
 </li>
 </ul>
 <h4 id="hankakutxt">hankaku.txt</h4>
@@ -296,9 +306,29 @@ LGDT	[ESP+6]         第一个32位数高16位的地址开始的输入加载至�
 <h4 id="intc">int.c</h4>
 <ul>
 <li>
-<p>DAY_7：主要完善的功能：</p>
+<p>DAY_6：主要完善的功能：</p>
 <p>1.通过对不同端口的赋值来对PIC（可编程中断控制器）进行初始化，<em><strong>此处相较不易理解，详见书P117。</strong></em></p>
 <p>2.利用C和汇编完成处理鼠标（IRQ12）和键盘（IRQ1）的中断，即中断发生时需要调用的程序。<em><strong>此处还需要处理IRQ7的中断处理程序，详见书P119。</strong></em></p>
+<p><s>3.实现键盘按键发生中断时输出提示信息。</s></p>
+</li>
+<li>
+<p>DAY_7：主要完善的功能：</p>
+<p>1.实现多次执行键盘中断的功能。即在一次IRQ1中断发生后，使PIC继续监视IRQ1中断是否发生</p>
+<p>2.实现在发生键盘中断时，输出按键编码的功能（从编号为0x0060的设备输入的8位信息是按键编码）。</p>
+<p><s>3.利用移送数据实现FIFO（先进先出）缓冲区，能够输出正确的按键编码，避免两个字节的键码值被丢掉后一个。</s></p>
+<p><s>4.利用读追赶写的方式实现FIFO缓冲区，当读写至末尾时进行归0处理，避免了数据的移送操作，优化性能。</s></p>
+<p>4.完成处理鼠标中断的功能，<em><strong>分别通知从PIC中断IRQ12已完成和主PIC中断IRQ2已完成，书P142。</strong></em></p>
+</li>
+</ul>
+<h4 id="fifoc">fifo.c</h4>
+<ul>
+<li>
+<p>DAY_7：</p>
+<p>1.为FIFO缓冲区增加首地址、下一个数据写入地址、写一个数据读出地址、缓冲区总字节数、缓冲区里没有数据的字节数、缓冲区是否溢出的表示结构体信息。</p>
+<p>2.完成初始化FIFO缓冲区的功能。</p>
+<p>3.完成向FIFO缓冲区传送数据并保存的功能。</p>
+<p>4.完成从FIFO缓冲区获得一个字节数据的功能。</p>
+<p>5.完成查看当前FIFO缓冲区存放了多少有效数据的功能。</p>
 </li>
 </ul>
 
@@ -314,7 +344,7 @@ LGDT	[ESP+6]         第一个32位数高16位的地址开始的输入加载至�
             <div class="next-post">
               <a href="https://geniusmiaozz.github.io/post/about/">
                 <h3 class="post-title">
-                  关于
+                  Welcome to my world.
                   <i class="ri-arrow-right-line"></i>
                 </h3>
               </a>
