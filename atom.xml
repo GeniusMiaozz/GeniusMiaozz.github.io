@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://geniusmiaozz.github.io</id>
     <title>GeniusMiao&apos;s blog.</title>
-    <updated>2020-03-06T02:20:36.724Z</updated>
+    <updated>2020-03-06T09:26:59.890Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://geniusmiaozz.github.io"/>
     <link rel="self" href="https://geniusmiaozz.github.io/atom.xml"/>
@@ -19,7 +19,6 @@ time++;</subtitle>
         <updated>2020-03-04T16:02:14.000Z</updated>
         <content type="html"><![CDATA[<h1 id="软件过程的定义">软件过程的定义</h1>
 <p><strong>软件过程由开发或维护软件及其相关产品的一系列活动构成，这些活动从不同的方面定义了软件开发中的步骤、交付物、涉众及其职责等流程要素。</strong></p>
-<figure data-type="image" tabindex="1"><img src="https://geniusmiaozz.github.io/post-images/1583460838828.jpg" alt="" loading="lazy"></figure>
 <h1 id="为什么要引入软件过程">为什么要引入软件过程？</h1>
 <ul>
 <li>
@@ -102,7 +101,7 @@ time++;</subtitle>
 <p>How</p>
 </li>
 </ul>
-<figure data-type="image" tabindex="2"><img src="https://geniusmiaozz.github.io/post-images/1583338118988.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="https://geniusmiaozz.github.io/post-images/1583338118988.jpg" alt="" loading="lazy"></figure>
 <h2 id="需求分析活动">需求分析活动</h2>
 <ul>
 <li>
@@ -177,7 +176,7 @@ time++;</subtitle>
 <p>How</p>
 </li>
 </ul>
-<figure data-type="image" tabindex="3"><img src="https://geniusmiaozz.github.io/post-images/1583338131488.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://geniusmiaozz.github.io/post-images/1583338131488.jpg" alt="" loading="lazy"></figure>
 <h2 id="设计活动">设计活动</h2>
 <ul>
 <li>
@@ -235,7 +234,7 @@ time++;</subtitle>
 <p>How</p>
 </li>
 </ul>
-<figure data-type="image" tabindex="4"><img src="https://geniusmiaozz.github.io/post-images/1583338157712.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="https://geniusmiaozz.github.io/post-images/1583338157712.jpg" alt="" loading="lazy"></figure>
 <h2 id="实施活动">实施活动</h2>
 <ul>
 <li>
@@ -281,7 +280,7 @@ time++;</subtitle>
 <p>How</p>
 </li>
 </ul>
-<figure data-type="image" tabindex="5"><img src="https://geniusmiaozz.github.io/post-images/1583338166171.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="4"><img src="https://geniusmiaozz.github.io/post-images/1583338166171.jpg" alt="" loading="lazy"></figure>
 <h2 id="测试活动">测试活动</h2>
 <ul>
 <li>
@@ -342,7 +341,7 @@ time++;</subtitle>
 <p>How</p>
 </li>
 </ul>
-<figure data-type="image" tabindex="6"><img src="https://geniusmiaozz.github.io/post-images/1583338176023.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="5"><img src="https://geniusmiaozz.github.io/post-images/1583338176023.jpg" alt="" loading="lazy"></figure>
 <h2 id="部署活动">部署活动</h2>
 <ul>
 <li>
@@ -397,7 +396,7 @@ time++;</subtitle>
 <p>How</p>
 </li>
 </ul>
-<figure data-type="image" tabindex="7"><img src="https://geniusmiaozz.github.io/post-images/1583338192371.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="6"><img src="https://geniusmiaozz.github.io/post-images/1583338192371.jpg" alt="" loading="lazy"></figure>
 ]]></content>
     </entry>
     <entry>
@@ -406,9 +405,7 @@ time++;</subtitle>
         <link href="https://geniusmiaozz.github.io/post/geniusmiao-os-ge-dai-ma-wen-jian-jian-yao-shuo-ming/">
         </link>
         <updated>2020-02-25T07:53:26.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="30天自制操作系统-oscodefile学习笔记1-7天内容">30天自制操作系统-OSCodeFile学习笔记(1-7天内容)</h1>
-<p>👉整篇阅读时间约12分钟</p>
-<h2 id="关键概念">关键概念</h2>
+        <content type="html"><![CDATA[<h2 id="关键概念">关键概念</h2>
 <ul>
 <li>
 <p>保存在磁盘上的操作系统主要分为启动区和程序区，每个区有自己的代码文件及引用的辅助文件（如字体数据、图片等）。主要系统文件通过Makefile文件链接在一起，构成操作系统。</p>
@@ -624,16 +621,15 @@ LGDT	[ESP+6]         第一个32位数高16位的地址开始的输入加载至�
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Welcome to here!]]></title>
+        <title type="html"><![CDATA[Welcome here!]]></title>
         <id>https://geniusmiaozz.github.io/post/about/</id>
         <link href="https://geniusmiaozz.github.io/post/about/">
         </link>
         <updated>2019-01-25T11:09:48.000Z</updated>
         <content type="html"><![CDATA[<h2 id="关于本站">🏠 关于本站</h2>
-<p>整个博客玩玩</p>
+<p>知 无 不 言</p>
 <h2 id="博主是谁">👨‍💻 博主是谁</h2>
-<p>99年，天津人，性别男，爱好女，理想世界中的疯子，现实世界中的傻子。</p>
-<p>准程序员。</p>
+<p>99年，天津人，性别男，爱好女。</p>
 <h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
 <p>游戏，音乐，电影，电子竞技，心理学，哲学</p>
 <h2 id="联系方式">📬 联系方式</h2>
