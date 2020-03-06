@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://geniusmiaozz.github.io</id>
     <title>GeniusMiao&apos;s blog.</title>
-    <updated>2020-03-04T16:09:56.870Z</updated>
+    <updated>2020-03-06T02:20:36.724Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://geniusmiaozz.github.io"/>
     <link rel="self" href="https://geniusmiaozz.github.io/atom.xml"/>
@@ -12,12 +12,32 @@ time++;</subtitle>
     <icon>https://geniusmiaozz.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, GeniusMiao&apos;s blog.</rights>
     <entry>
-        <title type="html"><![CDATA[软件工程中“过程”的概念]]></title>
+        <title type="html"><![CDATA[什么是软件过程？]]></title>
         <id>https://geniusmiaozz.github.io/post/ruan-jian-gong-cheng-zhong-guo-cheng-de-gai-nian/</id>
         <link href="https://geniusmiaozz.github.io/post/ruan-jian-gong-cheng-zhong-guo-cheng-de-gai-nian/">
         </link>
         <updated>2020-03-04T16:02:14.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="活动的概念">活动的概念</h1>
+        <content type="html"><![CDATA[<h1 id="软件过程的定义">软件过程的定义</h1>
+<p><strong>软件过程由开发或维护软件及其相关产品的一系列活动构成，这些活动从不同的方面定义了软件开发中的步骤、交付物、涉众及其职责等流程要素。</strong></p>
+<figure data-type="image" tabindex="1"><img src="https://geniusmiaozz.github.io/post-images/1583460838828.jpg" alt="" loading="lazy"></figure>
+<h1 id="为什么要引入软件过程">为什么要引入软件过程？</h1>
+<ul>
+<li>
+<p>软件工作的范围从只考虑编写程序扩展到需要考虑整个软件生存周期。</p>
+</li>
+<li>
+<p>软件的开发风险从曾经的少、可预知、可控制演变到多、不易预知、不易控制。</p>
+</li>
+<li>
+<p>软件开发的角色从程序员扩展到需要团队中更多的角色。</p>
+</li>
+<li>
+<p>软件标准从软件产品的标准化扩展到软件开发过程的标准化。</p>
+</li>
+</ul>
+<h1 id="软件过程的实现">软件过程的实现</h1>
+<p><strong>一个软件的生命周期分为软件定义、软件开发、软件维护三个周期，整个过程包含基本活动及辅助性活动。软件过程通过三个“IN”：输入，如需求；资源，如人力、工具；控制，如预算、时间表、规范标准，最终完成一个“OUT”如程序代码、程序文档。</strong></p>
+<h1 id="活动的概念">活动的概念</h1>
 <ul>
 <li>
 <p>基础活动</p>
@@ -82,7 +102,7 @@ time++;</subtitle>
 <p>How</p>
 </li>
 </ul>
-<figure data-type="image" tabindex="1"><img src="https://geniusmiaozz.github.io/post-images/1583338118988.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://geniusmiaozz.github.io/post-images/1583338118988.jpg" alt="" loading="lazy"></figure>
 <h2 id="需求分析活动">需求分析活动</h2>
 <ul>
 <li>
@@ -157,7 +177,7 @@ time++;</subtitle>
 <p>How</p>
 </li>
 </ul>
-<figure data-type="image" tabindex="2"><img src="https://geniusmiaozz.github.io/post-images/1583338131488.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="https://geniusmiaozz.github.io/post-images/1583338131488.jpg" alt="" loading="lazy"></figure>
 <h2 id="设计活动">设计活动</h2>
 <ul>
 <li>
@@ -215,7 +235,7 @@ time++;</subtitle>
 <p>How</p>
 </li>
 </ul>
-<figure data-type="image" tabindex="3"><img src="https://geniusmiaozz.github.io/post-images/1583338157712.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="4"><img src="https://geniusmiaozz.github.io/post-images/1583338157712.jpg" alt="" loading="lazy"></figure>
 <h2 id="实施活动">实施活动</h2>
 <ul>
 <li>
@@ -261,7 +281,7 @@ time++;</subtitle>
 <p>How</p>
 </li>
 </ul>
-<figure data-type="image" tabindex="4"><img src="https://geniusmiaozz.github.io/post-images/1583338166171.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="5"><img src="https://geniusmiaozz.github.io/post-images/1583338166171.jpg" alt="" loading="lazy"></figure>
 <h2 id="测试活动">测试活动</h2>
 <ul>
 <li>
@@ -322,7 +342,7 @@ time++;</subtitle>
 <p>How</p>
 </li>
 </ul>
-<figure data-type="image" tabindex="5"><img src="https://geniusmiaozz.github.io/post-images/1583338176023.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="6"><img src="https://geniusmiaozz.github.io/post-images/1583338176023.jpg" alt="" loading="lazy"></figure>
 <h2 id="部署活动">部署活动</h2>
 <ul>
 <li>
@@ -377,7 +397,7 @@ time++;</subtitle>
 <p>How</p>
 </li>
 </ul>
-<figure data-type="image" tabindex="6"><img src="https://geniusmiaozz.github.io/post-images/1583338192371.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="7"><img src="https://geniusmiaozz.github.io/post-images/1583338192371.jpg" alt="" loading="lazy"></figure>
 ]]></content>
     </entry>
     <entry>
