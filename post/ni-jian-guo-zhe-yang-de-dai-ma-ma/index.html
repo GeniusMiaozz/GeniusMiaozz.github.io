@@ -31,39 +31,13 @@ time++;" />
       
         <div class="animated fadeInLeft" style="animation-delay: 0.4s">
           <p class="my-4 text-gray-600 font-light hidden lg:block">
-            while(1)
-time++;
+            文章目录
           </p>
-          <div class="animated fadeInLeft social-container hidden lg:block" style="animation-delay: 0.6s">
-            
-              
-                <a href="https://github.com/GeniusMiaozz" target="_blank" class="mr-4 text-xl text-gray-400 font-light hover:text-gray-900">
-                  <i class="ri-github-line"></i>
-                </a>
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-                <a href="1208520869" target="_blank" class="mr-4 text-xl text-gray-400 font-light hover:text-gray-900">
-                  <i class="ri-qq-line"></i>
-                </a>
-              
-            
+          <div class="toc-container hidden lg:block">
+            <ul class="markdownIt-TOC">
+<li><a href="#%E9%95%BF%E8%A7%81%E8%AF%86%E4%BA%86">长见识了..</a></li>
+</ul>
+
           </div>
         </div>
       
@@ -107,18 +81,105 @@ time++;
 </div>
 <div class="mask" onclick="closeMenu()">
 </div>
-      <div class="content-wrapper py-32 lg:p-8 lg:w-3/4">
-        <h2 class="text-lg text-gray-700 mb-8">
-          <i class="ri-bookmark-2-line"></i> 标签云
-        </h2>
-        <div class="tags-container">
+      <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
+        <h1 class="text-3xl font-bold lg:mt-16">你见过这样的代码吗？</h1>
+        <div class="text-sm text-gray-700 lg:my-8">
+          2020-03-07 / 2 min read
+        </div>
+        
+        <div class="post-content yue">
+          <h1 id="长见识了">长见识了..</h1>
+<p>前两天刷知乎时看到这样一行代码：</p>
+<p><strong>char *(*c[10])(int **p);</strong></p>
+<p>当时我的大脑中是这样的：</p>
+<figure data-type="image" tabindex="1"><img src="https://geniusmiaozz.github.io/post-images/1583574662322.png" alt="" loading="lazy"></figure>
+<p>随之我的大脑中是这样的：</p>
+<p>*c[10]我记得是一个指针数组，数组中的元素为指针；后面括号中的内容只能是参数了，参数为一个int类型的二重指针？那前面的char *呢。。</p>
+<p>上网求解之后我的大脑又变成了这样的：</p>
+<figure data-type="image" tabindex="2"><img src="https://geniusmiaozz.github.io/post-images/1583574683219.jpg" alt="" loading="lazy"></figure>
+<hr>
+<p>题解+个人总结：</p>
+<ul>
+<li>
+<p>首先，c[10]是一个数组。</p>
+</li>
+<li>
+<p>在前面加上一个*，*c[10]是一个指针数组，数组中元素的类型为指针；如果是(*c)[10]，则为一个数组指针，c这个指针指向一个元素个数为10的数组的首地址。</p>
+</li>
+<li>
+<p>紧接着，由于加上了参数，(*c[10])(int **p)是一个函数指针的数组，函数有一个int **p二重指针作为形参。</p>
+</li>
+<li>
+<p>最后，char *(*c[10])(int **p)代表：c是一个数组，该数组用于存放一个形参为整型二重指针、返回值为字符串的函数的函数指针。</p>
+</li>
+</ul>
+<p>再附上一段网上给出的代码：</p>
+<pre><code class="language-c++">char *(*c[10])(int **p);
+char *fun(int **p)
+{
+    return &quot;hello\n&quot;;
+}
+int main()
+{
+	c[0] = fun;
+	printf(&quot;%s&quot;, c[0](NULL));
+	return 0;
+}
+</code></pre>
+<p>亲测的运行结果：<img src="https://geniusmiaozz.github.io/post-images/1583574463792.png" alt="" loading="lazy"></p>
+
+        </div>
+
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://geniusmiaozz.github.io/tag/SJvu8fO9z/">
+            <span class="flex-auto">GeniusMiaoStudy</span>
+          </a>
+        
+
+
+        <div class="flex justify-between py-8">
           
-            <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://geniusmiaozz.github.io/tag/SJvu8fO9z/" :style="{ 'animation-delay': `${0 * 0.2}s` }">
-              <span class="flex-auto">GeniusMiaoStudy</span>
-              <span class="flex rounded-full bg-gray-200 px-2 py-1 text-xs ml-1">3</span>
-            </a>
+
+          
+            <div class="next-post">
+              <a href="https://geniusmiaozz.github.io/post/ruan-jian-gong-cheng-zhong-guo-cheng-de-gai-nian/">
+                <h3 class="post-title">
+                  什么是软件过程？
+                  <i class="ri-arrow-right-line"></i>
+                </h3>
+              </a>
+            </div>
           
         </div>
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'd666ec54fdd7e7bcf5a5',
+    clientSecret: 'eb4829aff529a141e142de8a677d7b34925325a6',
+    repo: 'geniusmiaozz.github.io',
+    owner: 'GeniusMiaozz',
+    admin: ['GeniusMiaozz'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
       </div>
     </div>
 

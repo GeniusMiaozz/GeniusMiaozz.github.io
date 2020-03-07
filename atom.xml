@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://geniusmiaozz.github.io</id>
     <title>GeniusMiao&apos;s blog.</title>
-    <updated>2020-03-06T16:07:00.274Z</updated>
+    <updated>2020-03-07T09:53:32.808Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://geniusmiaozz.github.io"/>
     <link rel="self" href="https://geniusmiaozz.github.io/atom.xml"/>
@@ -11,6 +11,53 @@ time++;</subtitle>
     <logo>https://geniusmiaozz.github.io/images/avatar.png</logo>
     <icon>https://geniusmiaozz.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, GeniusMiao&apos;s blog.</rights>
+    <entry>
+        <title type="html"><![CDATA[你见过这样的代码吗？]]></title>
+        <id>https://geniusmiaozz.github.io/post/ni-jian-guo-zhe-yang-de-dai-ma-ma/</id>
+        <link href="https://geniusmiaozz.github.io/post/ni-jian-guo-zhe-yang-de-dai-ma-ma/">
+        </link>
+        <updated>2020-03-07T09:47:37.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="长见识了">长见识了..</h1>
+<p>前两天刷知乎时看到这样一行代码：</p>
+<p><strong>char *(*c[10])(int **p);</strong></p>
+<p>当时我的大脑中是这样的：</p>
+<figure data-type="image" tabindex="1"><img src="https://geniusmiaozz.github.io/post-images/1583574662322.png" alt="" loading="lazy"></figure>
+<p>随之我的大脑中是这样的：</p>
+<p>*c[10]我记得是一个指针数组，数组中的元素为指针；后面括号中的内容只能是参数了，参数为一个int类型的二重指针？那前面的char *呢。。</p>
+<p>上网求解之后我的大脑又变成了这样的：</p>
+<figure data-type="image" tabindex="2"><img src="https://geniusmiaozz.github.io/post-images/1583574683219.jpg" alt="" loading="lazy"></figure>
+<hr>
+<p>题解+个人总结：</p>
+<ul>
+<li>
+<p>首先，c[10]是一个数组。</p>
+</li>
+<li>
+<p>在前面加上一个*，*c[10]是一个指针数组，数组中元素的类型为指针；如果是(*c)[10]，则为一个数组指针，c这个指针指向一个元素个数为10的数组的首地址。</p>
+</li>
+<li>
+<p>紧接着，由于加上了参数，(*c[10])(int **p)是一个函数指针的数组，函数有一个int **p二重指针作为形参。</p>
+</li>
+<li>
+<p>最后，char *(*c[10])(int **p)代表：c是一个数组，该数组用于存放一个形参为整型二重指针、返回值为字符串的函数的函数指针。</p>
+</li>
+</ul>
+<p>再附上一段网上给出的代码：</p>
+<pre><code class="language-c++">char *(*c[10])(int **p);
+char *fun(int **p)
+{
+    return &quot;hello\n&quot;;
+}
+int main()
+{
+	c[0] = fun;
+	printf(&quot;%s&quot;, c[0](NULL));
+	return 0;
+}
+</code></pre>
+<p>亲测的运行结果：<img src="https://geniusmiaozz.github.io/post-images/1583574463792.png" alt="" loading="lazy"></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[什么是软件过程？]]></title>
         <id>https://geniusmiaozz.github.io/post/ruan-jian-gong-cheng-zhong-guo-cheng-de-gai-nian/</id>
