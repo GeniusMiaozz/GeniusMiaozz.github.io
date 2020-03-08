@@ -2,12 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://geniusmiaozz.github.io</id>
     <title>GeniusMiao&apos;s blog.</title>
-    <updated>2020-03-07T11:06:02.562Z</updated>
+    <updated>2020-03-08T08:43:26.206Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://geniusmiaozz.github.io"/>
     <link rel="self" href="https://geniusmiaozz.github.io/atom.xml"/>
-    <subtitle>while(1)
-time++;</subtitle>
+    <subtitle>醉梦不知天在水，满船新梦压清河。</subtitle>
     <logo>https://geniusmiaozz.github.io/images/avatar.png</logo>
     <icon>https://geniusmiaozz.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, GeniusMiao&apos;s blog.</rights>
