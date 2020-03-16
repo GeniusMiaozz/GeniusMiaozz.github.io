@@ -16,7 +16,7 @@
 
   </head>
   <body>
-    <div class="main px-4 flex flex-col lg:flex-row">
+    <div id="app" class="main px-4 flex flex-col lg:flex-row">
       <div id="sidebar" class="sidebar-wrapper lg:static lg:w-1/4">
   <div class="lg:sticky top-0">
     <div class="sidebar-content">
@@ -30,38 +30,18 @@
       
         <div class="animated fadeInLeft" style="animation-delay: 0.4s">
           <p class="my-4 text-gray-600 font-light hidden lg:block">
-            醉梦不知天在水，满船新梦压清河。
+            文章目录
           </p>
-          <div class="animated fadeInLeft social-container hidden lg:block" style="animation-delay: 0.6s">
-            
-              
-                <a href="https://github.com/GeniusMiaozz" target="_blank" class="mr-4 text-xl text-gray-400 font-light hover:text-gray-900">
-                  <i class="ri-github-line"></i>
-                </a>
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-                <a href="1208520869" target="_blank" class="mr-4 text-xl text-gray-400 font-light hover:text-gray-900">
-                  <i class="ri-qq-line"></i>
-                </a>
-              
-            
+          <div class="toc-container hidden lg:block">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E9%97%AE%E9%A2%98%E5%AE%9A%E4%B9%89">问题定义</a></li>
+<li><a href="#%E5%8F%AF%E8%A1%8C%E6%80%A7%E7%A0%94%E7%A9%B6">可行性研究</a></li>
+</ul>
+</li>
+</ul>
+
           </div>
         </div>
       
@@ -105,102 +85,123 @@
 </div>
 <div class="mask" onclick="closeMenu()">
 </div>
-      <div class="content-wrapper py-32 lg:p-8 lg:w-3/4">
-        <h2 class="latest-article text-lg text-gray-700 mb-8">
-          <i class="ri-article-line"></i>
-          最新文章
-        </h2>
-        
-  <section class="post-item md:flex pb-12 animated fadeIn" :style="{ 'animation-delay': `${0 * 0.2}s` }">
-    
-      <a href="https://geniusmiaozz.github.io/post/about/" class="feature-image-wrapper bg-gray-100 rounded-lg flex-shrink-0 mr-8 w-full h-56 h-32 md:w-56 md:h-40">
-        <div class="post-feature-image lazy w-full h-56 h-32 md:w-56 md:h-40" data-bg="'https://geniusmiaozz.github.io/post-images/about.png'">
+      <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
+        <h1 class="text-3xl font-bold lg:mt-16">软件工程之问题定义&amp;可行性研究</h1>
+        <div class="text-sm text-gray-700 lg:my-8">
+          2020-03-16 / 2 min read
         </div>
-      </a>
-    
-    <div class="content">
-      <a href="https://geniusmiaozz.github.io/post/about/">
-        <h2 class="post-title text-xl font-extrabold mt-5 md:mt-0">Welcome here!</h2>
-      </a>
-      <div class="post-abstract text-gray-700 font-light my-4">
         
-      </div>
-      <div class="text-gray-400 text-sm font-light">2019-01-25 / 1 min read</div>
-    </div>
-  </section>
+        <div class="post-content yue">
+          <h2 id="问题定义">问题定义</h2>
+<p>问题定义报告的内容和格式，虽然目前企业界没有统一标准，但是基本上都包含以下内容：</p>
+<ul>
+<li>
+<p>项目名称</p>
+</li>
+<li>
+<p>使用方</p>
+</li>
+<li>
+<p>开发方</p>
+</li>
+<li>
+<p>目前问题</p>
+</li>
+<li>
+<p>项目目标</p>
+</li>
+<li>
+<p>项目范围</p>
+</li>
+<li>
+<p>初步设想</p>
+</li>
+<li>
+<p>预计投资金额</p>
+</li>
+<li>
+<p>预计开发周期</p>
+</li>
+</ul>
+<p>如果在问题定义上双方就未能达成共识，那么就不必进一步展开相关工作了。</p>
+<h2 id="可行性研究">可行性研究</h2>
+<p>在问题定义所预计的范围和投资内，问题是否可以被如期地合理解决呢？这是可行性研究的主要任务。</p>
+<p>可行性研究可以有多套方案，每套方案都可以围绕以下方面进行分析：</p>
+<ul>
+<li>
+<p>技术可行性，用户的设备是否支持？开发者的技术是否能够实现？</p>
+</li>
+<li>
+<p>操作可行性，需要配合的手工操作是否可行？用户是否能够接受操作方式？</p>
+</li>
+<li>
+<p>经济可行性，系统的经济效益能否超过他的开发成本？</p>
+</li>
+<li>
+<p>调度可行性，建议的系统能否在规定的期限内交付给用户？</p>
+</li>
+<li>
+<p>社会可行性，如知识产权、法律、政策。</p>
+</li>
+<li>
+<p>市场可行性，如产品的历史和趋势、价格、消费方式。</p>
+</li>
+<li>
+<p>竞争可行性，与竞争对手比较研发、销售、资金、品牌等方面。</p>
+</li>
+<li>
+<p>策略可行性，经营方向、产品路线。</p>
+</li>
+</ul>
 
-  <section class="post-item md:flex pb-12 animated fadeIn" :style="{ 'animation-delay': `${1 * 0.2}s` }">
-    
-    <div class="content">
-      <a href="https://geniusmiaozz.github.io/post/ruan-jian-gong-cheng-zhi-wen-ti-ding-yi-andke-xing-xing-yan-jiu/">
-        <h2 class="post-title text-xl font-extrabold mt-5 md:mt-0">软件工程之问题定义&amp;可行性研究</h2>
-      </a>
-      <div class="post-abstract text-gray-700 font-light my-4">
-        
-      </div>
-      <div class="text-gray-400 text-sm font-light">2020-03-16 / 2 min read</div>
-    </div>
-  </section>
-
-  <section class="post-item md:flex pb-12 animated fadeIn" :style="{ 'animation-delay': `${2 * 0.2}s` }">
-    
-    <div class="content">
-      <a href="https://geniusmiaozz.github.io/post/ni-jian-guo-zhe-yang-de-dai-ma-ma/">
-        <h2 class="post-title text-xl font-extrabold mt-5 md:mt-0">看了这段代码，我……</h2>
-      </a>
-      <div class="post-abstract text-gray-700 font-light my-4">
-        
-      </div>
-      <div class="text-gray-400 text-sm font-light">2020-03-07 / 2 min read</div>
-    </div>
-  </section>
-
-  <section class="post-item md:flex pb-12 animated fadeIn" :style="{ 'animation-delay': `${3 * 0.2}s` }">
-    
-      <a href="https://geniusmiaozz.github.io/post/ruan-jian-gong-cheng-zhong-guo-cheng-de-gai-nian/" class="feature-image-wrapper bg-gray-100 rounded-lg flex-shrink-0 mr-8 w-full h-56 h-32 md:w-56 md:h-40">
-        <div class="post-feature-image lazy w-full h-56 h-32 md:w-56 md:h-40" data-bg="'https://geniusmiaozz.github.io/post-images/ruan-jian-gong-cheng-zhong-guo-cheng-de-gai-nian.jpg'">
         </div>
-      </a>
-    
-    <div class="content">
-      <a href="https://geniusmiaozz.github.io/post/ruan-jian-gong-cheng-zhong-guo-cheng-de-gai-nian/">
-        <h2 class="post-title text-xl font-extrabold mt-5 md:mt-0">什么是软件过程？</h2>
-      </a>
-      <div class="post-abstract text-gray-700 font-light my-4">
-        
-      </div>
-      <div class="text-gray-400 text-sm font-light">2020-03-05 / 9 min read</div>
-    </div>
-  </section>
 
-  <section class="post-item md:flex pb-12 animated fadeIn" :style="{ 'animation-delay': `${4 * 0.2}s` }">
-    
-      <a href="https://geniusmiaozz.github.io/post/geniusmiao-os-ge-dai-ma-wen-jian-jian-yao-shuo-ming/" class="feature-image-wrapper bg-gray-100 rounded-lg flex-shrink-0 mr-8 w-full h-56 h-32 md:w-56 md:h-40">
-        <div class="post-feature-image lazy w-full h-56 h-32 md:w-56 md:h-40" data-bg="'https://geniusmiaozz.github.io/post-images/geniusmiao-os-ge-dai-ma-wen-jian-jian-yao-shuo-ming.png'">
-        </div>
-      </a>
-    
-    <div class="content">
-      <a href="https://geniusmiaozz.github.io/post/geniusmiao-os-ge-dai-ma-wen-jian-jian-yao-shuo-ming/">
-        <h2 class="post-title text-xl font-extrabold mt-5 md:mt-0">30天自制操作系统-OSCodeFile学习笔记(1-7天内容)</h2>
-      </a>
-      <div class="post-abstract text-gray-700 font-light my-4">
         
-      </div>
-      <div class="text-gray-400 text-sm font-light">2020-02-25 / 11 min read</div>
-    </div>
-  </section>
 
-        <div class="read-more">
+
+        <div class="flex justify-between py-8">
+          
+
+          
+            <div class="next-post">
+              <a href="https://geniusmiaozz.github.io/post/ni-jian-guo-zhe-yang-de-dai-ma-ma/">
+                <h3 class="post-title">
+                  看了这段代码，我……
+                  <i class="ri-arrow-right-line"></i>
+                </h3>
+              </a>
+            </div>
           
         </div>
-        <div class="index-page">
-          <div class="pagination-container animated fadeIn">
-  
-  
-</div>
 
-        </div>
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'd666ec54fdd7e7bcf5a5',
+    clientSecret: 'eb4829aff529a141e142de8a677d7b34925325a6',
+    repo: 'geniusmiaozz.github.io',
+    owner: 'GeniusMiaozz',
+    admin: ['GeniusMiaozz'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
       </div>
     </div>
 

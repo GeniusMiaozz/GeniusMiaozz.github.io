@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://geniusmiaozz.github.io</id>
     <title>GeniusMiao&apos;s blog.</title>
-    <updated>2020-03-08T08:43:26.206Z</updated>
+    <updated>2020-03-16T10:32:26.400Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://geniusmiaozz.github.io"/>
     <link rel="self" href="https://geniusmiaozz.github.io/atom.xml"/>
@@ -11,66 +11,76 @@
     <icon>https://geniusmiaozz.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, GeniusMiao&apos;s blog.</rights>
     <entry>
-        <title type="html"><![CDATA[硬 件 工 程(DAY_1)]]></title>
-        <id>https://geniusmiaozz.github.io/post/ying-jian-gong-cheng-day_1/</id>
-        <link href="https://geniusmiaozz.github.io/post/ying-jian-gong-cheng-day_1/">
+        <title type="html"><![CDATA[软件工程之问题定义&可行性研究]]></title>
+        <id>https://geniusmiaozz.github.io/post/ruan-jian-gong-cheng-zhi-wen-ti-ding-yi-andke-xing-xing-yan-jiu/</id>
+        <link href="https://geniusmiaozz.github.io/post/ruan-jian-gong-cheng-zhi-wen-ti-ding-yi-andke-xing-xing-yan-jiu/">
         </link>
-        <updated>2020-03-07T09:58:21.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="硬-件-工-程day_1">硬 件 工 程(DAY_1)</h1>
-<h2 id="导语">导语</h2>
-<p>近日学习软件工程这一课程，对于这方面的知识如软件开发过程、开发模型均有了一定的理解。今天看到一个小故事，大概介么个意思：</p>
-<blockquote>
-<p>话说有一登山爱好者甲，某一天慕名而来挑战登山。这哥们在山脚下为了登山可是煞费苦心，先围绕山脚下转一整圈，又是打量山势又是观察主峰与山包，然后设计出了多种登山计划，又分析得到一个首选计划，同时安排好备用计划，一切安排妥当没问题后终于开始了登山行动。</p>
-</blockquote>
-<blockquote>
-<p>又话说还有个登山爱好者乙，这天碰巧了也来登这座山。刚到这看见A正在那勘察情况，那是二话没说就直接上山寻路了。不久便发现走到了一个没有前路的小山包上，不过并没有气馁，稍作观察之后就调头向另一个更高的山峰出发。就这样B在不断的下与上的过程中很快将A远远的甩在后面。</p>
-</blockquote>
-<blockquote>
-<p>当A终于登上山顶之后，发现B已经整理好准备下山了。B这时候帅(qian)气(zou)地送给A一句话：“这，就是极限编程的厉害！”</p>
-</blockquote>
-<p>好家伙，学到了！（脑子：我会了。手：你不会。）不过，手会的机会随之就到来了。。</p>
-<h2 id="需求伊始">需求伊始</h2>
-<p>自打这次寒假放假回家，之前家里那把大号仿真Gun玩具我就一直没找到。</p>
-<p>前两天物美超市做活动100块钱三箱伊利金典纯牛奶剁了波手，现在看着箱里形状各异的硬纸板突然有了想法：既然仿真Gun找不到了，那我不如重拾老本行DIY一把？正好应用一下最近刚刚学到的“极限编程”，这次我也不先指定什么计划，想到什么做什么，体验一次试试？说干就干！</p>
-<p>首先是一波简单的原材料及工具的清点：</p>
-<p><img src="https://geniusmiaozz.github.io/post-images/1583577325093.jpg" alt="" loading="lazy"><br>
-<img src="https://geniusmiaozz.github.io/post-images/1583577328676.jpg" alt="" loading="lazy"></p>
-<p>从哪开始呢。。？就先来设计一个箭头型的Gun口吧！</p>
-<figure data-type="image" tabindex="1"><img src="https://geniusmiaozz.github.io/post-images/1583577383150.jpg" alt="" loading="lazy"></figure>
-<p>考虑到硬纸板不支持咱整体都做的立体饱满，必须得先考虑一下如何进行Gun口和Gun身的连接问题，直接采用“三板夹二板”固定的方法。同时如果箭头合并之后再在内部粘东西就较为棘手了， 必须先进行半个箭头和连接部件的粘连。下图可以体现出这两点：</p>
-<figure data-type="image" tabindex="2"><img src="https://geniusmiaozz.github.io/post-images/1583577531479.jpg" alt="" loading="lazy"></figure>
-<p>进行半个箭头和头身连接部件的粘连：</p>
-<figure data-type="image" tabindex="3"><img src="https://geniusmiaozz.github.io/post-images/1583577892045.jpg" alt="" loading="lazy"></figure>
-<p>初步完成的两个半箭头就如下图了：</p>
-<figure data-type="image" tabindex="4"><img src="https://geniusmiaozz.github.io/post-images/1583577951084.jpg" alt="" loading="lazy"></figure>
-<p>嗯。。此时可以完成两个半箭头的合并了，再给连接部件加个延长部件方便连接，下图就是初步完成的Gun口了：</p>
-<figure data-type="image" tabindex="5"><img src="https://geniusmiaozz.github.io/post-images/1583578392505.jpg" alt="" loading="lazy"></figure>
-<p>现在开始做Gun身吧。继续采用经典的“二板夹一板——骨折夹板”固定方法，即在两个硬纸板的连接处帮上另一根硬纸板，用来达到防止弯曲的效果，下图为简单的原理图：</p>
-<figure data-type="image" tabindex="6"><img src="https://geniusmiaozz.github.io/post-images/1583578538127.jpg" alt="" loading="lazy"></figure>
-<p>正式开始制作！先进行简单的固定方便处理：</p>
-<figure data-type="image" tabindex="7"><img src="https://geniusmiaozz.github.io/post-images/1583578574382.jpg" alt="" loading="lazy"></figure>
-<p>此时我有了新的想法：为了看起来炫酷也为了后续的扩展，此处采用两个直角梯形合并作为“二板夹一板”中被夹的“一板”，效果图如下：</p>
-<figure data-type="image" tabindex="8"><img src="https://geniusmiaozz.github.io/post-images/1583578738028.jpg" alt="" loading="lazy"></figure>
-<p>再看一个侧面的效果图：</p>
-<figure data-type="image" tabindex="9"><img src="https://geniusmiaozz.github.io/post-images/1583578766933.jpg" alt="" loading="lazy"></figure>
-<p>应该没啥问题了。现在来做个Gun托吧，Gun托可以做个饱满的。</p>
-<p>Gun托的平面图：</p>
-<figure data-type="image" tabindex="10"><img src="https://geniusmiaozz.github.io/post-images/1583578820451.jpg" alt="" loading="lazy"></figure>
-<p>什么？你说你看不出来这是个Gun托？折叠起来你再看看？</p>
-<figure data-type="image" tabindex="11"><img src="https://geniusmiaozz.github.io/post-images/1583578866627.jpg" alt="" loading="lazy"></figure>
-<p>接下来。。就把三者连接在一起吧。（此处参考了原型模型中的可以很快见到开发成果）</p>
-<figure data-type="image" tabindex="12"><img src="https://geniusmiaozz.github.io/post-images/1583578961474.jpg" alt="" loading="lazy"></figure>
-<p>目前主要的Gun身还是太不稳定了，我们给两边各自加厚一层：</p>
-<figure data-type="image" tabindex="13"><img src="https://geniusmiaozz.github.io/post-images/1583579018517.jpg" alt="" loading="lazy"></figure>
-<p>注意后面Gun托的连接部件宽度是小于Gun身宽度的！为了确保更好的效果双面胶要靠边上粘：</p>
-<figure data-type="image" tabindex="14"><img src="https://geniusmiaozz.github.io/post-images/1583579069164.jpg" alt="" loading="lazy"></figure>
-<p>加固完成之后初步的主体就完成啦！</p>
-<figure data-type="image" tabindex="15"><img src="https://geniusmiaozz.github.io/post-images/1583579076996.jpg" alt="" loading="lazy"></figure>
-<p>嗯。。必需功能还缺一个把手，其他辅助功能如瞄准之类的后续再看。今天就到这了，明天继续！</p>
+        <updated>2020-03-16T10:19:45.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="问题定义">问题定义</h2>
+<p>问题定义报告的内容和格式，虽然目前企业界没有统一标准，但是基本上都包含以下内容：</p>
+<ul>
+<li>
+<p>项目名称</p>
+</li>
+<li>
+<p>使用方</p>
+</li>
+<li>
+<p>开发方</p>
+</li>
+<li>
+<p>目前问题</p>
+</li>
+<li>
+<p>项目目标</p>
+</li>
+<li>
+<p>项目范围</p>
+</li>
+<li>
+<p>初步设想</p>
+</li>
+<li>
+<p>预计投资金额</p>
+</li>
+<li>
+<p>预计开发周期</p>
+</li>
+</ul>
+<p>如果在问题定义上双方就未能达成共识，那么就不必进一步展开相关工作了。</p>
+<h2 id="可行性研究">可行性研究</h2>
+<p>在问题定义所预计的范围和投资内，问题是否可以被如期地合理解决呢？这是可行性研究的主要任务。</p>
+<p>可行性研究可以有多套方案，每套方案都可以围绕以下方面进行分析：</p>
+<ul>
+<li>
+<p>技术可行性，用户的设备是否支持？开发者的技术是否能够实现？</p>
+</li>
+<li>
+<p>操作可行性，需要配合的手工操作是否可行？用户是否能够接受操作方式？</p>
+</li>
+<li>
+<p>经济可行性，系统的经济效益能否超过他的开发成本？</p>
+</li>
+<li>
+<p>调度可行性，建议的系统能否在规定的期限内交付给用户？</p>
+</li>
+<li>
+<p>社会可行性，如知识产权、法律、政策。</p>
+</li>
+<li>
+<p>市场可行性，如产品的历史和趋势、价格、消费方式。</p>
+</li>
+<li>
+<p>竞争可行性，与竞争对手比较研发、销售、资金、品牌等方面。</p>
+</li>
+<li>
+<p>策略可行性，经营方向、产品路线。</p>
+</li>
+</ul>
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[你见过这样的代码吗？]]></title>
+        <title type="html"><![CDATA[看了这段代码，我……]]></title>
         <id>https://geniusmiaozz.github.io/post/ni-jian-guo-zhe-yang-de-dai-ma-ma/</id>
         <link href="https://geniusmiaozz.github.io/post/ni-jian-guo-zhe-yang-de-dai-ma-ma/">
         </link>
