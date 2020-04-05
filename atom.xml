@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://geniusmiaozz.github.io</id>
     <title>GeniusMiao&apos;s blog.</title>
-    <updated>2020-03-16T10:32:26.400Z</updated>
+    <updated>2020-04-05T06:48:03.785Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://geniusmiaozz.github.io"/>
     <link rel="self" href="https://geniusmiaozz.github.io/atom.xml"/>
@@ -10,75 +10,6 @@
     <logo>https://geniusmiaozz.github.io/images/avatar.png</logo>
     <icon>https://geniusmiaozz.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, GeniusMiao&apos;s blog.</rights>
-    <entry>
-        <title type="html"><![CDATA[软件工程之问题定义&可行性研究]]></title>
-        <id>https://geniusmiaozz.github.io/post/ruan-jian-gong-cheng-zhi-wen-ti-ding-yi-andke-xing-xing-yan-jiu/</id>
-        <link href="https://geniusmiaozz.github.io/post/ruan-jian-gong-cheng-zhi-wen-ti-ding-yi-andke-xing-xing-yan-jiu/">
-        </link>
-        <updated>2020-03-16T10:19:45.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="问题定义">问题定义</h2>
-<p>问题定义报告的内容和格式，虽然目前企业界没有统一标准，但是基本上都包含以下内容：</p>
-<ul>
-<li>
-<p>项目名称</p>
-</li>
-<li>
-<p>使用方</p>
-</li>
-<li>
-<p>开发方</p>
-</li>
-<li>
-<p>目前问题</p>
-</li>
-<li>
-<p>项目目标</p>
-</li>
-<li>
-<p>项目范围</p>
-</li>
-<li>
-<p>初步设想</p>
-</li>
-<li>
-<p>预计投资金额</p>
-</li>
-<li>
-<p>预计开发周期</p>
-</li>
-</ul>
-<p>如果在问题定义上双方就未能达成共识，那么就不必进一步展开相关工作了。</p>
-<h2 id="可行性研究">可行性研究</h2>
-<p>在问题定义所预计的范围和投资内，问题是否可以被如期地合理解决呢？这是可行性研究的主要任务。</p>
-<p>可行性研究可以有多套方案，每套方案都可以围绕以下方面进行分析：</p>
-<ul>
-<li>
-<p>技术可行性，用户的设备是否支持？开发者的技术是否能够实现？</p>
-</li>
-<li>
-<p>操作可行性，需要配合的手工操作是否可行？用户是否能够接受操作方式？</p>
-</li>
-<li>
-<p>经济可行性，系统的经济效益能否超过他的开发成本？</p>
-</li>
-<li>
-<p>调度可行性，建议的系统能否在规定的期限内交付给用户？</p>
-</li>
-<li>
-<p>社会可行性，如知识产权、法律、政策。</p>
-</li>
-<li>
-<p>市场可行性，如产品的历史和趋势、价格、消费方式。</p>
-</li>
-<li>
-<p>竞争可行性，与竞争对手比较研发、销售、资金、品牌等方面。</p>
-</li>
-<li>
-<p>策略可行性，经营方向、产品路线。</p>
-</li>
-</ul>
-]]></content>
-    </entry>
     <entry>
         <title type="html"><![CDATA[看了这段代码，我……]]></title>
         <id>https://geniusmiaozz.github.io/post/ni-jian-guo-zhe-yang-de-dai-ma-ma/</id>
