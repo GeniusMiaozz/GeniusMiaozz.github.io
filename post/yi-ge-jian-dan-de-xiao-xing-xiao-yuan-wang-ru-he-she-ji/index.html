@@ -34,7 +34,15 @@
           </p>
           <div class="toc-container hidden lg:block">
             <ul class="markdownIt-TOC">
-<li><a href="#%E9%95%BF%E8%A7%81%E8%AF%86%E4%BA%86">长见识了..</a></li>
+<li>
+<ul>
+<li><a href="#%E8%AE%BE%E8%AE%A1%E8%A6%81%E6%B1%82">设计要求</a></li>
+<li><a href="#%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF">设计思路</a></li>
+<li><a href="#%E8%AE%BE%E8%AE%A1%E6%80%BB%E5%9B%BE">设计总图</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AE%E6%8C%87%E4%BB%A4">配置指令</a></li>
+<li><a href="#%E7%BB%93%E6%9E%9C%E9%AA%8C%E8%AF%81">结果验证</a></li>
+</ul>
+</li>
 </ul>
 
           </div>
@@ -81,68 +89,137 @@
 <div class="mask" onclick="closeMenu()">
 </div>
       <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
-        <h1 class="text-3xl font-bold lg:mt-16">看了这段代码，我……</h1>
+        <h1 class="text-3xl font-bold lg:mt-16">一个简单的小型校园网如何设计？</h1>
         <div class="text-sm text-gray-700 lg:my-8">
-          2020-03-07 / 2 min read
+          2020-04-07 / 6 min read
         </div>
         
         <div class="post-content yue">
-          <h1 id="长见识了">长见识了..</h1>
-<p>前两天刷知乎时看到这样一行代码：</p>
-<p><strong>char *(*c[10])(int **p);</strong></p>
-<p>当时我的大脑中是这样的：</p>
-<figure data-type="image" tabindex="1"><img src="https://geniusmiaozz.github.io/post-images/1583574662322.png" alt="" loading="lazy"></figure>
-<p>随之我的大脑中是这样的：</p>
-<p>*c[10]我记得是一个指针数组，数组中的元素为指针；后面括号中的内容只能是参数了，参数为一个int类型的二重指针？那前面的char *呢。。</p>
-<p>上网求解之后我的大脑又变成了这样的：</p>
-<figure data-type="image" tabindex="2"><img src="https://geniusmiaozz.github.io/post-images/1583574683219.jpg" alt="" loading="lazy"></figure>
-<hr>
-<p>题解+个人总结：</p>
+          <h2 id="设计要求">设计要求</h2>
+<ul>
+<li>某大学分为总校和分校，为该校设计校园网，总校有一个局域网共20台计算机，分校由VLAN 划分为两个局域网，分别有10台计算机。该校被分配了一个C类网段210.100.10.0，总校和分校各有一台路由器及一台交换机。请进行网络设计，将总校和分校各个局域网连接起来。 根据要求，设计IP地址分配表，设计网络结构，画出网络拓扑图。根据设计搭建网络结构。配置网络设备，完成网络调试。</li>
+</ul>
+<h2 id="设计思路">设计思路</h2>
 <ul>
 <li>
-<p>首先，c[10]是一个数组。</p>
-</li>
-<li>
-<p>在前面加上一个*，*c[10]是一个指针数组，数组中元素的类型为指针；如果是(*c)[10]，则为一个数组指针，c这个指针指向一个元素个数为10的数组的首地址。</p>
-</li>
-<li>
-<p>紧接着，由于加上了参数，(*c[10])(int **p)是一个函数指针的数组，函数有一个int **p二重指针作为形参。</p>
-</li>
-<li>
-<p>最后，char *(*c[10])(int **p)代表：c是一个数组，该数组用于存放一个形参为整型二重指针、返回值为字符串的函数的函数指针。</p>
+<p>审题发现，题目要求将一个C类IP地址分为三个局域网，首先由两台路由器分出两个局域网，再由一台交换机将其中一个局域网划分为两个局域网。同时考虑到路由器之间也存在一段网络，顾应将此IP地址划分为4个子网，其中分校、总校两台路由器相连，一台三层交换机、一台二层交换机分别与分校、总校的交换机相连，三层交换机划分出分校的两个子网，二层交换机直接连接总校的子网。设n为子网号位数，利用公式：</p>
+<figure data-type="image" tabindex="1"><img src="https://geniusmiaozz.github.io/post-images/1586238898103.png" alt="" loading="lazy"></figure>
+<p>不难求出子网号位数为3。到这里，基本的设计思路就分析完毕了。</p>
 </li>
 </ul>
-<p>再附上一段网上给出的代码：</p>
-<pre><code class="language-c++">char *(*c[10])(int **p);
-char *fun(int **p)
-{
-    return &quot;hello\n&quot;;
-}
-int main()
-{
-	c[0] = fun;
-	printf(&quot;%s&quot;, c[0](NULL));
-	return 0;
-}
+<h2 id="设计总图">设计总图</h2>
+<figure data-type="image" tabindex="2"><img src="https://geniusmiaozz.github.io/post-images/1586238819629.png" alt="" loading="lazy"></figure>
+<h2 id="配置指令">配置指令</h2>
+<ul>
+<li>
+<p>首先配置总校交换机SwitchA，创建一个vlan并分配指定端口。</p>
+<pre><code class="language-SwitchA(config)#vlan">SwitchA(config-vlan)#exit
+SwitchA(config)#interface gigabitEthernet0/1//配置1号端口
+SwitchA(config-if)#switchport access vlan 10//1号端口加入vlan20
+SwitchA(config-if)#exit
+SwitchA(config)#interface gigabitEthernet0/24//配置24号端口
+SwitchA(config-if)#switchport mode trunk//24号端口设为trunk模式以便备用
+SwitchA(config-if)#end
+SwitchA(config)#show vlan//检验vlan配置
 </code></pre>
-<p>亲测的运行结果：<img src="https://geniusmiaozz.github.io/post-images/1583574463792.png" alt="" loading="lazy"></p>
+</li>
+<li>
+<p>SwitchA的vlan配置无误后，进入总校路由器Router1的配置。</p>
+<pre><code class="language-Router1(config)#interface">Router1(config-subif)#encapsulation dot1q 10//封装802.1Q，指定给Vlan 10
+Router1(config-subif)#ip address 210.100.10.33 255.255.255.224//分配给主校网络
+Router1(config-subif)#exit
+Router1(config)#interface gigabitEthernet0/1//配置1号端口
+Router1(config-if)#ip address 210.100.10.65 255.255.255.224//IP
+Router1(config-if)#no shutdown//开启端口
+Router1(config-if)#end
+Router1#show ip interface brief//检验IP地址和接口配置
+Router1(config)#ip route 210.100.10.96 255.255.255.224 210.100.10.66//到分校子网1的静态路由
+Router1(config)#ip route 210.100.10.128 255.255.255.224 210.100.10.66//到分校子网2的静态路由
+Router1(config)#end
+Router1#show ip route//检验静态路由配置
+Router1#wr//写入配置
+</code></pre>
+</li>
+<li>
+<p>此时已经完成了总校的配置，接下来配置分校交换机SwitchB。</p>
+<pre><code class="language-SwitchB(config)#vlan">SwitchB(config-vlan)#exit
+SwitchB(config)#vlan 20//创建vlan20
+SwitchB(config-vlan)#exit
+SwitchB(config)#interface gigabitEthernet0/1//配置1号端口
+SwitchB(config-if)#switchport access vlan 10//1号端口划入vlan10
+SwitchB(config-if)#exit
+SwitchB(config)#interface gigabitEthernet0/2//配置2号端口
+SwitchB(config-if)#switchport access vlan 20//2号端口划入vlan20
+SwitchB(config-if)#exit
+SwitchB(config)#interface gigabitEthernet0/24//配置24号端口
+SwitchB(config-if)#switchport mode trunk//24号设为共享端口
+SwitchB(config-if)#end
+SwitchB#show vlan//检验vlan配置
+SwitchB的vlan配置无误后，进入分校路由器Router2的配置。
+Router2(config)#interface gigabitEthernet0/1//配置1号端口
+Router2(config-if)#ip address 210.100.10.66 255.255.255.224//IP
+Router2(config-if)#no shutdown//开启端口
+Router2(config-if)#exit
+Router2(config)#interface gigabitEthernet0/0//配置0号端口
+Router2(config-if)#no ip address//无需直接分配IP地址
+Router2(config-if)#no shutdown//需要开启端口
+Router2(config-if)#exit
+Router2(config)#interface gigabitEthernet0/1.10//配置子网1
+Router2(config-subif)#encapsulation dot1q 10
+//封装802.1Q，指定给Vlan 10
+Router2(config-subif)#ip address 210.100.10.97 255.255.255.224//IP
+Router2(config-subif)#exit
+Router2(config)#interface gigabitEthernet0/1.20//配置子网2
+Router2(config-subif)#encapsulation dot1q 20
+Router2(config-subif)#ip address210.100.10.129 255.255.255.224//IP
+Router2(config-subif)#exit
+Router2#show ip interface brief//检验IP地址和接口配置
+Router2(config)#ip route 210.100.10.32 255.255.255.224 210.100.10.65//到总校子网的静态路由
+Router2(config)#end
+Router2#show ip route//检验静态路由配置
+Router2#wr//写入配置
+</code></pre>
+</li>
+</ul>
+<h2 id="结果验证">结果验证</h2>
+<ul>
+<li>
+<p>此时，所有的软硬件配置都已完成，直接在计算机上设定本机的IP地址、子网掩码、默认网关，然后正确接线之后即可通过 <code>ping</code> 指令进行验证。举例：</p>
+<ol>
+<li>
+<p>总校PC1</p>
+<p>IP：210.100.10.35</p>
+<p>子网掩码：255.255.255.224</p>
+<p>默认网关：255.255.255.33</p>
+</li>
+<li>
+<p>分校PC2</p>
+<p>IP：210.100.10.100</p>
+<p>子网掩码：255.255.255.224</p>
+<p>默认网关：210.100.10.97</p>
+</li>
+<li>
+<p>分校PC3</p>
+<p>IP：210.100.10.130</p>
+<p>子网掩码：255.255.255.224</p>
+<p>默认网关：210.100.10.129</p>
+</li>
+</ol>
+</li>
+</ul>
 
         </div>
 
-        
-          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://geniusmiaozz.github.io/tag/SJvu8fO9z/">
-            <span class="flex-auto">GeniusMiaoStudy</span>
-          </a>
         
 
 
         <div class="flex justify-between py-8">
           
             <div class="prev-post">
-              <a href="https://geniusmiaozz.github.io/post/bian-cheng-ti-na-xia-di-yi-jie-duan-day1~day30/">
+              <a href="https://geniusmiaozz.github.io/post/ccfu-xi/">
                 <h3 class="post-title">
                   <i class="ri-arrow-left-line"></i>
-                  编程题，拿下!(第一阶段Day1~Day30)
+                  C/C++复习
                 </h3>
               </a>
             </div>
@@ -150,9 +227,9 @@ int main()
 
           
             <div class="next-post">
-              <a href="https://geniusmiaozz.github.io/post/ruan-jian-gong-cheng-zhong-guo-cheng-de-gai-nian/">
+              <a href="https://geniusmiaozz.github.io/post/bian-cheng-ti-na-xia-di-yi-jie-duan-day1~day30/">
                 <h3 class="post-title">
-                  什么是软件过程？
+                  编程题，拿下!(第一阶段Day1~Day30)
                   <i class="ri-arrow-right-line"></i>
                 </h3>
               </a>
