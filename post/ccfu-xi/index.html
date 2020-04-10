@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>GeniusMiao&#39;s blog.</title>
 <meta name="description" content="醉梦不知天在水，满船新梦压清河。" />
-<link rel="shortcut icon" href="https://geniusmiaozz.github.io/favicon.ico?v=1586531671245">
+<link rel="shortcut icon" href="https://geniusmiaozz.github.io/favicon.ico?v=1586533237735">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
@@ -23,7 +23,7 @@
       <div class="flex lg:block p-4 lg:px-0 items-center fixed lg:static lg:block top-0 right-0 left-0 bg-white z-50">
         <i class="ri-menu-2-line lg:mt-4 text-2xl cursor-pointer animated fadeIn" onclick="openMenu()"></i>
         <a href="https://geniusmiaozz.github.io">
-          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://geniusmiaozz.github.io/images/avatar.png?v=1586531671245" alt="">
+          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://geniusmiaozz.github.io/images/avatar.png?v=1586533237735" alt="">
         </a>
         <h1 class="animated fadeInLeft lg:text-4xl font-extrabold lg:mt-8 mt-0 text-xl" style="animation-delay: 0.2s">GeniusMiao&#39;s blog.</h1>
       </div>
@@ -34,7 +34,7 @@
           </p>
           <div class="toc-container hidden lg:block">
             <ul class="markdownIt-TOC">
-<li>
+<li><a href="#cc%E5%A4%8D%E4%B9%A0">C/C++复习</a>
 <ul>
 <li><a href="#%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%B1%BB%E5%9E%8B">基础数据/结构/类型</a>
 <ul>
@@ -49,14 +49,23 @@
 </li>
 <li><a href="#%E5%86%85%E5%AD%98%E7%9B%B8%E5%85%B3">内存相关</a>
 <ul>
-<li><a href="#%E6%8C%87%E9%92%88-%E5%BC%95%E7%94%A8">指针 &amp; 引用</a></li>
+<li><a href="#%E6%8C%87%E9%92%88-%E5%BC%95%E7%94%A8">指针 &amp; 引用</a>
+<ul>
+<li><a href="#%E6%8C%87%E9%92%88">指针</a></li>
+<li><a href="#%E5%BC%95%E7%94%A8">引用</a></li>
+<li><a href="#%E6%8C%87%E9%92%88%E4%B8%8E%E5%BC%95%E7%94%A8%E5%92%8C%E5%BC%82%E5%90%8C%E7%82%B9">指针与引用和异同点</a></li>
+</ul>
+</li>
 <li><a href="#%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D">内存分配</a></li>
 <li><a href="#c-%E4%B8%AD%E7%9A%84%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D"><code>C</code> 中的动态内存分配</a></li>
 <li><a href="#c-%E4%B8%AD%E7%9A%84%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D-2"><code>C++</code> 中的动态内存分配</a></li>
+<li><a href="#mallocfree%E4%B8%8Enewdelete-%E7%9A%84%E5%8C%BA%E5%88%AB"><code>malloc/free与new/delete</code> 的区别</a></li>
 </ul>
 </li>
 <li><a href="#%E5%87%BD%E6%95%B0%E7%9B%B8%E5%85%B3">函数相关</a>
 <ul>
+<li><a href="#%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E7%9A%84%E5%8E%8B%E6%A0%88%E9%A1%BA%E5%BA%8F">函数参数的压栈顺序</a></li>
+<li><a href="#%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E5%80%BC">处理函数返回值</a></li>
 <li><a href="#%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0%E7%9A%84%E5%87%BD%E6%95%B0">可变参数的函数</a></li>
 <li><a href="#%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0">回调函数</a></li>
 </ul>
@@ -68,8 +77,9 @@
 <li><a href="#%E6%8A%BD%E8%B1%A1">抽象</a></li>
 <li><a href="#%E7%BB%A7%E6%89%BF">继承</a></li>
 <li><a href="#%E5%A4%9A%E6%80%81">多态</a></li>
-<li><a href="#%E6%8E%A5%E5%8F%A3%E6%8A%BD%E8%B1%A1%E7%B1%BB">（接口）抽象类</a></li>
+<li><a href="#%E6%8A%BD%E8%B1%A1%E7%B1%BB">抽象类</a></li>
 <li><a href="#%E5%AF%B9%E8%B1%A1%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80">对象内存布局</a></li>
+<li><a href="#%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0">析构函数</a></li>
 <li><a href="#%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0">拷贝构造函数</a></li>
 <li><a href="#%E5%8F%8B%E5%85%83%E5%87%BD%E6%95%B0">友元函数</a></li>
 <li><a href="#%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0">内联函数</a></li>
@@ -89,6 +99,22 @@
 <ul>
 <li><a href="#null-%E5%92%8C-nullptr"><code>NULL</code> 和 <code>nullptr</code></a></li>
 <li><a href="#delete-%E5%92%8C-delete"><code>delete[]</code> 和 <code>delete</code></a></li>
+<li><a href="#xx_ptr%E5%9B%9B%E7%A7%8D%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88"><code>[xx]_ptr</code>四种智能指针</a>
+<ul>
+<li><a href="#auto_ptr">auto_ptr</a></li>
+<li><a href="#unique_ptr">unique_ptr</a></li>
+<li><a href="#shared_ptr">shared_ptr</a></li>
+<li><a href="#weak_ptr">weak_ptr</a></li>
+</ul>
+</li>
+<li><a href="#xx_cast%E5%9B%9B%E7%A7%8D%E8%BD%AC%E6%8D%A2"><code>[xx]_cast</code>四种转换</a>
+<ul>
+<li><a href="#static_cast"><code>static_cast</code></a></li>
+<li><a href="#const_cast"><code>const_cast</code></a></li>
+<li><a href="#dynamic_cast"><code>dynamic_cast</code></a></li>
+<li><a href="#reinterpret_cast"><code>reinterpret_cast</code></a></li>
+</ul>
+</li>
 <li><a href="#auto"><code>auto</code></a></li>
 <li><a href="#regiter"><code>regiter</code></a></li>
 <li><a href="#static"><code>static</code></a></li>
@@ -106,6 +132,10 @@
 <li><a href="#stl-%E7%9B%B8%E5%85%B3"><code>STL</code> 相关</a>
 <ul>
 <li><a href="#vector"><code>vector</code></a></li>
+<li><a href="#list"><code>list</code></a></li>
+<li><a href="#set"><code>set</code></a></li>
+<li><a href="#map"><code>map</code></a></li>
+<li><a href="#unordered_map"><code>unordered_map</code></a></li>
 </ul>
 </li>
 </ul>
@@ -158,11 +188,12 @@
       <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
         <h1 class="text-3xl font-bold lg:mt-16">C/C++复习总结</h1>
         <div class="text-sm text-gray-700 lg:my-8">
-          2020-04-07 / 20 min read
+          2020-04-07 / 27 min read
         </div>
         
         <div class="post-content yue">
-          <h2 id="基础数据结构类型">基础数据/结构/类型</h2>
+          <h1 id="cc复习">C/C++复习</h1>
+<h2 id="基础数据结构类型">基础数据/结构/类型</h2>
 <h3 id="常量">常量</h3>
 <ul>
 <li>
@@ -273,9 +304,13 @@
 </ul>
 <h2 id="内存相关">内存相关</h2>
 <h3 id="指针-引用">指针 &amp; 引用</h3>
+<h4 id="指针">指针</h4>
 <ul>
 <li>
-<p><code>32</code> 位机器一个指针占 <code>4</code>字节空间，<code>64</code> 位机器一个指针占 <code>8</code> 字节空间。</p>
+<p><code>32</code> 位机器一个指针占 <code>4</code> 字节空间，<code>64</code> 位机器一个指针占 <code>8</code> 字节空间。</p>
+</li>
+<li>
+<p>野指针是指向一个已删除的对象或者未申请访问受限内存区域的指针。</p>
 </li>
 <li>
 <p>数组做为函数的参数传递时，自动退化为同类型指针，指向数组的第一个元素。</p>
@@ -287,13 +322,54 @@
 <p>指针数组：一个元素均为某一类型指针的的数组，如 <code>int *p[10]</code>，该数组包含是个 <code>int</code> 类型指针的元素；数组指针：指向数组某个元素地址的指针，如 <code>int (*p) [10]</code>，<code>p</code>指向数组的首地址（首个元素的地址）。</p>
 </li>
 <li>
-<p>一旦引用被初始化为一个对象，就不能被指向到另一个对象。指针可以在任何时候指向到另一个对象.</p>
+<p>智能指针：主要用于管理在堆上分配的内存，它将普通的指针封装为一个栈对象。当栈对象的生存周期结束后，会在析构函数中释放掉申请的内存，从而防止内存泄漏。</p>
+</li>
+</ul>
+<h4 id="引用">引用</h4>
+<ul>
+<li>
+<p>一旦引用被初始化为一个对象，就不能被指向到另一个对象。指针可以在任何时候指向到另一个对象。</p>
 </li>
 <li>
 <p>引用必须在创建时被初始化。指针可以在任何时间被初始化。</p>
 </li>
 <li>
 <p>引用一定不为空，因此相对于指针，它不用检查它所指对象是否为空，这增加了效率。</p>
+</li>
+</ul>
+<h4 id="指针与引用和异同点">指针与引用和异同点</h4>
+<ul>
+<li>
+<p>区别总结：</p>
+<ol>
+<li>
+<p>指针有自己的一块空间，而引用只是一个别名；</p>
+</li>
+<li>
+<p>使用 <code>sizeof</code> 求得的是指针的大小，而引用则是被引用对象的大小；</p>
+</li>
+<li>
+<p>指针可以被初始化为 <code>NULL</code>，而引用必须被初始化且必须是一个已有对象的引用；</p>
+</li>
+<li>
+<p>作为参数传递时，指针需要被解引用才可以对对象进行操作，而直接对引用的修改都会改变引用所指向的对象；</p>
+</li>
+<li>
+<p>可以有 <code>const</code>指针，但是没有 <code>const</code> 引用；</p>
+</li>
+<li>
+<p>指针在使用中可以指向其它对象，但是引用只能是一个对象的引用，不能被改变；</p>
+</li>
+<li>
+<p>指针可以有多级指针（<code>**p</code>），而引用至于一级；</p>
+</li>
+<li>
+<p>指针和引用使用 <code>++</code> 运算符的意义不一样；</p>
+</li>
+<li>
+<p>如果返回动态内存分配的对象或者内存，必须使用指针，引用可能引起内存泄露。</p>
+</li>
+</ol>
 </li>
 <li>
 <p>指针与引用可以参考如下代码：</p>
@@ -319,16 +395,36 @@ p = &amp;b//正确：p可以多次赋值，p存储b的地址
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">代码区</td>
-<td style="text-align:center">函数代码块的二进制代码</td>
+<td style="text-align:center">保留区</td>
+<td style="text-align:center">系统保留区域</td>
 </tr>
 <tr>
-<td style="text-align:center">数据区</td>
-<td style="text-align:center">常量、全局变量、静态变量</td>
+<td style="text-align:center">程序代码区</td>
+<td style="text-align:center">函数代码块的二进制代码，只读</td>
+</tr>
+<tr>
+<td style="text-align:center">常量区</td>
+<td style="text-align:center">一般常量、字符串常量，只读</td>
+</tr>
+<tr>
+<td style="text-align:center">全局数据区</td>
+<td style="text-align:center">全局变量、静态变量，可读写</td>
 </tr>
 <tr>
 <td style="text-align:center">堆区</td>
 <td style="text-align:center">动态分配的数据</td>
+</tr>
+<tr>
+<td style="text-align:center">未被分配的内存</td>
+<td style="text-align:center">堆的增长区</td>
+</tr>
+<tr>
+<td style="text-align:center">映射区</td>
+<td style="text-align:center">存储动态链接库</td>
+</tr>
+<tr>
+<td style="text-align:center">未被分配的内存</td>
+<td style="text-align:center">栈的增长区</td>
 </tr>
 <tr>
 <td style="text-align:center">栈区</td>
@@ -367,9 +463,45 @@ p = &amp;b//正确：p可以多次赋值，p存储b的地址
 </ul>
 <h3 id="c-中的动态内存分配-2"><code>C++</code> 中的动态内存分配</h3>
 <ul>
-<li>使用 <code>new &lt;data_type&gt;</code> 来在分配内存的同时创建一个对象，使用 <code>delete &lt;data_name&gt;</code> 来删除分配的内存。</li>
+<li>
+<p>使用 <code>new &lt;data_type&gt;</code> 来在分配内存的同时创建一个对象，使用 <code>delete &lt;data_name&gt;</code> 来删除分配的内存。</p>
+</li>
+<li>
+<p>对于内置类型而言，<code>new</code> 仅仅是分配内存，除非后面显示加 <code>()</code>，相当于调用它的构造函数，对于自定义类型而言，只要一调用 <code>new</code>，那么编译器不仅仅给它分配内存，还调用它的默认构造函数初始化，即使后面没有加 <code>()</code>。</p>
+</li>
+</ul>
+<h3 id="mallocfree与newdelete-的区别"><code>malloc/free与new/delete</code> 的区别</h3>
+<ul>
+<li>
+<p>相同点：都可用于申请动态内存和释放内存。</p>
+</li>
+<li>
+<p>不同点：</p>
+<ol>
+<li>
+<p><code>malloc</code> 与 <code>free</code> 是 <code>C</code> 语言的标准库函数，<code>new/delete</code> 是 <code>C++</code> 的操作符。</p>
+</li>
+<li>
+<p><code>malloc</code> 需要给定申请内存的大小，返回的指针需要强制转换；<code>new</code> 不仅无需指定内存大小并申请一块内存，还会调用类的构造函数生成对象，返回的指针不需要强制转换。</p>
+</li>
+<li>
+<p><code>free</code> 只是释放一块内存区域，<code>del</code> 在释放内存区域的同时还对调用类的析构函数。</p>
+</li>
+<li>
+<p><code>malloc</code> 失败返回空，<code>new</code> 失败抛异常。</p>
+</li>
+</ol>
+</li>
 </ul>
 <h2 id="函数相关">函数相关</h2>
+<h3 id="函数参数的压栈顺序">函数参数的压栈顺序</h3>
+<ul>
+<li>从右到左。</li>
+</ul>
+<h3 id="处理函数返回值">处理函数返回值</h3>
+<ul>
+<li>在函数返回时会生成一个临时变量来保存返回值结果，把函数返回值的引用作为函数参数传入函数内。</li>
+</ul>
 <h3 id="可变参数的函数">可变参数的函数</h3>
 <ul>
 <li>
@@ -481,14 +613,32 @@ p = &amp;b//正确：p可以多次赋值，p存储b的地址
 </ul>
 <h3 id="多态">多态</h3>
 <ul>
-<li>多态意味着调用成员函数时，会根据调用函数的对象的类型来执行不同的函数。</li>
-<li>多态通过在基类中对函数使用关键字 <code>virtual</code> 声明为虚函数来实现，这样会使编译器在处理派生类中重新定义的该函数时不会静态链接到基类的该函数。这种操作成为动态链接，或后期绑定。</li>
-<li>如果基类中声明虚函数时不进行定义而是进行 <code>virtual &lt;type&gt; &lt;fun()&gt; = 0</code> 的操作，这样就会声明为纯虚函数。通常在处理基类中不能对虚函数给出有意义的实现情况时使用。</li>
+<li>
+<p>多态意味着调用成员函数时，会根据调用函数的对象的类型来执行不同的函数。</p>
+</li>
+<li>
+<p>多态的实现主要分为静态多态和动态多态。</p>
+<ol>
+<li>
+<p>静态多态主要是重载，在编译的时候就已经确定。两个函数名相同，但是参数列表不同（个数，类型），返回值类型没有要求，在同一作用域中.</p>
+</li>
+<li>
+<p>动态多态是用虚函数机制实现的，在运行期间动态绑定，通过在基类中对函数使用关键字 <code>virtual</code> 声明为虚函数来实现。子类继承了父类，父类中的函数是虚函数，在子类中重写了这个虚函数，这种情况会使编译器在处理派生类中重新定义的该函数时不会静态链接到基类的该函数。这种操作称为动态链接，或后期绑定。</p>
+</li>
+</ol>
+</li>
+<li>
+<p>如果基类中声明虚函数时不进行定义而是进行 <code>virtual &lt;type&gt; &lt;fun()&gt; = 0</code> 的操作，这样就会声明为纯虚函数。通常在处理基类中不能对虚函数给出有意义的实现情况时使用。</p>
+</li>
 </ul>
-<h3 id="接口抽象类">（接口）抽象类</h3>
+<h3 id="抽象类">抽象类</h3>
 <ul>
-<li>如果类中至少有一个函数被声明为纯虚函数，则这个类就是抽象类。</li>
-<li>设计抽象类的目的，是为了给其他类提供一个可以继承的适当的基类。抽象类不能被用于实例化对象，它只能作为接口使用。</li>
+<li>
+<p>如果类中至少有一个函数被声明为纯虚函数，则这个类就是抽象类。</p>
+</li>
+<li>
+<p>设计抽象类的目的，是为了给其他类提供一个可以继承的适当的基类。抽象类不能被用于实例化对象，它只能作为接口使用。</p>
+</li>
 </ul>
 <h3 id="对象内存布局">对象内存布局</h3>
 <ul>
@@ -503,6 +653,26 @@ p = &amp;b//正确：p可以多次赋值，p存储b的地址
 </li>
 <li>
 <p>类中的 <code>static</code> 成员变量不占用内存该类自身实例化对象的内存。</p>
+</li>
+</ul>
+<h3 id="析构函数">析构函数</h3>
+<ul>
+<li>
+<p>析构函数与构造函数对应，当对象结束其生命周期，如对象所在的函数已调用完毕时，系统会自动执行析构函数。</p>
+</li>
+<li>
+<p>类析构顺序：</p>
+<ol>
+<li>
+<p>派生类本身的析构函数。</p>
+</li>
+<li>
+<p>对象成员析构函数。</p>
+</li>
+<li>
+<p>基类析构函数。</p>
+</li>
+</ol>
 </li>
 </ul>
 <h3 id="拷贝构造函数">拷贝构造函数</h3>
@@ -523,6 +693,9 @@ p = &amp;b//正确：p可以多次赋值，p存储b的地址
 </li>
 <li>
 <p>如果类带有指针变量，并有动态内存分配，则它必须有一个拷贝构造函数。</p>
+</li>
+<li>
+<p>拷贝构造函数的形参必须设为常量的引用，否则会引起拷贝构造函数的无限调用。</p>
 </li>
 </ul>
 <h3 id="友元函数">友元函数</h3>
@@ -574,13 +747,13 @@ p = &amp;b//正确：p可以多次赋值，p存储b的地址
 <p>虚函数讲解：<a href="https://zhuanlan.zhihu.com/p/28530472">知乎文章</a></p>
 </li>
 <li>
-<p>通过对象内存中的 <code>vptr</code> 找到虚函数表 <code>vtbl</code>，表中存放着虚函数的指针，通过该指针找到对应虚函数的实现区域并进行调用。</p>
+<p>通过对象内存最开始位置的虚函数表指针 <code>vptr</code> 找到虚函数表 <code>vtbl</code>，表中存放着虚函数的指针，通过该指针找到对应虚函数的实现区域并进行调用。</p>
 </li>
 <li>
 <p>构造函数不可以是虚函数，析构函数可以是虚函数且推荐设置为虚函数。</p>
 </li>
 <li>
-<p>虚函数可以声明为private, 并且可以被子类覆盖（因为虚函数表的传递），但子类不能调用父类的private虚函数。虚函数的重载性和它声明的权限无关。</p>
+<p>虚函数可以声明为 <code>private</code>, 并且可以被子类覆盖（因为虚函数表的传递），但子类不能调用父类的 <code>private</code> 虚函数。虚函数的重载性和它声明的权限无关。</p>
 </li>
 <li>
 <p>声明了纯虚函数的类是一个抽象类，无法创建该类的实例，只能创建该类的派生类的实例。</p>
@@ -708,6 +881,92 @@ p = &amp;b//正确：p可以多次赋值，p存储b的地址
 <p>概括的为：对于基本数据类型（如 <code>int</code>）二者无差别，对于自定义类型（通常指类）如果是 <code>new</code> 申请的内存，释放时用 <code>delete</code>；如果是使用 <code>new []</code> 申请的内存，释放时要用 <code>delete []</code>。</p>
 </li>
 </ul>
+<h3 id="xx_ptr四种智能指针"><code>[xx]_ptr</code>四种智能指针</h3>
+<h4 id="auto_ptr">auto_ptr</h4>
+<ul>
+<li>
+<p>采用所有权模式，存在潜在的内存崩溃问题，于 <code>C++11</code> 中被抛弃。例如如下代码：</p>
+<pre><code class="language-C++">auto_ptr&lt;string&gt; p1 (new string (&quot;Hello&quot;));
+auto_ptr&lt;string&gt; p2;
+p2 = p1; //auto_ptr不会报错
+</code></pre>
+<p>当程序运行时访问 <code>p1</code> 将会报错，因为 <code>p2</code> 剥夺了 <code>p1</code> 的所有权。</p>
+</li>
+</ul>
+<h4 id="unique_ptr">unique_ptr</h4>
+<ul>
+<li>
+<p>实现独占式拥有或严格拥有概念，保证同一时间内只有一个智能指针可以指向该对象，同时还有更智能的功能，比 <code>auto_ptr</code> 更安全，替代了 <code>auto_ptr</code>。针对于代码：</p>
+<pre><code class="language-C++">uqinue_ptr&lt;string&gt; p1(new string (&quot;Hello&quot;));
+unique_ptr&lt;string&gt; p2;
+p2 = p1; //报错！避免p3不再指向有效数据的问题
+p2 = move(ps1); // 正确！
+p3 = unique_ptr&lt;string&gt;(new string (&quot;World&quot;)); // 正确！右值为临时值。
+</code></pre>
+</li>
+</ul>
+<h4 id="shared_ptr">shared_ptr</h4>
+<ul>
+<li>实现共享式拥有概念。多个智能指针可以指向相同对象，该对象和其相关资源会在“最后一个引用被销毁”时候释放。它使用计数机制来表明资源被几个指针共享，当计数等于 <code>0</code> 时，资源会被释放。</li>
+</ul>
+<h4 id="weak_ptr">weak_ptr</h4>
+<ul>
+<li><code>weak_ptr</code> 是一种不控制对象生命周期的智能指针, 它指向一个 <code>shared_ptr</code> 管理的对象. 进行该对象的内存管理的是那个强引用的 <code>shared_ptr</code>。 <code>weak_ptr</code> 只是提供了对管理对象的一个访问手段。<code>weak_ptr</code> 设计的目的是为配合 <code>shared_ptr</code> 而引入的一种智能指针来协助 <code>shared_ptr</code> 工作, 它只可以从一个 <code>shared_ptr</code> 或另一个 <code>weak_ptr</code> 对象构造, 它的构造和析构不会引起引用记数的增加或减少。</li>
+</ul>
+<h3 id="xx_cast四种转换"><code>[xx]_cast</code>四种转换</h3>
+<ul>
+<li>讲解：<a href="https://www.jianshu.com/p/5163a2678171">简书文章</a></li>
+</ul>
+<h4 id="static_cast"><code>static_cast</code></h4>
+<ul>
+<li>
+<p>主要用于非多态类型之间的转换，不提供运行时的检查来确保转换的安全性。主要在以下几种场合中使用：</p>
+<ol>
+<li>
+<p>用于类层次结构中，基类和子类之间指针和引用的转换；</p>
+<p>当进行上行转换，也就是把子类的指针或引用转换成父类表示，这种转换是安全的；</p>
+<p>当进行下行转换，也就是把父类的指针或引用转换成子类表示，这种转换是不安全的，也需要程序员来保证；</p>
+</li>
+<li>
+<p>用于基本数据类型之间的转换，如把 <code>int</code> 转换成 <code>char</code>，把 <code>int</code> 转换成<code>enum</code> 等等，这种转换的安全性需要程序员来保证；</p>
+</li>
+<li>
+<p>把 <code>void</code> 指针转换成目标类型的指针，是及其不安全的；</p>
+</li>
+</ol>
+</li>
+<li>
+<p><code>static_cast</code> 不能转换掉 <code>expression</code> 的 <code>const</code>、<code>volatile</code> 和<code>__unaligned</code> 属性。</p>
+</li>
+</ul>
+<h4 id="const_cast"><code>const_cast</code></h4>
+<ul>
+<li>用于将 <code>const</code> 属性转为非 <code>const</code> 属性。</li>
+</ul>
+<h4 id="dynamic_cast"><code>dynamic_cast</code></h4>
+<ul>
+<li>
+<p><code>dynamic_cast</code> 主要用于类层次间的上行转换和下行转换，还可以用于类之间的交叉转换，只能用于含有虚函数的类间的转换，且只能转换为类的指针、类的引用或是 <code>void*</code>。</p>
+</li>
+<li>
+<p>在类层次间进行上行转换时，与 <code>static_cast</code> 效果一样；在进行类层次间的下行转换时，会检查基类的指针是否真正的指向一个子类类型的对象，如果是则能进行正确的转换，否则会返回 <code>NULL</code>，如果是引用则会在运行时抛出异常。一段应用代码：</p>
+<pre><code class="language-C++">//定义
+class Widget{};
+class SpecialWidget:public Widget{};
+void update(SpecialWidget  *psw);
+
+Widget * pw;
+
+//如果pw所指的是SpecialWidget ，那么就传递过去；如果pw指的是Widget ，
+//那么传递过去的值是null
+update(dynamic_cast&lt;SpecialWidget  *&gt; (pw));
+</code></pre>
+</li>
+</ul>
+<h4 id="reinterpret_cast"><code>reinterpret_cast</code></h4>
+<ul>
+<li>几乎什么都可以转，故可能会出问题，尽量少用。</li>
+</ul>
 <h3 id="auto"><code>auto</code></h3>
 <ul>
 <li>
@@ -732,13 +991,19 @@ p = &amp;b//正确：p可以多次赋值，p存储b的地址
 <h3 id="static"><code>static</code></h3>
 <ul>
 <li>
-<p><code>static</code> 存储类指示编译器在程序的生命周期内保持局部变量的存在，而不需要在每次它进入和离开作用域时进行创建和销毁。因此，使用 <code>static</code> 修饰局部变量可以在函数调用之间保持局部变量的值。</p>
+<p><code>static</code> 存储类指示编译器在程序的生命周期内保持局部变量的存在，而不需要在每次它进入和离开作用域时进行创建和销毁。即当局部静态变量离开作用域后，并没有销毁，而是仍然驻留在内存当中，只不过我们不能再对它进行访问，直到该函数再次被调用，并且值不变。因此，使用 <code>static</code> 修饰局部变量可以在函数调用之间保持局部变量的值。</p>
 </li>
 <li>
-<p><code>static</code> 修饰符也可以应用于全局变量。当 <code>static</code> 修饰全局变量时，会使变量的作用域限制在声明它的文件内。全局声明的一个 <code>static</code> 变量或方法可以被任何函数或方法调用，只要这些方法出现在跟 <code>static</code> 变量或方法同一个文件中。</p>
+<p><code>static</code> 修饰符可以应用于全局变量。当 <code>static</code> 修饰全局变量时，会使变量的作用域限制在声明它的文件内。全局声明的一个 <code>static</code> 变量或方法可以被任何函数或方法调用，只要这些方法出现在跟 <code>static</code> 变量或方法同一个文件中。</p>
+</li>
+<li>
+<p>在函数返回类型前加static，函数就定义为静态函数，这个函数只可在本 <code>cpp</code> 内使用，不会同其他 <code>cpp</code> 中的同名函数引起冲突。函数的定义和声明在默认情况下都是 <code>extern</code> 的，但静态函数只是在声明他的文件当中可见，不能被其他文件所用</p>
 </li>
 <li>
 <p>在 <code>C++</code> 中，当 <code>static</code> 用在类数据成员上时，会导致仅有一个该成员的副本被类的所有对象共享。</p>
+</li>
+<li>
+<p>静态成员函数的实现中不能直接引用类中说明的非静态成员，可以引用类中说明的静态成员。</p>
 </li>
 </ul>
 <h3 id="extern"><code>extern</code></h3>
@@ -803,7 +1068,36 @@ p = &amp;b//正确：p可以多次赋值，p存储b的地址
 <h2 id="stl-相关"><code>STL</code> 相关</h2>
 <h3 id="vector"><code>vector</code></h3>
 <ul>
-<li><code>vector</code>每次扩充容量时，新的容量都是前一次的两倍。把之前的数据复制到新的数组中，再释放之前的内存。（在时间性能有负面影响）。</li>
+<li>
+<p>底层基于数组实现。</p>
+</li>
+<li>
+<p>拥有一段连续的内存空间，支持随机访问且随机访问性能好，插入删除性能差，一次性分配好内存，不够时才进行扩容。</p>
+</li>
+<li>
+<p><code>vector</code>每次扩充容量时，新的容量都是前一次的两倍（这样可以保证常数时间的时间复杂度）。把之前的数据复制到新的数组中，再释放之前的内存（在时间性能有负面影响）。</p>
+</li>
+</ul>
+<h3 id="list"><code>list</code></h3>
+<ul>
+<li>
+<p>底层基于双向链表实现。</p>
+</li>
+<li>
+<p>占用内存不连续，不支持随机访问，插入删除性能好，每次插入新节点都会进行内存申请。</p>
+</li>
+</ul>
+<h3 id="set"><code>set</code></h3>
+<ul>
+<li>底层基于红黑树实现，适用于有序不重复集合。</li>
+</ul>
+<h3 id="map"><code>map</code></h3>
+<ul>
+<li>底层基于红黑树实现，适用于不重复映射的有序键值对。</li>
+</ul>
+<h3 id="unordered_map"><code>unordered_map</code></h3>
+<ul>
+<li>底层基于哈希表实现，无序。</li>
 </ul>
 
         </div>
