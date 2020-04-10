@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://geniusmiaozz.github.io</id>
     <title>GeniusMiao&apos;s blog.</title>
-    <updated>2020-04-09T14:30:41.488Z</updated>
+    <updated>2020-04-10T14:24:08.474Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://geniusmiaozz.github.io"/>
     <link rel="self" href="https://geniusmiaozz.github.io/atom.xml"/>
@@ -732,8 +732,11 @@ SwitchB(config)#interface gigabitEthernet0/24//配置24号端口
 SwitchB(config-if)#switchport mode trunk//24号设为共享端口
 SwitchB(config-if)#end
 SwitchB#show vlan//检验vlan配置
-SwitchB的vlan配置无误后，进入分校路由器Router2的配置。
-Router2(config)#interface gigabitEthernet0/1//配置1号端口
+</code></pre>
+</li>
+<li>
+<p>SwitchB的vlan配置无误后，进入分校路由器Router2的配置。</p>
+<pre><code>Router2(config)#interface gigabitEthernet0/1//配置1号端口
 Router2(config-if)#ip address 210.100.10.66 255.255.255.224//IP
 Router2(config-if)#no shutdown//开启端口
 Router2(config-if)#exit
