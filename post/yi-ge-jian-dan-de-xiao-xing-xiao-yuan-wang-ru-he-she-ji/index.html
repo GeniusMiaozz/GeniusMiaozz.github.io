@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>GeniusMiao&#39;s blog.</title>
 <meta name="description" content="醉梦不知天在水，满船新梦压清河。" />
-<link rel="shortcut icon" href="https://geniusmiaozz.github.io/favicon.ico?v=1586529764697">
+<link rel="shortcut icon" href="https://geniusmiaozz.github.io/favicon.ico?v=1586530267308">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
@@ -23,7 +23,7 @@
       <div class="flex lg:block p-4 lg:px-0 items-center fixed lg:static lg:block top-0 right-0 left-0 bg-white z-50">
         <i class="ri-menu-2-line lg:mt-4 text-2xl cursor-pointer animated fadeIn" onclick="openMenu()"></i>
         <a href="https://geniusmiaozz.github.io">
-          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://geniusmiaozz.github.io/images/avatar.png?v=1586529764697" alt="">
+          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://geniusmiaozz.github.io/images/avatar.png?v=1586530267308" alt="">
         </a>
         <h1 class="animated fadeInLeft lg:text-4xl font-extrabold lg:mt-8 mt-0 text-xl" style="animation-delay: 0.2s">GeniusMiao&#39;s blog.</h1>
       </div>
@@ -116,7 +116,7 @@
 <pre><code>  SwitchA(config)#vlan 10//创建主校的vlan
   SwitchA(config-vlan)#exit
   SwitchA(config)#interface gigabitEthernet0/1//配置1号端口
-  SwitchA(config-if)#switchport access vlan 10//1号端口加入vlan20
+  SwitchA(config-if)#switchport access vlan 10//1号端口加入vlan10
   SwitchA(config-if)#exit
   SwitchA(config)#interface gigabitEthernet0/24//配置24号端口
   SwitchA(config-if)#switchport mode trunk//24号端口设为trunk模式以便备用
@@ -126,7 +126,7 @@
 </li>
 <li>
 <p>SwitchA的vlan配置无误后，进入总校路由器Router1的配置。</p>
-<pre><code>  Router1(config)#interface gigabitEthernet0/0.30//配置0号端口
+<pre><code>  Router1(config)#interface gigabitEthernet0/0.10//配置0号端口
   Router1(config-subif)#encapsulation dot1q 10//封装802.1Q，指定给Vlan 10
   Router1(config-subif)#ip address 210.100.10.33 255.255.255.224//分配给主校网络
   Router1(config-subif)#exit
@@ -170,11 +170,11 @@
   Router2(config-if)#no ip address//无需直接分配IP地址
   Router2(config-if)#no shutdown//需要开启端口
   Router2(config-if)#exit
-  Router2(config)#interface gigabitEthernet0/1.10//配置子网1
+  Router2(config)#interface gigabitEthernet0/0.10//配置子网1
   Router2(config-subif)#encapsulation dot1q 10//封装802.1Q，指定给Vlan 10
   Router2(config-subif)#ip address 210.100.10.97 255.255.255.224//IP
   Router2(config-subif)#exit
-  Router2(config)#interface gigabitEthernet0/1.20//配置子网2
+  Router2(config)#interface gigabitEthernet0/0.20//配置子网2
   Router2(config-subif)#encapsulation dot1q 20
   Router2(config-subif)#ip address210.100.10.129 255.255.255. 224//IP
   Router2(config-subif)#exit
