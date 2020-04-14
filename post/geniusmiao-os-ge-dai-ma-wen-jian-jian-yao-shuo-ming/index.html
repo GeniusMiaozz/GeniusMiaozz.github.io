@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>GeniusMiao&#39;s blog.</title>
 <meta name="description" content="醉梦不知天在水，满船新梦压清河。" />
-<link rel="shortcut icon" href="https://geniusmiaozz.github.io/favicon.ico?v=1586872638414">
+<link rel="shortcut icon" href="https://geniusmiaozz.github.io/favicon.ico?v=1586875714409">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
@@ -23,7 +23,7 @@
       <div class="flex lg:block p-4 lg:px-0 items-center fixed lg:static lg:block top-0 right-0 left-0 bg-white z-50">
         <i class="ri-menu-2-line lg:mt-4 text-2xl cursor-pointer animated fadeIn" onclick="openMenu()"></i>
         <a href="https://geniusmiaozz.github.io">
-          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://geniusmiaozz.github.io/images/avatar.png?v=1586872638414" alt="">
+          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://geniusmiaozz.github.io/images/avatar.png?v=1586875714409" alt="">
         </a>
         <h1 class="animated fadeInLeft lg:text-4xl font-extrabold lg:mt-8 mt-0 text-xl" style="animation-delay: 0.2s">GeniusMiao&#39;s blog.</h1>
       </div>
@@ -59,6 +59,7 @@
 </li>
 </ul>
 </li>
+<li><a href="#%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B51-7%E5%A4%A9%E6%88%90%E5%93%81version-harib04g%E6%80%BB%E7%BB%93">第一阶段(1-7天)成品(Version-harib04g)总结</a></li>
 </ul>
 </li>
 </ul>
@@ -109,7 +110,7 @@
       <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
         <h1 class="text-3xl font-bold lg:mt-16">30天自制操作系统-OSCodeFile学习笔记(1-7天内容)</h1>
         <div class="text-sm text-gray-700 lg:my-8">
-          2020-02-25 / 11 min read
+          2020-02-25 / 15 min read
         </div>
         
           <img class="post-feature-image rounded-lg mx-auto my-4" src="https://geniusmiaozz.github.io/post-images/geniusmiao-os-ge-dai-ma-wen-jian-jian-yao-shuo-ming.png" alt="">
@@ -118,32 +119,73 @@
           <h2 id="关键概念">关键概念</h2>
 <ul>
 <li>
-<p>保存在磁盘上的操作系统主要分为启动区和程序区，每个区有自己的代码文件及引用的辅助文件（如字体数据、图片等）。主要系统文件通过Makefile文件链接在一起，构成操作系统。</p>
+<p>一个操作系统其实就是许多二进制数组成的映像文件，一个二进制数可以理解为一个电信号。</p>
 </li>
 <li>
-<p>一个操作系统其实就是许多二进制数组成的映像文件，一个二进制数可以理解为一个电信号。</p>
+<p>软盘的第一个扇区成为启动区，一个扇区有512字节。计算机从最初的一个扇区开始读盘，然后去检查这个扇区最后2个字节的内容，如果不是“55AA”,就会认为这张盘上没有所需的启动程序，报一个不能启动的错误。几乎所有的操作系统都把加载操作系统本身的程序放在启动区里。</p>
+</li>
+<li>
+<p>GDT：全局段号记录表，用来保存每个段的表示信息，这些表示信息包括段的大小、段的起始地址、段的管理属性。系统可以通过分段的方式避免多个程序的内存使用范围重叠。</p>
+</li>
+<li>
+<p>IDT：中断记录表，记录了0~255的中断号码与调用函数的对应关系，根据中断号码决定调用哪一个函数进行处理。其设定方法与GDT很相似。</p>
+</li>
+<li>
+<p>GDTR/IDTR：48位寄存器，低16位保存段上限，高32位保存起始地址。</p>
+</li>
+<li>
+<p>在段的属性里设有一个Gbit标志位，当标志位为1的时候代表段上限的单位是1页而不是1字节。</p>
 </li>
 <li>
 <p>在整个操作系统中，全局描述符表GDT只有一张（一个CPU对应一个GDT）。GDT可以被放在内存的任何位置，但CPU必须知道GDT的入口，也就是基地址放在哪里，Intel的设计者门提供了一个寄存器GDTR用来存放GDT的入口地址，程序员将GDT设定在内存中某个位置之后，可以通过LGDT指令将GDT的入口地址装入此积存器，从此以后，CPU就根据此寄存器中的内容作为GDT的入口来访问GDT了。GDTR中存放的是GDT在内存中的基地址和其表长界限。</p>
 </li>
 <li>
-<p>如何令操作系统对鼠标与键盘这些外设的活动做出响应？首先要对GDT、IDT初始化，即将数据排列在内存的某个地方，然后将这个地方在内存中的位置的起始地址和有效设定个数写入GDTR/IDTR寄存器；然后PIC进行初始化，使CPU能够接受来自不同地方的中断信号；然后完成鼠标和键盘在IDT中的注册，如果鼠标键盘进行操作发生了中断，CPU会自动调用中断函数进行处理。</p>
+<p>PIC：可编程中断控制器，将8个中断信号集合为一个中断信号的装置。监视输入管脚的8个中断信号，只要有一个中断信号进来，九江唯一的输出管脚信号标称ON，并通知给CPU。为了处理更多的外部设备，将中断信号设为了15个，通过主从两个PIC进行控制。</p>
+</li>
+<li>
+<p>如果CPU同意受理中断，会令PIC向CPU发送两个字节的数据。PIC在向发送数据时，送去的数据是“0xcd 0x??”两个字节。CPU会把传来的数据当做程序来执行，“0xcd”相当于“INT”，“0x??”相当于一个中断号，通过这种方法完成利用一根管脚选择执行某一号的中断。</p>
+</li>
+<li>
+<p>鼠标相对于计算机的历史属于新型设备，因此在最初设计师虽然在主板上做了鼠标用的电路，但只要不执行激活鼠标的指令，就不产生鼠标中断信号，即即使鼠标向CPU发送了数据CPU也不会接受。所以要先让鼠标控制电路有效，然后再让鼠标本身有效，才能让鼠标正常工作。</p>
+</li>
+<li>
+<p>如何令操作系统对鼠标与键盘这些外设的活动做出响应？</p>
+<ol>
+<li>
+<p>鼠标对应IRQ12的中断，键盘对应IRQ1的中断。</p>
+</li>
+<li>
+<p>首先要对GDT、IDT初始化，这些是必备基础条件。</p>
+</li>
+<li>
+<p>然后对PIC进行初始化，使CPU能够接受来自不同地方的中断信号。</p>
+</li>
+<li>
+<p>随后完成鼠标和键盘在IDT中的注册，如果鼠标键盘进行操作发生了中断，CPU会自动调用中断函数进行处理。</p>
+</li>
+<li>
+<p>因为鼠标控制电路包含在键盘控制电路里，初始化键盘控制电路的同时也完成了初始化鼠标控制电路。</p>
+</li>
+<li>
+<p>如果要输出键盘、鼠标在发生中断时产生的数据，可以利用一个FIFO缓冲区来记录这些数据，然后在系统运行时不断地查看缓冲区如果有数据则输出，在处理中断时输出数据会大大降低系统运行效率。</p>
+</li>
+</ol>
 </li>
 </ul>
 <h2 id="代码说明">代码说明</h2>
 <h3 id="1makefile文件">1.Makefile文件</h3>
 <ul>
 <li>
-<p>DAY_2：创建基础的Makefile文件，包含最基本的制作英雄、汇编、模拟运行、安装至软盘及相关清楚操作。</p>
+<p>DAY_2：创建基础的Makefile文件，包含最基本的制作镜像、汇编、模拟运行、安装至软盘及相关基础操作。</p>
 </li>
 <li>
-<p>DAY_3：由于拆分了程序区文件，按照高级语言翻译到机器语言的规则（相关见书P60）修改了文件，且对于需要使用的关键路径及关键文件进行了定义，优化代码。</p>
+<p>DAY_3：由于拆分了程序区文件，按照高级语言翻译到机器语言的规则（<em>相关内容见书P60</em>）修改了文件，且对于需要使用的关键路径及关键文件进行了定义，优化代码。</p>
 </li>
 <li>
 <p>DAY_4：由于新增了OSASK字体信息文件，按照规则修改了文件，且对于需要使用的关键路径及关键文件进行了定义，优化代码。</p>
 </li>
 <li>
-<p>DAY_6：分隔了Makefile文件，合并了对于后缀名相同、前缀名不同的文件的操作规则，优化代码;：由于新增了程序区文件，按照规则修改了文件，</p>
+<p>DAY_6：分隔了Makefile文件，合并了对于后缀名相同、前缀名不同的文件的操作规则，优化代码;由于新增了程序区文件，按照规则修改了文件。</p>
 </li>
 </ul>
 <h3 id="2启动区代码">2.启动区代码</h3>
@@ -152,7 +194,7 @@
 <ul>
 <li>
 <p>DAY_3</p>
-<p>创建ipl10.nas，当前的整个启动区代码文件。</p>
+<p>创建ipl10.nas，启动区文件。</p>
 </li>
 </ul>
 </blockquote>
@@ -206,10 +248,8 @@
 <ul>
 <li>
 <p>DAY_3：设定好程序被装载到内存的位置，即ORG 0xc200，完成与启动区的链接。</p>
+<p>设定启动区、颜色数目的信息、颜色位数、分辨率的X和Y、图形缓冲区的开始地址， 即完成设置画面模式并把画面模式的信息保存至内存，并用BIOS取得键盘上各种LED指示灯的状态。</p>
 <p>新增的代码主要为与CPU有关的设定，此处尚未讲解。</p>
-</li>
-<li>
-<p>DAY_4：设定启动区、颜色数目的信息、颜色位数、分辨率的X和Y、图形缓冲区的开始地址， 即完成设置画面模式并把画面模式的信息保存至内存，并用BIOS取得键盘上各种LED指示灯的状态。</p>
 </li>
 </ul>
 <h4 id="naskfuncnas">naskfunc.nas</h4>
@@ -226,9 +266,9 @@
 <li>
 <p>DAY_5：利用汇编完成实现对GDTR、IDTR寄存器加载数据的函数。</p>
 <p>GDTR与IDTR结构体基本一样。需要取第一个32位数据的低16位和第二个32位数据，合并作为一个48位数据存入寄存器。</p>
-<p>MOV		AX,[ESP+6]      取第一个32位数据低16位数据地址<br>
-MOV		[ESP+6],AX      第一个32位数据高16位的地址存入其低16位数据<br>
-LGDT	[ESP+6]         第一个32位数高16位的地址开始的输入加载至寄存器</p>
+<p>MOV AX,[ESP+6]      取第一个32位数据低16位数据地址<br>
+MOV [ESP+6],AX      第一个32位数据高16位的地址存入其低16位数据<br>
+LGDT [ESP+6]         第一个32位数高16位的地址开始的输入加载至寄存器</p>
 </li>
 <li>
 <p>DAY_6：利用汇编完成中断处理完成之后的“返回”功能，<em><strong>C中的“return”相当于“RET”，此处需要“IRETD”的功能，故采用汇编实现，详见书P120。</strong></em></p>
@@ -248,7 +288,7 @@ LGDT	[ESP+6]         第一个32位数高16位的地址开始的输入加载至�
 </li>
 <li>
 <p>DAY_5：主要完善的功能：</p>
-<p><s>1.利用指针保存画面模式信息的值，这些值应与asmhead.nas保持一致。</s></p>
+<p><s>1.利用指针保存画面模式信息的值，这些值应与asmhead.nas中的值保持一致。</s></p>
 <p>2.利用结构体保存画面模式信息的值，优化代码。</p>
 <p>3.利用箭头记号直接获取结构体中成员的值，优化代码。</p>
 <p><s>4.利用像素点阵的方法，即改变内存中若干个像素点的颜色，完成一个字符的显示。此处的函数原型：</s></p>
@@ -326,6 +366,35 @@ LGDT	[ESP+6]         第一个32位数高16位的地址开始的输入加载至�
 <p>3.完成向FIFO缓冲区传送数据并保存的功能。</p>
 <p>4.完成从FIFO缓冲区获得一个字节数据的功能。</p>
 <p>5.完成查看当前FIFO缓冲区存放了多少有效数据的功能。</p>
+</li>
+</ul>
+<h2 id="第一阶段1-7天成品version-harib04g总结">第一阶段(1-7天)成品(Version-harib04g)总结</h2>
+<ul>
+<li>
+<p>这一阶段主要完成了如何做出一个是“操作系统”的操作系统，也就是从零到有的转变。操作系统的启动过程，主要是通过启动区中的加载操作系统本身的程序来完成的，本项目中操作系统的存储介质为FAT12格式的软盘，软盘的第一个扇区是启动区，简单的启动区工作过程如下：</p>
+<ol>
+<li>
+<p>设定启动区内容的装载到的内存地址，必须按照规定设置为 <code>0x07C00</code>。</p>
+</li>
+<li>
+<p>然后有一段标准FAT12格式软盘专用的代码，这一段按照要求对内存中写入数据，这也是执行程序前必不可少的。</p>
+</li>
+<li>
+<p>启动区程序主体。首先对寄存器初始化，然后从软盘的第二个扇区开始读盘。存放第二个扇区开始若干个扇区的内存首地址为 <code>0x8200</code>（<code>0x8000 ~ 0x81ff</code> 这一段内存留给了启动区的复制。），倒是没有特殊理由就是因为这一块内存没人使用。</p>
+</li>
+<li>
+<p>一次读一个扇区，首先读一个柱面、一个磁头的 <code>18</code> 个扇区，然后读一个柱面、两个磁头的 <code>36</code> 个扇区，最后读十个柱面、两个磁头的 <code>360</code> 个扇区。</p>
+</li>
+<li>
+<p>在读扇区的过程中，辅以复盘纠错处理。如果读扇区时发生了失败，重新读这一个扇区；如果连续五次尝试读一个扇区均失败，则操作系统启动失败。</p>
+</li>
+<li>
+<p>根据实验测试发现：一般想一个空软盘保存文件时，文件名会写在 <code>0x002600</code> 以后的地方，文件的内容会写在 <code>0x004200</code> 的地方。</p>
+</li>
+<li>
+<p>由于从启动区开始，把磁盘上的内容装载到了内存 <code>0x8000</code> 号地址，所以磁盘 <code>0x004200</code> 的内容就位于内存 <code>0x8000 + 0x004200 = 0xc200</code> 号地址处了，在读盘结束之后直接跳转至该地址处执行。</p>
+</li>
+</ol>
 </li>
 </ul>
 
