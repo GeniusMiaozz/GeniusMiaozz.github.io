@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>GeniusMiao&#39;s blog.</title>
 <meta name="description" content="醉梦不知天在水，满船新梦压清河。" />
-<link rel="shortcut icon" href="https://geniusmiaozz.github.io/favicon.ico?v=1586865870089">
+<link rel="shortcut icon" href="https://geniusmiaozz.github.io/favicon.ico?v=1586868733047">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
@@ -23,7 +23,7 @@
       <div class="flex lg:block p-4 lg:px-0 items-center fixed lg:static lg:block top-0 right-0 left-0 bg-white z-50">
         <i class="ri-menu-2-line lg:mt-4 text-2xl cursor-pointer animated fadeIn" onclick="openMenu()"></i>
         <a href="https://geniusmiaozz.github.io">
-          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://geniusmiaozz.github.io/images/avatar.png?v=1586865870089" alt="">
+          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://geniusmiaozz.github.io/images/avatar.png?v=1586868733047" alt="">
         </a>
         <h1 class="animated fadeInLeft lg:text-4xl font-extrabold lg:mt-8 mt-0 text-xl" style="animation-delay: 0.2s">GeniusMiao&#39;s blog.</h1>
       </div>
@@ -66,7 +66,6 @@
 <ul>
 <li><a href="#%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E7%9A%84%E5%8E%8B%E6%A0%88%E9%A1%BA%E5%BA%8F">函数参数的压栈顺序</a></li>
 <li><a href="#%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E5%80%BC">处理函数返回值</a></li>
-<li><a href="#%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0%E7%9A%84%E5%87%BD%E6%95%B0">可变参数的函数</a></li>
 <li><a href="#%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0">回调函数</a></li>
 </ul>
 </li>
@@ -502,29 +501,6 @@ p = &amp;b//正确：p可以多次赋值，p存储b的地址
 <ul>
 <li>在函数返回时会生成一个临时变量来保存返回值结果，把函数返回值的引用作为函数参数传入函数内。</li>
 </ul>
-<h3 id="可变参数的函数">可变参数的函数</h3>
-<ul>
-<li>
-<p>该功能在 <code>stdarg.h</code> 头文件中实现。使用该功能的具体步骤可以概括为：</p>
-<ol>
-<li>
-<p>定义一个函数，最后一个参数为省略号，省略号之前的参数是 <code>int</code>，代表了要传递的可变参数的总数。</p>
-</li>
-<li>
-<p>在函数定义中创建一个 <code>va_list</code> 类型变量，该类型是在 <code>stdarg.h</code> 头文件中定义的。</p>
-</li>
-<li>
-<p>使用 <code>int</code> 参数和 <code>va_start</code> 宏来初始化 <code>va_list</code> 变量为一个参数列表。宏 <code>va_start</code> 是在 <code>stdarg.h</code> 头文件中定义的。</p>
-</li>
-<li>
-<p>使用 <code>va_arg</code> 宏和 <code>va_list</code> 变量来访问参数列表中的每个项。</p>
-</li>
-<li>
-<p>使用宏 <code>va_end</code> 来清理赋予 <code>va_list</code> 变量的内存。</p>
-</li>
-</ol>
-</li>
-</ul>
 <h3 id="回调函数">回调函数</h3>
 <ul>
 <li>
@@ -665,9 +641,6 @@ p = &amp;b//正确：p可以多次赋值，p存储b的地址
 <ol>
 <li>
 <p>派生类本身的析构函数。</p>
-</li>
-<li>
-<p>对象成员析构函数。</p>
 </li>
 <li>
 <p>基类析构函数。</p>
@@ -1114,9 +1087,9 @@ update(dynamic_cast&lt;SpecialWidget  *&gt; (pw));
 
           
             <div class="next-post">
-              <a href="https://geniusmiaozz.github.io/post/yi-ge-jian-dan-de-xiao-xing-xiao-yuan-wang-ru-he-she-ji/">
+              <a href="https://geniusmiaozz.github.io/post/xiao-xiao-suan-fa-________problem1~30/">
                 <h3 class="post-title">
-                  一个简单的小型校园网如何设计？
+                  小小算法，________(Problem1~30)
                   <i class="ri-arrow-right-line"></i>
                 </h3>
               </a>
