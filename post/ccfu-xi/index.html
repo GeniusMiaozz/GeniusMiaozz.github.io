@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>GeniusMiao&#39;s blog.</title>
 <meta name="description" content="醉梦不知天在水，满船新梦压清河。" />
-<link rel="shortcut icon" href="https://geniusmiaozz.github.io/favicon.ico?v=1593000237736">
+<link rel="shortcut icon" href="https://geniusmiaozz.github.io/favicon.ico?v=1593182626956">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
@@ -23,7 +23,7 @@
       <div class="flex lg:block p-4 lg:px-0 items-center fixed lg:static lg:block top-0 right-0 left-0 bg-white z-50">
         <i class="ri-menu-2-line lg:mt-4 text-2xl cursor-pointer animated fadeIn" onclick="openMenu()"></i>
         <a href="https://geniusmiaozz.github.io">
-          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://geniusmiaozz.github.io/images/avatar.png?v=1593000237736" alt="">
+          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://geniusmiaozz.github.io/images/avatar.png?v=1593182626956" alt="">
         </a>
         <h1 class="animated fadeInLeft lg:text-4xl font-extrabold lg:mt-8 mt-0 text-xl" style="animation-delay: 0.2s">GeniusMiao&#39;s blog.</h1>
       </div>
@@ -34,8 +34,9 @@
           </p>
           <div class="toc-container hidden lg:block">
             <ul class="markdownIt-TOC">
-<li><a href="#cc%E5%A4%8D%E4%B9%A0">C/C++复习</a>
+<li>
 <ul>
+<li><a href="#%E8%AF%B4%E6%98%8E">说明</a></li>
 <li><a href="#%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%B1%BB%E5%9E%8B">基础数据/结构/类型</a>
 <ul>
 <li><a href="#%E5%B8%B8%E9%87%8F">常量</a></li>
@@ -47,7 +48,7 @@
 <li><a href="#%E4%BD%8D%E5%9F%9F">位域</a></li>
 </ul>
 </li>
-<li><a href="#%E5%86%85%E5%AD%98%E7%9B%B8%E5%85%B3">内存相关</a>
+<li><a href="#%E5%86%85%E5%AD%98">内存</a>
 <ul>
 <li><a href="#%E6%8C%87%E9%92%88-%E5%BC%95%E7%94%A8">指针 &amp; 引用</a>
 <ul>
@@ -56,21 +57,27 @@
 <li><a href="#%E6%8C%87%E9%92%88%E4%B8%8E%E5%BC%95%E7%94%A8%E5%92%8C%E5%BC%82%E5%90%8C%E7%82%B9">指针与引用和异同点</a></li>
 </ul>
 </li>
-<li><a href="#%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D">内存分配</a></li>
+<li><a href="#%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D">内存分配</a>
+<ul>
 <li><a href="#c-%E4%B8%AD%E7%9A%84%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D"><code>C</code> 中的动态内存分配</a></li>
 <li><a href="#c-%E4%B8%AD%E7%9A%84%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D-2"><code>C++</code> 中的动态内存分配</a></li>
-<li><a href="#mallocfree%E4%B8%8Enewdelete-%E7%9A%84%E5%8C%BA%E5%88%AB"><code>malloc/free与new/delete</code> 的区别</a></li>
 </ul>
 </li>
-<li><a href="#%E5%87%BD%E6%95%B0%E7%9B%B8%E5%85%B3">函数相关</a>
+<li><a href="#mallocfree%E4%B8%8Enewdelete-%E7%9A%84%E5%8C%BA%E5%88%AB"><code>malloc/free与new/delete</code> 的区别</a></li>
+<li><a href="#%E5%A0%86%E6%A0%88%E7%9A%84%E5%8C%BA%E5%88%AB">堆栈的区别</a></li>
+<li><a href="#%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F">内存泄漏</a></li>
+</ul>
+</li>
+<li><a href="#%E5%87%BD%E6%95%B0">函数</a>
 <ul>
 <li><a href="#%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E7%9A%84%E5%8E%8B%E6%A0%88%E9%A1%BA%E5%BA%8F">函数参数的压栈顺序</a></li>
 <li><a href="#%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E5%80%BC">处理函数返回值</a></li>
 <li><a href="#%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0">回调函数</a></li>
 </ul>
 </li>
-<li><a href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9B%B8%E5%85%B3">面向对象相关</a>
+<li><a href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1">面向对象</a>
 <ul>
+<li><a href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%98%AF%E4%BB%80%E4%B9%88">面向对象是什么</a></li>
 <li><a href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%AE%9A%E4%B9%89">对象的定义</a></li>
 <li><a href="#%E5%B0%81%E8%A3%85">封装</a></li>
 <li><a href="#%E6%8A%BD%E8%B1%A1">抽象</a></li>
@@ -78,14 +85,55 @@
 <li><a href="#%E5%A4%9A%E6%80%81">多态</a></li>
 <li><a href="#%E6%8A%BD%E8%B1%A1%E7%B1%BB">抽象类</a></li>
 <li><a href="#%E5%AF%B9%E8%B1%A1%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80">对象内存布局</a></li>
+<li><a href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0">构造函数</a></li>
 <li><a href="#%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0">析构函数</a></li>
 <li><a href="#%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0">拷贝构造函数</a></li>
-<li><a href="#%E5%8F%8B%E5%85%83%E5%87%BD%E6%95%B0">友元函数</a></li>
+<li><a href="#%E5%8F%8B%E5%85%83%E5%87%BD%E6%95%B0-%E5%8F%8B%E5%85%83%E7%B1%BB">友元函数 &amp; 友元类</a></li>
 <li><a href="#%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0">内联函数</a></li>
-<li><a href="#%E8%99%9A%E5%87%BD%E6%95%B0-%E7%BA%AF%E8%99%9A%E5%87%BD%E6%95%B0">虚函数 &amp; 纯虚函数</a></li>
+<li><a href="#%E8%99%9A%E5%87%BD%E6%95%B0">虚函数</a></li>
+<li><a href="#%E7%BA%AF%E8%99%9A%E5%87%BD%E6%95%B0-%E6%8A%BD%E8%B1%A1%E7%B1%BB">纯虚函数 &amp; 抽象类</a></li>
 <li><a href="#%E7%B1%BB%E7%9A%84%E9%9D%99%E6%80%81%E6%88%90%E5%91%98">类的静态成员</a></li>
 <li><a href="#%E5%86%85%E5%AD%98%E8%A1%A5%E9%BD%90">内存补齐</a></li>
 <li><a href="#%E7%B1%BB%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%E7%9A%84%E5%89%8D%E7%BD%AEconst%E4%B8%8E%E5%90%8E%E7%BD%AEconst">类成员函数的前置<code>const</code>与后置<code>const</code></a></li>
+</ul>
+</li>
+<li><a href="#%E5%85%B3%E9%94%AE%E5%AD%97%E4%B8%8E%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0">关键字与内置函数</a>
+<ul>
+<li><a href="#null-%E5%92%8C-nullptr"><code>NULL</code> 和 <code>nullptr</code></a></li>
+<li><a href="#delete-%E5%92%8C-delete"><code>delete[]</code> 和 <code>delete</code></a></li>
+<li><a href="#xx_ptr-%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88"><code>[xx]_ptr</code>  智能指针</a>
+<ul>
+<li><a href="#auto_ptr"><code>auto_ptr</code></a></li>
+<li><a href="#unique_ptr"><code>unique_ptr</code></a></li>
+<li><a href="#shared_ptr"><code>shared_ptr</code></a></li>
+<li><a href="#weak_ptr"><code>weak_ptr</code></a></li>
+</ul>
+</li>
+<li><a href="#xx_cast-%E5%9B%9B%E7%A7%8D%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><code>[xx]_cast</code> 四种类型转换</a>
+<ul>
+<li><a href="#static_cast"><code>static_cast</code></a></li>
+<li><a href="#const_cast"><code>const_cast</code></a></li>
+<li><a href="#dynamic_cast"><code>dynamic_cast</code></a></li>
+<li><a href="#reinterpret_cast"><code>reinterpret_cast</code></a></li>
+</ul>
+</li>
+<li><a href="#extern-c"><code>extern &quot;C&quot;</code></a></li>
+<li><a href="#using"><code>using</code></a></li>
+<li><a href="#"><code>::</code></a></li>
+<li><a href="#struct"><code>struct</code></a></li>
+<li><a href="#union"><code>union</code></a></li>
+<li><a href="#const"><code>const</code></a></li>
+<li><a href="#enum-class"><code>enum class</code></a></li>
+<li><a href="#static"><code>static</code></a></li>
+<li><a href="#extern"><code>extern</code></a></li>
+<li><a href="#this"><code>this</code></a></li>
+<li><a href="#explicit"><code>explicit</code></a></li>
+<li><a href="#inline"><code>inline</code></a></li>
+<li><a href="#stdout-stderr"><code>stdout</code> &amp; <code>stderr</code></a></li>
+<li><a href="#size_t"><code>size_t</code></a></li>
+<li><a href="#sizeof"><code>sizeof()</code></a></li>
+<li><a href="#decltype-expression"><code>decltype (expression)</code></a></li>
+<li><a href="#assertint-expression"><code>assert(int expression)</code></a></li>
 </ul>
 </li>
 <li><a href="#%E5%85%B6%E5%AE%83">其它</a>
@@ -94,42 +142,9 @@
 <li><a href="#%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86">异常处理</a></li>
 </ul>
 </li>
-<li><a href="#cc-%E4%B8%AD%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97"><code>C/C++</code> 中的关键字</a>
+<li><a href="#stl"><code>STL</code></a>
 <ul>
-<li><a href="#null-%E5%92%8C-nullptr"><code>NULL</code> 和 <code>nullptr</code></a></li>
-<li><a href="#delete-%E5%92%8C-delete"><code>delete[]</code> 和 <code>delete</code></a></li>
-<li><a href="#xx_ptr%E5%9B%9B%E7%A7%8D%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88"><code>[xx]_ptr</code>四种智能指针</a>
-<ul>
-<li><a href="#auto_ptr">auto_ptr</a></li>
-<li><a href="#unique_ptr">unique_ptr</a></li>
-<li><a href="#shared_ptr">shared_ptr</a></li>
-<li><a href="#weak_ptr">weak_ptr</a></li>
-</ul>
-</li>
-<li><a href="#xx_cast%E5%9B%9B%E7%A7%8D%E8%BD%AC%E6%8D%A2"><code>[xx]_cast</code>四种转换</a>
-<ul>
-<li><a href="#static_cast"><code>static_cast</code></a></li>
-<li><a href="#const_cast"><code>const_cast</code></a></li>
-<li><a href="#dynamic_cast"><code>dynamic_cast</code></a></li>
-<li><a href="#reinterpret_cast"><code>reinterpret_cast</code></a></li>
-</ul>
-</li>
-<li><a href="#auto"><code>auto</code></a></li>
-<li><a href="#regiter"><code>regiter</code></a></li>
-<li><a href="#static"><code>static</code></a></li>
-<li><a href="#extern"><code>extern</code></a></li>
-<li><a href="#stdout-stderr"><code>stdout</code> &amp; <code>stderr</code></a></li>
-<li><a href="#size_t"><code>size_t</code></a></li>
-</ul>
-</li>
-<li><a href="#cc-%E4%B8%AD%E7%9A%84%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0"><code>C/C++</code> 中的内置函数</a>
-<ul>
-<li><a href="#sizeof"><code>sizeof()</code></a></li>
-<li><a href="#assert-int-expression"><code>assert( int expression )</code></a></li>
-</ul>
-</li>
-<li><a href="#stl-%E7%9B%B8%E5%85%B3"><code>STL</code> 相关</a>
-<ul>
+<li><a href="#%E8%BF%AD%E4%BB%A3%E5%99%A8">迭代器</a></li>
 <li><a href="#vector"><code>vector</code></a></li>
 <li><a href="#list"><code>list</code></a></li>
 <li><a href="#set"><code>set</code></a></li>
@@ -187,11 +202,34 @@
       <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
         <h1 class="text-3xl font-bold lg:mt-16">C/C++复习总结</h1>
         <div class="text-sm text-gray-700 lg:my-8">
-          2020-04-07 / 27 min read
+          2020-04-07 / 36 min read
         </div>
         
         <div class="post-content yue">
-          <h1 id="cc复习">C/C++复习</h1>
+          <h2 id="说明">说明</h2>
+<ul>
+<li>
+<p>本文为个人 <code>C/C++</code> 复习内容的简要总结，仅针对应届生校招的难度。</p>
+</li>
+<li>
+<p>文中具体参考内容的出处均已注明并标注链接。</p>
+<ul>
+<li>主要参考网站包括：</li>
+</ul>
+<ol>
+<li><a href="https://www.runoob.com/cprogramming/c-tutorial.html">菜鸟教程 C教程</a></li>
+<li><a href="https://www.runoob.com/cplusplus/cpp-tutorial.html">菜鸟教程 C++教程</a></li>
+<li><a href="https://www.nowcoder.com/tutorial/93/8ba2828006dd42879f3a9029eabde9f1">牛客网 C++面试宝典</a></li>
+<li><a href="https://light-city.club/sc/">Github开源项目 C++那点事</a></li>
+</ol>
+<ul>
+<li>主要参考书籍包括：</li>
+</ul>
+<ol>
+<li>暂无</li>
+</ol>
+</li>
+</ul>
 <h2 id="基础数据结构类型">基础数据/结构/类型</h2>
 <h3 id="常量">常量</h3>
 <ul>
@@ -295,18 +333,23 @@
 </ul>
 <h3 id="存储类">存储类</h3>
 <ul>
-<li>存储类定义 <code>C/C++</code> 程序中变量/函数的范围（可见性）和生命周期。这些说明符放置在它们所修饰的类型之前。</li>
+<li>
+<p>存储类定义 <code>C/C++</code> 程序中变量/函数的范围（可见性）和生命周期。这些说明符放置在它们所修饰的类型之前。</p>
+</li>
+<li>
+<p>存储类主要包含四种：<code>auto</code>、<code>register</code>、<code>static</code>、<code>extern</code>。</p>
+</li>
 </ul>
 <h3 id="位域">位域</h3>
 <ul>
 <li>位域在本质上就是一种结构体类型，只不过其成员按二进制中的每一位分配。</li>
 </ul>
-<h2 id="内存相关">内存相关</h2>
+<h2 id="内存">内存</h2>
 <h3 id="指针-引用">指针 &amp; 引用</h3>
 <h4 id="指针">指针</h4>
 <ul>
 <li>
-<p><code>32</code> 位机器一个指针占 <code>4</code> 字节空间，<code>64</code> 位机器一个指针占 <code>8</code> 字节空间。</p>
+<p><code>32</code> 位机器一个指针占 <code>4</code>字节空间，<code>64</code> 位机器一个指针占 <code>8</code> 字节空间。</p>
 </li>
 <li>
 <p>野指针是指向一个已删除的对象或者未申请访问受限内存区域的指针。</p>
@@ -327,7 +370,7 @@
 <h4 id="引用">引用</h4>
 <ul>
 <li>
-<p>一旦引用被初始化为一个对象，就不能被指向到另一个对象。指针可以在任何时候指向到另一个对象。</p>
+<p>一旦引用被初始化为一个对象，就不能被指向到另一个对象。指针可以在任何时候指向到另一个对象.</p>
 </li>
 <li>
 <p>引用必须在创建时被初始化。指针可以在任何时间被初始化。</p>
@@ -339,36 +382,53 @@
 <h4 id="指针与引用和异同点">指针与引用和异同点</h4>
 <ul>
 <li>
-<p>区别总结：</p>
-<ol>
-<li>
-<p>指针有自己的一块空间，而引用只是一个别名；</p>
-</li>
-<li>
-<p>使用 <code>sizeof</code> 求得的是指针的大小，而引用则是被引用对象的大小；</p>
-</li>
-<li>
-<p>指针可以被初始化为 <code>NULL</code>，而引用必须被初始化且必须是一个已有对象的引用；</p>
-</li>
-<li>
-<p>作为参数传递时，指针需要被解引用才可以对对象进行操作，而直接对引用的修改都会改变引用所指向的对象；</p>
-</li>
-<li>
-<p>可以有 <code>const</code>指针，但是没有 <code>const</code> 引用；</p>
-</li>
-<li>
-<p>指针在使用中可以指向其它对象，但是引用只能是一个对象的引用，不能被改变；</p>
-</li>
-<li>
-<p>指针可以有多级指针（<code>**p</code>），而引用至于一级；</p>
-</li>
-<li>
-<p>指针和引用使用 <code>++</code> 运算符的意义不一样；</p>
-</li>
-<li>
-<p>如果返回动态内存分配的对象或者内存，必须使用指针，引用可能引起内存泄露。</p>
-</li>
-</ol>
+<p>区别总结</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">指针</th>
+<th style="text-align:center">引用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">指针是一个变量，该变量存储的是一个地址，有自己的一块空间</td>
+<td style="text-align:center">引用只是一个别名</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>sizeof(指针)</code> 得到的是指针本身的大小</td>
+<td style="text-align:center"><code>sizeof(引用)</code> 得到的是被引用对象的大小</td>
+</tr>
+<tr>
+<td style="text-align:center">指针可以被初始化为 <code>NULL</code></td>
+<td style="text-align:center">引用必须被初始化且必须是一个已有对象的引用</td>
+</tr>
+<tr>
+<td style="text-align:center">作为参数传递时，指针需要被解引用才可以对对象进行操作</td>
+<td style="text-align:center">直接对引用的修改都会改变引用所指向的对象</td>
+</tr>
+<tr>
+<td style="text-align:center">可以有 <code>const</code>指针</td>
+<td style="text-align:center">没有 <code>const</code> 引用</td>
+</tr>
+<tr>
+<td style="text-align:center">指针在使用中可以指向其它对象</td>
+<td style="text-align:center">引用只能是一个对象的引用，不能被改变</td>
+</tr>
+<tr>
+<td style="text-align:center">指针可以有多级指针（<code>**p</code>）</td>
+<td style="text-align:center">引用只有一级</td>
+</tr>
+<tr>
+<td style="text-align:center">指针使用 <code>++</code> 运算符的意义是地址加”一”</td>
+<td style="text-align:center">引用使用 <code>++</code> 运算符的意义是被引用对象本身值加”一”</td>
+</tr>
+<tr>
+<td style="text-align:center">动态内存分配的对象或者内存，必须使用指针</td>
+<td style="text-align:center">动态内存分配的对象或者内存，不可使用引用，否则可能引起内存泄漏</td>
+</tr>
+</tbody>
+</table>
 </li>
 <li>
 <p>指针与引用可以参考如下代码：</p>
@@ -437,7 +497,7 @@ p = &amp;b//正确：p可以多次赋值，p存储b的地址
 </table>
 </li>
 </ul>
-<h3 id="c-中的动态内存分配"><code>C</code> 中的动态内存分配</h3>
+<h4 id="c-中的动态内存分配"><code>C</code> 中的动态内存分配</h4>
 <ul>
 <li>
 <p>可以利用四种方法进行动态内存操作：</p>
@@ -460,13 +520,13 @@ p = &amp;b//正确：p可以多次赋值，p存储b的地址
 </ol>
 </li>
 </ul>
-<h3 id="c-中的动态内存分配-2"><code>C++</code> 中的动态内存分配</h3>
+<h4 id="c-中的动态内存分配-2"><code>C++</code> 中的动态内存分配</h4>
 <ul>
 <li>
 <p>使用 <code>new &lt;data_type&gt;</code> 来在分配内存的同时创建一个对象，使用 <code>delete &lt;data_name&gt;</code> 来删除分配的内存。</p>
 </li>
 <li>
-<p>对于内置类型而言，<code>new</code> 仅仅是分配内存，除非后面显示加 <code>()</code>，相当于调用它的构造函数，对于自定义类型而言，只要一调用 <code>new</code>，那么编译器不仅仅给它分配内存，还调用它的默认构造函数初始化，即使后面没有加 <code>()</code>。</p>
+<p>对于内置类型而言，<code>new</code> 仅仅是分配内存，除非后面显示加(),相当于调用它的构造函数，对于自定义类型而言，只要一调用 <code>new</code>，那么编译器不仅仅给它分配内存，还调用它的默认构造函数初始化，即使后面没有加()。</p>
 </li>
 </ul>
 <h3 id="mallocfree与newdelete-的区别"><code>malloc/free与new/delete</code> 的区别</h3>
@@ -477,22 +537,33 @@ p = &amp;b//正确：p可以多次赋值，p存储b的地址
 <li>
 <p>不同点：</p>
 <ol>
-<li>
-<p><code>malloc</code> 与 <code>free</code> 是 <code>C</code> 语言的标准库函数，<code>new/delete</code> 是 <code>C++</code> 的操作符。</p>
-</li>
-<li>
-<p><code>malloc</code> 需要给定申请内存的大小，返回的指针需要强制转换；<code>new</code> 不仅无需指定内存大小并申请一块内存，还会调用类的构造函数生成对象，返回的指针不需要强制转换。</p>
-</li>
-<li>
-<p><code>free</code> 只是释放一块内存区域，<code>del</code> 在释放内存区域的同时还对调用类的析构函数。</p>
-</li>
-<li>
-<p><code>malloc</code> 失败返回空，<code>new</code> 失败抛异常。</p>
-</li>
+<li><code>malloc</code> 与 <code>free</code> 是 <code>C</code> 语言的标准库函数，<code>new/delete</code> 是 <code>C++</code> 的操作符。</li>
+<li><code>malloc</code> 需要给定申请内存的大小，返回的指针需要强制转换；<code>new</code> 不仅无需指定内存大小并申请一块内存，还会调用类的构造函数生成对象，返回的指针不需要强制转换。</li>
+<li><code>free</code> 只是释放一块内存区域，<code>del</code> 在释放内存区域的同时还对调用类的析构函数。</li>
+<li><code>malloc</code> 失败返回空，<code>new</code> 失败抛异常。</li>
 </ol>
 </li>
 </ul>
-<h2 id="函数相关">函数相关</h2>
+<h3 id="堆栈的区别">堆栈的区别</h3>
+<ul>
+<li>分配上的区别
+<ol>
+<li>栈：由操作系统自动分配释放，存放函数的参数值、局部变量的值等。</li>
+<li>堆： 一般由程序员分配释放。若程序员不释放，程序结束时可能由 <code>OS</code> 回收，分配方式类似于链表。</li>
+</ol>
+</li>
+<li>缓存方式上的区别
+<ol>
+<li>栈：使用一级缓存，通常是被调用时处于存储空间中，调用完毕立即释放。</li>
+<li>堆：使用二级缓存，生命周期由虚拟机的垃圾回收算法来决定，并不是一旦成为孤儿对象后就能被回收。</li>
+</ol>
+</li>
+</ul>
+<h3 id="内存泄漏">内存泄漏</h3>
+<ul>
+<li>程序中己动态分配的堆内存由于某种原因程序未释放或无法释放，造成系统内存的浪费，导致程序运行速度减慢甚至系统崩溃等严重后果，这就是内存泄漏。</li>
+</ul>
+<h2 id="函数">函数</h2>
 <h3 id="函数参数的压栈顺序">函数参数的压栈顺序</h3>
 <ul>
 <li>从右到左。</li>
@@ -503,17 +574,15 @@ p = &amp;b//正确：p可以多次赋值，p存储b的地址
 </ul>
 <h3 id="回调函数">回调函数</h3>
 <ul>
-<li>
-<p>函数指针变量可以作为某个函数的参数来使用的，回调函数就是一个通过函数指针调用的函数。</p>
-</li>
-<li>
-<p>简单来说：回调函数是由别人的函数执行时调用你实现的函数。</p>
-</li>
-<li>
-<p>一个回调函数的通俗解释，源于<a href="https://www.zhihu.com/answer/13005983">知乎回答</a>：你到一个商店买东西，刚好你要的东西没有货，于是你在店员那里留下了你的电话，过了几天店里有货了，店员就打了你的电话，然后你接到电话后就到店里去取了货。在这个例子里，你的电话号码就叫回调函数，你把电话留给店员就叫登记回调函数，店里后来有货了叫做触发了回调关联的事件，店员给你打电话叫做调用回调函数，你到店里去取货叫做响应回调事件。</p>
-</li>
+<li>函数指针变量可以作为某个函数的参数来使用的，回调函数就是一个通过函数指针调用的函数。</li>
+<li>简单来说：回调函数是由别人的函数执行时调用你实现的函数。</li>
+<li>一个回调函数的通俗解释，源于<a href="https://www.zhihu.com/answer/13005983">知乎回答</a>：你到一个商店买东西，刚好你要的东西没有货，于是你在店员那里留下了你的电话，过了几天店里有货了，店员就打了你的电话，然后你接到电话后就到店里去取了货。在这个例子里，你的电话号码就叫回调函数，你把电话留给店员就叫登记回调函数，店里后来有货了叫做触发了回调关联的事件，店员给你打电话叫做调用回调函数，你到店里去取货叫做响应回调事件。</li>
 </ul>
-<h2 id="面向对象相关">面向对象相关</h2>
+<h2 id="面向对象">面向对象</h2>
+<h3 id="面向对象是什么">面向对象是什么</h3>
+<ul>
+<li>面向对象是一种对现实世界理解和抽象的方法、思想，通过将需求要素转化为对象进行问题处理的一种思想。</li>
+</ul>
 <h3 id="对象的定义">对象的定义</h3>
 <ul>
 <li>对象是指一块能存储数据并具有某种类型的内存空间。</li>
@@ -570,6 +639,9 @@ p = &amp;b//正确：p可以多次赋值，p存储b的地址
 </table>
 </li>
 <li>
+<p>子类对父类成员的访问权限跟如何继承没有任何关系，“子类可以访问父类的 <code>public</code> 和 <code>protected</code> 成员，不可以访问父类的 <code>private</code> 成员”——这句话对任何一种继承都是成立的。</p>
+</li>
+<li>
 <p>派生类会继承所有基类方法，但下列情况除外：</p>
 <ol>
 <li>
@@ -584,7 +656,7 @@ p = &amp;b//正确：p可以多次赋值，p存储b的地址
 </ol>
 </li>
 <li>
-<p>假设一个类 <code>C</code> 分别被类 <code>A</code> 和类 <code>B</code> 继承，需要设置继承方式为虚继承，否则会使 <code>D</code> 创建两个对象。</p>
+<p>假设一个类 <code>C</code> 分别被类 <code>A</code> 和类 <code>B</code> 继承，类 <code>A</code> 和类 <code>B</code> 共同被类 <code>D</code> 继承，需要设置类 <code>A</code> 和类 <code>B</code> 继承方式为虚继承，否则会使 <code>D</code> 创建两个对象。</p>
 </li>
 </ul>
 <h3 id="多态">多态</h3>
@@ -593,10 +665,13 @@ p = &amp;b//正确：p可以多次赋值，p存储b的地址
 <p>多态意味着调用成员函数时，会根据调用函数的对象的类型来执行不同的函数。</p>
 </li>
 <li>
+<p>多态意味着相同的操作或函数、过程可作用于多种类型的对象上并获得不同的结果。</p>
+</li>
+<li>
 <p>多态的实现主要分为静态多态和动态多态。</p>
 <ol>
 <li>
-<p>静态多态主要是重载，在编译的时候就已经确定。两个函数名相同，但是参数列表不同（个数，类型），返回值类型没有要求，在同一作用域中.</p>
+<p>静态多态主要是重载，在编译的时候就已经确定。两个函数名相同，但是参数列表不同（个数，类型），返回值类型没有要求，在同一作用域中</p>
 </li>
 <li>
 <p>动态多态是用虚函数机制实现的，在运行期间动态绑定，通过在基类中对函数使用关键字 <code>virtual</code> 声明为虚函数来实现。子类继承了父类，父类中的函数是虚函数，在子类中重写了这个虚函数，这种情况会使编译器在处理派生类中重新定义的该函数时不会静态链接到基类的该函数。这种操作称为动态链接，或后期绑定。</p>
@@ -630,6 +705,20 @@ p = &amp;b//正确：p可以多次赋值，p存储b的地址
 <li>
 <p>类中的 <code>static</code> 成员变量不占用内存该类自身实例化对象的内存。</p>
 </li>
+<li>
+<p>几条关于对象内存大小的总结：</p>
+<ol>
+<li>空类的大小为 <code>1</code> 字节。</li>
+<li>一个类中，虚函数本身、成员函数（包括静态与非静态）和静态数据成员都是不占用类对象的存储空间。</li>
+<li>对于包含虚函数的类，不管有多少个虚函数，只有一个虚指针，<code>vptr</code> 的大小。</li>
+<li>普通继承，派生类继承了所有基类的函数与成员，要按照字节对齐来计算大小。</li>
+<li>虚函数继承，不管是单继承还是多继承，都是继承了基类的<code>vptr</code>。</li>
+</ol>
+</li>
+</ul>
+<h3 id="构造函数">构造函数</h3>
+<ul>
+<li>如果的构造函数只有一个参数时，那么在编译的时候就会有一个缺省的转换操作：将该构造函数对应数据类型的数据转换为该类对象。</li>
 </ul>
 <h3 id="析构函数">析构函数</h3>
 <ul>
@@ -671,7 +760,7 @@ p = &amp;b//正确：p可以多次赋值，p存储b的地址
 <p>拷贝构造函数的形参必须设为常量的引用，否则会引起拷贝构造函数的无限调用。</p>
 </li>
 </ul>
-<h3 id="友元函数">友元函数</h3>
+<h3 id="友元函数-友元类">友元函数 &amp; 友元类</h3>
 <ul>
 <li>
 <p>类的友元函数是定义在类外部，但有权访问类的所有私有（<code>private</code>）成员和保护（<code>protected</code>）成员。尽管友元函数的原型有在类的定义中出现过，但是友元函数并不是成员函数。</p>
@@ -686,6 +775,12 @@ p = &amp;b//正确：p可以多次赋值，p存储b的地址
 <p>如果要声明 <code>B</code> 类为 <code>A</code> 类的右元，即 <code>B</code> 的所有成员函数可以访问 <code>A</code> 类中的私有成员及保护成员，需要在 <code>A</code> 类中声明：</p>
 <pre><code class="language-C++">friend class B
 </code></pre>
+</li>
+<li>
+<p>友元关系没有继承性。假如类 <code>B</code> 是类 <code>A</code> 的友元，类 <code>C</code> 继承于类 <code>A</code>，那么友元类 <code>B</code> 是没办法直接访问类 <code>C</code> 的私有或保护成员。</p>
+</li>
+<li>
+<p>友元关系没有传递性。假如类 <code>B</code> 是类 <code>A</code> 的友元，类 <code>C</code> 是类 <code>B</code> 的友元，那么友元类 <code>C</code> 是没办法直接访问类 <code>A</code>的私有或保护成员，也就是不存在“友元的友元”这种关系。</p>
 </li>
 </ul>
 <h3 id="内联函数">内联函数</h3>
@@ -703,7 +798,7 @@ p = &amp;b//正确：p可以多次赋值，p存储b的地址
 <p>使用内联函数注意三点：</p>
 <ol>
 <li>
-<p>在内联函数内不允许使用循环语句和开关语句</p>
+<p>在内联函数内不允许使用循环语句和开关语句。</p>
 </li>
 <li>
 <p>内联函数的定义必须出现在内联函数第一次调用之前。</p>
@@ -714,44 +809,28 @@ p = &amp;b//正确：p可以多次赋值，p存储b的地址
 </ol>
 </li>
 </ul>
-<h3 id="虚函数-纯虚函数">虚函数 &amp; 纯虚函数</h3>
+<h3 id="虚函数">虚函数</h3>
 <ul>
-<li>
-<p>虚函数讲解：<a href="https://zhuanlan.zhihu.com/p/28530472">知乎文章</a></p>
-</li>
-<li>
-<p>通过对象内存最开始位置的虚函数表指针 <code>vptr</code> 找到虚函数表 <code>vtbl</code>，表中存放着虚函数的指针，通过该指针找到对应虚函数的实现区域并进行调用。</p>
-</li>
-<li>
-<p>构造函数不可以是虚函数，析构函数可以是虚函数且推荐设置为虚函数。</p>
-</li>
-<li>
-<p>虚函数可以声明为 <code>private</code>, 并且可以被子类覆盖（因为虚函数表的传递），但子类不能调用父类的 <code>private</code> 虚函数。虚函数的重载性和它声明的权限无关。</p>
-</li>
-<li>
-<p>声明了纯虚函数的类是一个抽象类，无法创建该类的实例，只能创建该类的派生类的实例。</p>
-</li>
-<li>
-<p>定义纯虚函数的目的在于，使派生类仅仅只是继承函数的接口。</p>
-</li>
-<li>
-<p>纯虚函数可以设计成私有的，不过这样不允许在本类之外的非友元函数中直接调用它，子类中只有覆盖这种纯虚函数的义务，却没有调用它的权利。</p>
-</li>
+<li>虚函数讲解：<a href="https://zhuanlan.zhihu.com/p/28530472">知乎文章</a></li>
+<li>程序通过对象内存最开始位置的虚函数表指针 <code>vptr</code> 找到虚函数表 <code>vtbl</code>，表中存放着虚函数的指针，通过该指针找到对应虚函数的实现区域并进行调用。</li>
+<li>构造函数不可以是虚函数，析构函数可以是虚函数且推荐设置为虚函数。具体补充：<a href="https://blog.csdn.net/sunpengshanda/article/details/80921748">CSDN博客</a></li>
+<li>默认参数是静态绑定的，虚函数是动态绑定的。 默认参数的使用需要看指针或者引用本身的类型，而不是对象的类型；虚函数的调用取决于指向或者引用的对象的类型，而不是指针或者引用自身的类型。</li>
+<li>虚函数可以声明为 <code>private</code>, 并且可以被子类覆盖（因为虚函数表的传递），但子类不能调用父类的 <code>private</code> 虚函数。虚函数的重载性和它声明的权限无关。</li>
+</ul>
+<h3 id="纯虚函数-抽象类">纯虚函数 &amp; 抽象类</h3>
+<ul>
+<li>声明了纯虚函数的类是一个抽象类，无法创建该类的实例，只能创建该类的派生类的实例。其目的在于，使派生类仅仅只是继承函数的接口。</li>
+<li>抽象类中，成员函数内可以调用纯虚函数，在构造函数/析构函数内部不能使用纯虚函数。</li>
+<li>如果我们不在派生类中覆盖纯虚函数，那么派生类也会变成抽象类；如果一个类从抽象类派生而来，它必须实现了基类中的所有纯虚函数，才能成为非抽象类。</li>
+<li>纯虚函数可以设计成私有的，不过这样不允许在本类之外的非友元函数中直接调用它，子类中只有覆盖这种纯虚函数的义务，却没有调用它的权利。</li>
 </ul>
 <h3 id="类的静态成员">类的静态成员</h3>
 <ul>
-<li>
-<p>无论创建多少个该类的对象，该类的静态成员都只有一个副本。</p>
-</li>
-<li>
-<p>类的静态成员在类的外部通过使用范围解析运算符 <code>::</code> 来重新声明静态变量从而对它进行初始化。</p>
-</li>
-<li>
-<p>静态成员函数即使在类对象不存在的情况下也能被调用。</p>
-</li>
-<li>
-<p>静态成员函数没有 <code>this</code> 指针只能访问静态成员数据、其他静态成员函数和类外部的其他函数。</p>
-</li>
+<li>类的静态成员变量在类实例化之前就已经存在，并分配了内存，所以即使在类对象不存在的情况下也能被调用。</li>
+<li>无论创建多少个该类的对象，该类的静态成员都只有一个副本，被类的所有对象共享。</li>
+<li>类的静态成员不能使用构造函数初始化，而是类的外部通过使用范围解析运算符 <code>::</code> 来重新声明静态变量从而对它进行初始化。</li>
+<li>静态成员函数没有 <code>this</code> 指针只能访问静态成员数据、其他静态成员函数和类外部的其他函数，不能直接访问类中说明的非静态成员。</li>
+<li>可以通过类名访问（无对象生成时亦可），也可以通过对象访问。</li>
 </ul>
 <h3 id="内存补齐">内存补齐</h3>
 <ul>
@@ -781,6 +860,378 @@ p = &amp;b//正确：p可以多次赋值，p存储b的地址
 <li>
 <p>当 <code>const</code> 在函数名后面的输给表示是该类的常成员函数，该函数不能修改对象内的任何成员，只能发生读操作，不能发生写操作；对于该类的 <code>const</code> 的对象，不能引用非 <code>const</code> 的成员函数（只能引用后置 <code>const</code> 修饰的常成员函数）。</p>
 </li>
+</ul>
+<h2 id="关键字与内置函数">关键字与内置函数</h2>
+<h3 id="null-和-nullptr"><code>NULL</code> 和 <code>nullptr</code></h3>
+<ul>
+<li>在编译时 NULL 会被解释为 0 ，而 <code>nullptr</code> 就代表空指针。</li>
+</ul>
+<h3 id="delete-和-delete"><code>delete[]</code> 和 <code>delete</code></h3>
+<ul>
+<li>
+<p>区别讲解：<a href="https://blog.csdn.net/u012936940/article/details/80919880">CSDN文章</a></p>
+</li>
+<li>
+<p>概括的为：对于基本数据类型（如 <code>int</code>）二者无差别，对于自定义类型（通常指类）如果是 <code>new</code> 申请的内存，释放时用 <code>delete</code>；如果是使用 <code>new []</code> 申请的内存，释放时要用 <code>delete []</code>。</p>
+</li>
+</ul>
+<h3 id="xx_ptr-智能指针"><code>[xx]_ptr</code>  智能指针</h3>
+<h4 id="auto_ptr"><code>auto_ptr</code></h4>
+<ul>
+<li>
+<p>采用所有权模式，存在潜在的内存崩溃问题，于 <code>C++11</code> 中被抛弃。例如如下代码：</p>
+<pre><code class="language-C++">auto_ptr&lt;string&gt; p1 (new string (&quot;Hello&quot;));
+auto_ptr&lt;string&gt; p2;
+p2 = p1; //auto_ptr不会报错
+</code></pre>
+<p>当程序运行时访问 <code>p1</code> 将会报错，因为 <code>p2</code> 剥夺了 <code>p1</code> 的所有权。</p>
+</li>
+</ul>
+<h4 id="unique_ptr"><code>unique_ptr</code></h4>
+<ul>
+<li>
+<p>实现独占式拥有或严格拥有概念，保证同一时间内只有一个智能指针可以指向该对象，同时还有更智能的功能，比 <code>auto_ptr</code> 更安全，替代了 <code>auto_ptr</code>。针对于代码：</p>
+<pre><code class="language-C++">uqinue_ptr&lt;string&gt; p1(new string (&quot;Hello&quot;));
+unique_ptr&lt;string&gt; p2;
+p2 = p1; //报错！避免p3不再指向有效数据的问题
+p2 = move(ps1); // 正确！
+p3 = unique_ptr&lt;string&gt;(new string (&quot;World&quot;)); // 正确！右值为临时值。
+</code></pre>
+</li>
+</ul>
+<h4 id="shared_ptr"><code>shared_ptr</code></h4>
+<ul>
+<li>实现共享式拥有概念。多个智能指针可以指向相同对象，该对象和其相关资源会在“最后一个引用被销毁”时候释放。它使用计数机制来表明资源被几个指针共享，当计数等于 <code>0</code> 时，资源会被释放。</li>
+</ul>
+<h4 id="weak_ptr"><code>weak_ptr</code></h4>
+<ul>
+<li><code>weak_ptr</code> 是一种不控制对象生命周期的智能指针, 它指向一个 <code>shared_ptr</code> 管理的对象. 进行该对象的内存管理的是那个强引用的 <code>shared_ptr</code>。 <code>weak_ptr</code> 只是提供了对管理对象的一个访问手段。<code>weak_ptr</code> 设计的目的是为配合 <code>shared_ptr</code> 而引入的一种智能指针来协助 <code>shared_ptr</code> 工作, 它只可以从一个 <code>shared_ptr</code> 或另一个 <code>weak_ptr</code> 对象构造, 它的构造和析构不会引起引用记数的增加或减少。</li>
+</ul>
+<h3 id="xx_cast-四种类型转换"><code>[xx]_cast</code> 四种类型转换</h3>
+<ul>
+<li>讲解：<a href="https://www.jianshu.com/p/5163a2678171">简书文章</a></li>
+</ul>
+<h4 id="static_cast"><code>static_cast</code></h4>
+<ul>
+<li>
+<p>主要用于非多态类型之间的转换，不提供运行时的检查来确保转换的安全性。主要在以下几种场合中使用：</p>
+<ol>
+<li>
+<p>用于类层次结构中，基类和子类之间指针和引用的转换；</p>
+<p>当进行上行转换，也就是把子类的指针或引用转换成父类表示，这种转换是安全的；</p>
+<p>当进行下行转换，也就是把父类的指针或引用转换成子类表示，这种转换是不安全的，也需要程序员来保证；</p>
+</li>
+<li>
+<p>用于基本数据类型之间的转换，如把 <code>int</code> 转换成 <code>char</code>，把 <code>int</code> 转换成<code>enum</code> 等等，这种转换的安全性需要程序员来保证；</p>
+</li>
+<li>
+<p>把 <code>void</code> 指针转换成目标类型的指针，是及其不安全的；</p>
+</li>
+</ol>
+</li>
+<li>
+<p><code>static_cast</code> 不能转换掉 <code>expression</code> 的 <code>const</code>、<code>volatile</code> 和<code>__unaligned</code> 属性。</p>
+</li>
+</ul>
+<h4 id="const_cast"><code>const_cast</code></h4>
+<ul>
+<li>用于将 <code>const</code> 属性转为非 <code>const</code> 属性。</li>
+</ul>
+<h4 id="dynamic_cast"><code>dynamic_cast</code></h4>
+<ul>
+<li>
+<p><code>dynamic_cast</code> 主要用于类层次间的上行转换和下行转换，还可以用于类之间的交叉转换，只能用于含有虚函数的类间的转换，且只能转换为类的指针、类的引用或是 <code>void*</code>。</p>
+</li>
+<li>
+<p>在类层次间进行上行转换时，与 <code>static_cast</code> 效果一样；在进行类层次间的下行转换时，会检查基类的指针是否真正的指向一个子类类型的对象，如果是则能进行正确的转换，否则会返回 <code>NULL</code>，如果是引用则会在运行时抛出异常。一段应用代码：</p>
+<pre><code class="language-C++">//定义
+class Widget{};
+class SpecialWidget:public Widget{};
+void update(SpecialWidget  *psw);
+
+Widget * pw;
+
+//如果pw所指的是SpecialWidget ，那么就传递过去；如果pw指的是Widget ，
+//那么传递过去的值是null
+update(dynamic_cast&lt;SpecialWidget *&gt; (pw));
+</code></pre>
+</li>
+</ul>
+<h4 id="reinterpret_cast"><code>reinterpret_cast</code></h4>
+<ul>
+<li>几乎什么都可以转，故可能会出问题，尽量少用。</li>
+</ul>
+<h3 id="extern-c"><code>extern &quot;C&quot;</code></h3>
+<ul>
+<li>
+<p>用于 <code>C++</code> 链接在 <code>C</code> 语言模块中定义的函数。</p>
+</li>
+<li>
+<p>使用方法示例：</p>
+<ul>
+<li>C++调用C函数</li>
+</ul>
+<pre><code class="language-c++">//xx.h
+extern int add(...)
+
+//xx.c
+int add(){ }
+
+//xx.cpp
+extern &quot;C&quot; {
+    #include &quot;xx.h&quot;
+}
+</code></pre>
+<ul>
+<li>C调用C++函数</li>
+</ul>
+<pre><code class="language-c++">//xx.h
+extern &quot;C&quot;{
+    int add();
+}
+//xx.cpp
+int add(){ }
+
+//xx.c
+extern int add();
+</code></pre>
+</li>
+</ul>
+<h3 id="using"><code>using</code></h3>
+<ul>
+<li>关于 <code>using</code> 的几种用法（改变访问性、函数重载等）介绍：<a href="https://light-city.club/sc/basic_content/using/">开源项目</a></li>
+</ul>
+<h3 id=""><code>::</code></h3>
+<ul>
+<li>全局作用域符（<code>::name</code>）：用于类型名称（类、类成员、成员函数、变量等）前，表示作用域为全局命名空间。</li>
+<li>类作用域符（<code>class::name</code>）：用于表示指定类型的作用域范围是具体某个类的。</li>
+<li>命名空间作用域符（<code>namespace::name</code>）:用于表示指定类型的作用域范围是具体某个命名空间的。</li>
+</ul>
+<h3 id="struct"><code>struct</code></h3>
+<ul>
+<li>在 <code>C</code> 和 <code>C++</code> 中的区别</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">C</th>
+<th style="text-align:center">C++</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">只能放数据，不能放函数</td>
+<td style="text-align:center">可以放数据和函数</td>
+</tr>
+<tr>
+<td style="text-align:center">不能使用访问修饰符</td>
+<td style="text-align:center">可以使用 <code>public</code>、<code>protected</code>、<code>private</code></td>
+</tr>
+<tr>
+<td style="text-align:center">定义时必须加<code>struct</code></td>
+<td style="text-align:center">定义时可以不加<code>struct</code></td>
+</tr>
+<tr>
+<td style="text-align:center">没有继承的概念</td>
+<td style="text-align:center">可以继承</td>
+</tr>
+<tr>
+<td style="text-align:center">若结构体的名字与函数名相同，可以正常运行且正常的调用！</td>
+<td style="text-align:center">若结构体的名字与函数名相同，使用结构体，只能使用带 <code>struct</code> 定义！</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>struct</code> 通常作为数据结构的实现体，它默认的数据访问控制是 <code>public</code> 的；<code>class</code> 通常作为对象的实现体，它默认的成员变量访问控制是 <code>private</code> 的。</li>
+</ul>
+<h3 id="union"><code>union</code></h3>
+<ul>
+<li>一个 <code>union</code> 可以有多个数据成员，在任意时刻只有一个数据成员可以有值,当某个成员被赋值后其他成员变为未定义状态。特点：
+<ol>
+<li>默认访问控制符为 <code>public</code>。</li>
+<li>可以含有构造函数、析构函数。</li>
+<li>不能含有引用类型的成员。</li>
+<li>不能继承自其他类，不能作为基类。</li>
+<li>不能含有虚函数。</li>
+<li>匿名 <code>union</code> 在定义所在作用域可直接访问 <code>union</code> 成员。</li>
+<li>匿名 <code>union</code> 不能包含 <code>protected</code> 成员或 <code>private</code> 成员。</li>
+<li>全局匿名联合必须是静态的。</li>
+</ol>
+</li>
+</ul>
+<h3 id="const"><code>const</code></h3>
+<ul>
+<li>
+<p><code>const</code> 修饰类的成员变量，表示成员常量，不能被修改。</p>
+</li>
+<li>
+<p><code>const</code> 修饰类的成员函数承诺在本函数内部不会修改类内的数据成员，不会调用其他非 <code>const</code> 成员函数。</p>
+</li>
+<li>
+<p><code>const</code> 函数只能调用 <code>const</code> 的函数，非 <code>const</code> 函数可以调用任意的成员函数。</p>
+</li>
+<li>
+<p>如果 <code>const</code> 构成了函数重载，<code>const</code> 对象只能调用 <code>const</code> 的函数，非 <code>const</code> 对象优先调用非 <code>const</code> 函数。</p>
+</li>
+<li>
+<p>在类体外定义的 <code>const</code> 成员函数，在定义和声明处都需要 <code>const</code> 修饰符。</p>
+</li>
+<li>
+<p>对于非内部数据类型的输入参数，应该将“值传递”的方式改为“<code>const</code> 引用传递”，目的是提高效率；对于内部数据类型的输入参数，不要将“值传递”的方式改为“<code>const</code> 引用传递”。否则既达不到提高效率的目的，又降低了函数的可理解性。</p>
+</li>
+<li>
+<p><code>const</code> 与 <code>#define</code> 的区别：<code>const</code> 常量具有类型，编译器可以进行安全检查，在程序运行过程中只有一份拷贝；<code>#define</code> 宏定义没有数据类型，只是简单的字符串替换，不能进行安全检查，在内存中有若干个拷贝。</p>
+</li>
+<li>
+<p>关于 <code>const</code> 的指针应用：如果 <code>const</code> 位于 <code>*</code> 的左侧，则 <code>const</code> 就是用来修饰指针所指向的变量，即指针指向为常量；如果 <code>const</code> 位于 <code>*</code> 的右侧，<code>const</code> 就是修饰指针本身，即指针本身是常量。</p>
+<pre><code class="language-c++">const char * a; //指向const对象的指针或者说指向常量的指针。
+char const * a; //同上
+char * const a; //指向类型对象的const指针。或者说常指针、const指针。
+const char * const a; //指向const对象的const指针。
+</code></pre>
+<ol>
+<li>
+<p>指向常量的指针</p>
+<ul>
+<li>
+<p>对于指向常量的指针，不能通过指针来修改对象的值，也不能使用 <code>void *</code> 指针保存 <code>const</code> 对象的地址，必须使用 <code>const</code>   <code>void *</code> 类型的指针保存 <code>const</code> 对象的地址。</p>
+</li>
+<li>
+<p>允许把非 <code>const</code> 对象的地址赋值给 <code>const</code> 对象的指针，如果要修改指针所指向的对象值，必须通过其他方式修改，不能直接通过当前指针直接修改。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>常指针</p>
+<ul>
+<li>常指针的值必须初始化，且不可修改。</li>
+<li>常指针在初始化时不能用常量地址进行赋值，因为指针本身指向的是一个变量。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="enum-class"><code>enum class</code></h3>
+<ul>
+<li>
+<p>枚举类的用法示例：</p>
+<pre><code class="language-c++">enum class Color2
+{
+    RED=2,
+    YELLOW,
+    BLUE
+};
+
+enum class Color3:char;  // 前向声明
+enum class Color3:char // 定义
+{
+    RED='r',
+    BLUE
+};
+
+int main()
+{
+    Color2 c2 = Color2::RED;
+    cout &lt;&lt; static_cast&lt;int&gt;(c2) &lt;&lt; endl;
+
+    char c3 = static_cast&lt;char&gt;(Color3::RED);
+    cout&lt;&lt; c3 &lt;&lt;endl;
+    return 0;
+}
+</code></pre>
+</li>
+</ul>
+<h3 id="static"><code>static</code></h3>
+<ul>
+<li>当函数中的变量声明为 <code>static</code> 时，空间将在程序的生命周期内分配，在执行此函数时进行初始化。即使多次调用该函数，静态变量的空间也只分配一次，前一次调用中的变量值通过下一次函数调用传递。因此，使用 <code>static</code> 修饰局部变量可以在函数调用之间保持局部变量的值。</li>
+<li><code>static</code> 修饰符可以应用于全局变量。当 <code>static</code> 修饰全局变量时，会使变量的作用域限制在声明它的文件内。全局声明的一个 <code>static</code> 变量或方法可以被任何函数或方法调用，只要这些方法出现在跟 <code>static</code> 变量或方法同一个文件中。</li>
+<li>在函数返回类型前加 <code>static</code>，函数就定义为静态函数，这个函数只可在本 <code>cpp</code> 内使用，不会同其他 <code>cpp</code> 中的同名函数引起冲突。函数的定义和声明在默认情况下都是 <code>extern</code> 的，但静态函数只是在声明他的文件当中可见，不能被其他文件所用。</li>
+</ul>
+<h3 id="extern"><code>extern</code></h3>
+<ul>
+<li><code>extern</code> 用于提供一个全局变量的引用，全局变量对所有的程序文件都是可见的。当使用 <code>extern</code> 时，对于无法初始化的变量，会把变量名指向一个之前定义过的存储位置。</li>
+<li>当有多个文件且定义了一个可以在其他文件中使用的全局变量或函数时，可以在其他文件中使用 <code>extern</code> 来得到已定义的变量或函数的引用。可以这么理解，<code>extern</code> 是用来在另一个文件中声明一个全局变量或函数。</li>
+<li><code>extern</code> 修饰符通常用于当有两个或多个文件共享相同的全局变量或函数的时候。</li>
+</ul>
+<h3 id="this"><code>this</code></h3>
+<ul>
+<li>
+<p>一个对象的 <code>this</code> 指针并不是对象本身的一部分，不会影响 <code>sizeof(对象)</code>的结果。</p>
+</li>
+<li>
+<p><code>this</code> 作用域是在类内部，当在类的非静态成员函数中访问类的非静态成员的时候，编译器会自动将对象本身的地址作为一个隐含参数传递给函数。也就是说，即使你没有写上 <code>this</code> 指针，编译器在编译的时候也是加上 <code>this</code> 的，它作为非静态成员函数的隐含形参，对各成员的访问均通过 <code>this</code> 进行。</p>
+</li>
+<li>
+<p><code>this</code> 在成员函数的开始执行前构造，在成员的执行结束后清除。</p>
+</li>
+<li>
+<p>两种用处：</p>
+<ol>
+<li>在类的非静态成员函数中返回类对象本身的时候，直接使用 <code>return *this</code>。</li>
+<li>当参数与成员变量名相同时，如 <code>this-&gt;n = n</code> (不能写成 <code>n = n</code> )。</li>
+</ol>
+</li>
+</ul>
+<h3 id="explicit"><code>explicit</code></h3>
+<ul>
+<li>修饰一个参数的类构造函数时，可以防止隐式转换和复制初始化。</li>
+<li>如果类构造函数参数大于或等于两个时，是不会产生隐式转换的，此时 <code>explicit</code> 关键字无效。</li>
+<li>如果除了第一个参数以外的其他参数都有默认值的时候，<code>explicit</code> 关键字依然有效。这种情况下调用构造函数时只传入一个参数，等效于只有一个参数的类构造函数。</li>
+</ul>
+<h3 id="inline"><code>inline</code></h3>
+<ul>
+<li>类中定义了的函数是隐式内联函数，类中仅声明的函数须在实现处(定义处)加 <code>inline</code> 关键字才能称为内联函数。</li>
+<li>编译器对 <code>inline</code> 函数的处理步骤 ：
+<ol>
+<li>将 <code>inline</code> 函数体复制到 <code>inline</code> 函数调用点处；</li>
+<li>为所用 <code>inline</code> 函数中的局部变量分配内存空间；</li>
+<li>将 <code>inline</code> 函数的的输入参数和返回值映射到调用方法的局部变量空间中；</li>
+<li>如果 <code>inline</code> 函数有多个返回点，将其转变为 <code>inline</code> 函数代码块末尾的分支（使用 <code>GOTO</code>）。</li>
+</ol>
+</li>
+</ul>
+<h3 id="stdout-stderr"><code>stdout</code> &amp; <code>stderr</code></h3>
+<ul>
+<li>
+<p><code>stdout &amp; stderr</code> 默认均为向屏幕输出。</p>
+</li>
+<li>
+<p>当输出重定向至磁盘文件时，<code>stdout</code> 可以重定向到磁盘文件存储而 <code>stderr</code> 不行。</p>
+</li>
+<li>
+<p>对于 <code>Linux</code> 环境下（<strong>未测验，据网上讲解</strong>）:</p>
+<ol>
+<li>
+<p><code>stdout</code>（标准输出），输出方式是行缓冲。输出的字符会先存放在缓冲区，等按下回车键时才进行实际的 <code>I/O</code> 操作。</p>
+</li>
+<li>
+<p><code>stderr</code>（标准错误），是不带缓冲的，这使得出错信息可以直接尽快地显示出来。</p>
+</li>
+</ol>
+</li>
+<li>
+<p>对于 <code>Windows</code> 环境下（<strong>已编写程序测验</strong>）：</p>
+<p><code>stdout</code> 和 <code>stderr</code> 均直接输出，即 <code>stdout</code> 不碰到回车符也会输出。</p>
+</li>
+</ul>
+<h3 id="size_t"><code>size_t</code></h3>
+<ul>
+<li><code>size_t</code> 通常被用于数组索引和循环计数。使用其它类型来进行数组索引操作的程序可能会在某些情况下出错。</li>
+</ul>
+<h3 id="sizeof"><code>sizeof()</code></h3>
+<ul>
+<li>对于一个空类型/只有构造函数和析构函数的类型，占用多少内存（对类求 <code>sizeof()</code> 的结果）由编译器决定（<code>VS</code> 中为 <code>1</code>）。</li>
+<li>对于一个数组，<code>sizeof</code> 求整个数组的大小。</li>
+</ul>
+<h3 id="decltype-expression"><code>decltype (expression)</code></h3>
+<ul>
+<li>作用：查询表达式的类型并返回。</li>
+<li>用法讲述：<a href="https://light-city.club/sc/basic_content/decltype/">开源项目</a></li>
+</ul>
+<h3 id="assertint-expression"><code>assert(int expression)</code></h3>
+<ul>
+<li><code>assert</code> 的作用是先计算表达式 <code>expression</code>，如果其值为假（即为<code>0</code>）那么它先向 <code>stderr</code> 打印一条出错信息,然后通过调用 abort 来终止程序运行。</li>
+<li>使用 <code>assert</code> 的缺点是，频繁的调用会极大的影响程序的性能，增加额外的开销。</li>
 </ul>
 <h2 id="其它">其它</h2>
 <h3 id="预处理">预处理</h3>
@@ -840,205 +1291,11 @@ p = &amp;b//正确：p可以多次赋值，p存储b的地址
 </ol>
 </li>
 </ul>
-<h2 id="cc-中的关键字"><code>C/C++</code> 中的关键字</h2>
-<h3 id="null-和-nullptr"><code>NULL</code> 和 <code>nullptr</code></h3>
+<h2 id="stl"><code>STL</code></h2>
+<h3 id="迭代器">迭代器</h3>
 <ul>
-<li>在编译时 NULL 会被解释为 0 ，而 <code>nullptr</code> 就代表空指针。</li>
+<li>迭代器提供了一种方法，使它能够按照顺序访问某个容器所含的各个元素，但无需暴露该容器的内部结构。它将容器和算法分开，好让这二者独立设计。</li>
 </ul>
-<h3 id="delete-和-delete"><code>delete[]</code> 和 <code>delete</code></h3>
-<ul>
-<li>
-<p>区别讲解：<a href="https://blog.csdn.net/u012936940/article/details/80919880">CSDN文章</a></p>
-</li>
-<li>
-<p>概括的为：对于基本数据类型（如 <code>int</code>）二者无差别，对于自定义类型（通常指类）如果是 <code>new</code> 申请的内存，释放时用 <code>delete</code>；如果是使用 <code>new []</code> 申请的内存，释放时要用 <code>delete []</code>。</p>
-</li>
-</ul>
-<h3 id="xx_ptr四种智能指针"><code>[xx]_ptr</code>四种智能指针</h3>
-<h4 id="auto_ptr">auto_ptr</h4>
-<ul>
-<li>
-<p>采用所有权模式，存在潜在的内存崩溃问题，于 <code>C++11</code> 中被抛弃。例如如下代码：</p>
-<pre><code class="language-C++">auto_ptr&lt;string&gt; p1 (new string (&quot;Hello&quot;));
-auto_ptr&lt;string&gt; p2;
-p2 = p1; //auto_ptr不会报错
-</code></pre>
-<p>当程序运行时访问 <code>p1</code> 将会报错，因为 <code>p2</code> 剥夺了 <code>p1</code> 的所有权。</p>
-</li>
-</ul>
-<h4 id="unique_ptr">unique_ptr</h4>
-<ul>
-<li>
-<p>实现独占式拥有或严格拥有概念，保证同一时间内只有一个智能指针可以指向该对象，同时还有更智能的功能，比 <code>auto_ptr</code> 更安全，替代了 <code>auto_ptr</code>。针对于代码：</p>
-<pre><code class="language-C++">uqinue_ptr&lt;string&gt; p1(new string (&quot;Hello&quot;));
-unique_ptr&lt;string&gt; p2;
-p2 = p1; //报错！避免p3不再指向有效数据的问题
-p2 = move(ps1); // 正确！
-p3 = unique_ptr&lt;string&gt;(new string (&quot;World&quot;)); // 正确！右值为临时值。
-</code></pre>
-</li>
-</ul>
-<h4 id="shared_ptr">shared_ptr</h4>
-<ul>
-<li>实现共享式拥有概念。多个智能指针可以指向相同对象，该对象和其相关资源会在“最后一个引用被销毁”时候释放。它使用计数机制来表明资源被几个指针共享，当计数等于 <code>0</code> 时，资源会被释放。</li>
-</ul>
-<h4 id="weak_ptr">weak_ptr</h4>
-<ul>
-<li><code>weak_ptr</code> 是一种不控制对象生命周期的智能指针, 它指向一个 <code>shared_ptr</code> 管理的对象. 进行该对象的内存管理的是那个强引用的 <code>shared_ptr</code>。 <code>weak_ptr</code> 只是提供了对管理对象的一个访问手段。<code>weak_ptr</code> 设计的目的是为配合 <code>shared_ptr</code> 而引入的一种智能指针来协助 <code>shared_ptr</code> 工作, 它只可以从一个 <code>shared_ptr</code> 或另一个 <code>weak_ptr</code> 对象构造, 它的构造和析构不会引起引用记数的增加或减少。</li>
-</ul>
-<h3 id="xx_cast四种转换"><code>[xx]_cast</code>四种转换</h3>
-<ul>
-<li>讲解：<a href="https://www.jianshu.com/p/5163a2678171">简书文章</a></li>
-</ul>
-<h4 id="static_cast"><code>static_cast</code></h4>
-<ul>
-<li>
-<p>主要用于非多态类型之间的转换，不提供运行时的检查来确保转换的安全性。主要在以下几种场合中使用：</p>
-<ol>
-<li>
-<p>用于类层次结构中，基类和子类之间指针和引用的转换；</p>
-<p>当进行上行转换，也就是把子类的指针或引用转换成父类表示，这种转换是安全的；</p>
-<p>当进行下行转换，也就是把父类的指针或引用转换成子类表示，这种转换是不安全的，也需要程序员来保证；</p>
-</li>
-<li>
-<p>用于基本数据类型之间的转换，如把 <code>int</code> 转换成 <code>char</code>，把 <code>int</code> 转换成<code>enum</code> 等等，这种转换的安全性需要程序员来保证；</p>
-</li>
-<li>
-<p>把 <code>void</code> 指针转换成目标类型的指针，是及其不安全的；</p>
-</li>
-</ol>
-</li>
-<li>
-<p><code>static_cast</code> 不能转换掉 <code>expression</code> 的 <code>const</code>、<code>volatile</code> 和<code>__unaligned</code> 属性。</p>
-</li>
-</ul>
-<h4 id="const_cast"><code>const_cast</code></h4>
-<ul>
-<li>用于将 <code>const</code> 属性转为非 <code>const</code> 属性。</li>
-</ul>
-<h4 id="dynamic_cast"><code>dynamic_cast</code></h4>
-<ul>
-<li>
-<p><code>dynamic_cast</code> 主要用于类层次间的上行转换和下行转换，还可以用于类之间的交叉转换，只能用于含有虚函数的类间的转换，且只能转换为类的指针、类的引用或是 <code>void*</code>。</p>
-</li>
-<li>
-<p>在类层次间进行上行转换时，与 <code>static_cast</code> 效果一样；在进行类层次间的下行转换时，会检查基类的指针是否真正的指向一个子类类型的对象，如果是则能进行正确的转换，否则会返回 <code>NULL</code>，如果是引用则会在运行时抛出异常。一段应用代码：</p>
-<pre><code class="language-C++">//定义
-class Widget{};
-class SpecialWidget:public Widget{};
-void update(SpecialWidget  *psw);
-
-Widget * pw;
-
-//如果pw所指的是SpecialWidget ，那么就传递过去；如果pw指的是Widget ，
-//那么传递过去的值是null
-update(dynamic_cast&lt;SpecialWidget  *&gt; (pw));
-</code></pre>
-</li>
-</ul>
-<h4 id="reinterpret_cast"><code>reinterpret_cast</code></h4>
-<ul>
-<li>几乎什么都可以转，故可能会出问题，尽量少用。</li>
-</ul>
-<h3 id="auto"><code>auto</code></h3>
-<ul>
-<li>
-<p><code>auto</code> 是所有局部变量默认的存储类。<code>auto</code> 只能用在函数内，即 <code>auto</code> 只能修饰局部变量。</p>
-</li>
-<li>
-<p>从 <code>C++ 17</code> 开始，<code>auto</code> 关键字不再是 <code>C++</code> 存储类说明符。</p>
-</li>
-</ul>
-<h3 id="regiter"><code>regiter</code></h3>
-<ul>
-<li>
-<p><code>register</code> 用于定义存储在寄存器中而不是 <code>RAM</code> 中的局部变量。这意味着变量的最大尺寸等于寄存器的大小（通常是一个词），且不能对它应用一元的 <code>'&amp;'</code> 运算符（因为它没有内存位置）。</p>
-</li>
-<li>
-<p>寄存器只用于需要快速访问的变量，比如计数器。还应注意的是，定义 <code>'register'</code> 并不意味着变量将被存储在寄存器中，它意味着变量可能存储在寄存器中，这取决于硬件和实现的限制。</p>
-</li>
-<li>
-<p>从 <code>C++ 17</code> 开始，<code>register</code> 关键字被弃用。</p>
-</li>
-</ul>
-<h3 id="static"><code>static</code></h3>
-<ul>
-<li>
-<p><code>static</code> 存储类指示编译器在程序的生命周期内保持局部变量的存在，而不需要在每次它进入和离开作用域时进行创建和销毁。即当局部静态变量离开作用域后，并没有销毁，而是仍然驻留在内存当中，只不过我们不能再对它进行访问，直到该函数再次被调用，并且值不变。因此，使用 <code>static</code> 修饰局部变量可以在函数调用之间保持局部变量的值。</p>
-</li>
-<li>
-<p><code>static</code> 修饰符可以应用于全局变量。当 <code>static</code> 修饰全局变量时，会使变量的作用域限制在声明它的文件内。全局声明的一个 <code>static</code> 变量或方法可以被任何函数或方法调用，只要这些方法出现在跟 <code>static</code> 变量或方法同一个文件中。</p>
-</li>
-<li>
-<p>在函数返回类型前加static，函数就定义为静态函数，这个函数只可在本 <code>cpp</code> 内使用，不会同其他 <code>cpp</code> 中的同名函数引起冲突。函数的定义和声明在默认情况下都是 <code>extern</code> 的，但静态函数只是在声明他的文件当中可见，不能被其他文件所用</p>
-</li>
-<li>
-<p>在 <code>C++</code> 中，当 <code>static</code> 用在类数据成员上时，会导致仅有一个该成员的副本被类的所有对象共享。</p>
-</li>
-<li>
-<p>静态成员函数的实现中不能直接引用类中说明的非静态成员，可以引用类中说明的静态成员。</p>
-</li>
-</ul>
-<h3 id="extern"><code>extern</code></h3>
-<ul>
-<li>
-<p><code>extern</code> 用于提供一个全局变量的引用，全局变量对所有的程序文件都是可见的。当使用 <code>extern</code> 时，对于无法初始化的变量，会把变量名指向一个之前定义过的存储位置。</p>
-</li>
-<li>
-<p>当有多个文件且定义了一个可以在其他文件中使用的全局变量或函数时，可以在其他文件中使用 <code>extern</code> 来得到已定义的变量或函数的引用。可以这么理解，<code>extern</code> 是用来在另一个文件中声明一个全局变量或函数。</p>
-</li>
-<li>
-<p><code>extern</code> 修饰符通常用于当有两个或多个文件共享相同的全局变量或函数的时候。</p>
-</li>
-</ul>
-<h3 id="stdout-stderr"><code>stdout</code> &amp; <code>stderr</code></h3>
-<ul>
-<li>
-<p><code>stdout &amp; stderr</code> 默认均为向屏幕输出。</p>
-</li>
-<li>
-<p>当输出重定向至磁盘文件时，<code>stdout</code> 可以重定向到磁盘文件存储而 <code>stderr</code> 不行。</p>
-</li>
-<li>
-<p>对于 <code>Linux</code> 环境下（<strong>未测验，据网上讲解</strong>）:</p>
-<ol>
-<li>
-<p><code>stdout</code>（标准输出），输出方式是行缓冲。输出的字符会先存放在缓冲区，等按下回车键时才进行实际的 <code>I/O</code> 操作。</p>
-</li>
-<li>
-<p><code>stderr</code>（标准错误），是不带缓冲的，这使得出错信息可以直接尽快地显示出来。</p>
-</li>
-</ol>
-</li>
-<li>
-<p>对于 <code>Windows</code> 环境下（<strong>已编写程序测验</strong>）：</p>
-<p><code>stdout</code> 和 <code>stderr</code> 均直接输出，即 <code>stdout</code> 不碰到回车符也会输出。</p>
-</li>
-</ul>
-<h3 id="size_t"><code>size_t</code></h3>
-<ul>
-<li><code>size_t</code> 通常被用于数组索引和循环计数。使用其它类型来进行数组索引操作的程序可能会在某些情况下出错。</li>
-</ul>
-<h2 id="cc-中的内置函数"><code>C/C++</code> 中的内置函数</h2>
-<h3 id="sizeof"><code>sizeof()</code></h3>
-<ul>
-<li>
-<p>对于一个空类型/只有构造函数和析构函数的类型，占用多少内存（对类求 <code>sizeof()</code> 的结果）由编译器决定（<code>VS</code> 中为 <code>1</code>）。</p>
-</li>
-<li>
-<p>对于一个数组，<code>sizeof</code> 求整个数组的大小。</p>
-</li>
-</ul>
-<h3 id="assert-int-expression"><code>assert( int expression )</code></h3>
-<ul>
-<li>
-<p><code>assert</code> 的作用是先计算表达式 <code>expression</code>，如果其值为假（即为<code>0</code>）那么它先向 <code>stderr</code> 打印一条出错信息,然后通过调用 abort 来终止程序运行。</p>
-</li>
-<li>
-<p>使用 <code>assert</code> 的缺点是，频繁的调用会极大的影响程序的性能，增加额外的开销。</p>
-</li>
-</ul>
-<h2 id="stl-相关"><code>STL</code> 相关</h2>
 <h3 id="vector"><code>vector</code></h3>
 <ul>
 <li>
