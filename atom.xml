@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://geniusmiaozz.github.io</id>
     <title>GeniusMiao&apos;s blog.</title>
-    <updated>2020-06-27T10:21:00.382Z</updated>
+    <updated>2020-09-09T08:38:58.429Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://geniusmiaozz.github.io"/>
     <link rel="self" href="https://geniusmiaozz.github.io/atom.xml"/>
@@ -377,7 +377,7 @@
 <li>主要参考书籍包括：</li>
 </ul>
 <ol>
-<li>暂无</li>
+<li>Effective C++(第三版)</li>
 </ol>
 </li>
 </ul>
@@ -420,7 +420,7 @@
 </tr>
 <tr>
 <td style="text-align:center"><code>long int</code></td>
-<td style="text-align:center"><code>8</code></td>
+<td style="text-align:center"><code>4</code></td>
 </tr>
 <tr>
 <td style="text-align:center"><code>float</code></td>
@@ -788,7 +788,7 @@ p = &amp;b//正确：p可以多次赋值，p存储b的地址
 <p>基类的构造函数、析构函数和拷贝构造函数。</p>
 </li>
 <li>
-<p>基类的重载运算符。</p>
+<p>基类的重载赋值运算符。</p>
 </li>
 <li>
 <p>基类的友元函数。</p>
@@ -820,6 +820,27 @@ p = &amp;b//正确：p可以多次赋值，p存储b的地址
 </li>
 <li>
 <p>如果基类中声明虚函数时不进行定义而是进行 <code>virtual &lt;type&gt; &lt;fun()&gt; = 0</code> 的操作，这样就会声明为纯虚函数。通常在处理基类中不能对虚函数给出有意义的实现情况时使用。</p>
+</li>
+</ul>
+<h3 id="重载">重载</h3>
+<ul>
+<li>
+<p>友元运算符的参数规则与类成员运算符的参数规则不同，一元运算符必须显式地声明一个参数，二元运算符必须显式地声明两个参数。类成员运算符重载时, 参数中隐含了一 个 <code>this</code> 指针.</p>
+</li>
+<li>
+<p>重载运算符不能改变原有运算符的优先级，结合性和操作数个数。</p>
+</li>
+<li>
+<p>重载运算符不能使用缺省参数。</p>
+</li>
+<li>
+<p>除赋值运算符外，重载运算符可由派生类继承下去。</p>
+</li>
+<li>
+<p>运算符 <code>=、()、[]、-&gt;</code> 可作为类成员运算符，不能作为友员运算符。</p>
+</li>
+<li>
+<p>运算符 <code>“.”、“::” 、“?:”</code> 不能重载。</p>
 </li>
 </ul>
 <h3 id="抽象类">抽象类</h3>
@@ -1034,7 +1055,7 @@ p2 = p1; //auto_ptr不会报错
 <pre><code class="language-C++">uqinue_ptr&lt;string&gt; p1(new string (&quot;Hello&quot;));
 unique_ptr&lt;string&gt; p2;
 p2 = p1; //报错！避免p3不再指向有效数据的问题
-p2 = move(ps1); // 正确！
+p2 = move(p1); // 正确！
 p3 = unique_ptr&lt;string&gt;(new string (&quot;World&quot;)); // 正确！右值为临时值。
 </code></pre>
 </li>
@@ -1314,7 +1335,7 @@ int main()
 </ul>
 <h3 id="explicit"><code>explicit</code></h3>
 <ul>
-<li>修饰一个参数的类构造函数时，可以防止隐式转换和复制初始化。</li>
+<li>修饰一个参数的类构造函数时，可以防止隐式转换和复制初始化，禁止编译器执行非预期（往往也不被期望）的类型转换。</li>
 <li>如果类构造函数参数大于或等于两个时，是不会产生隐式转换的，此时 <code>explicit</code> 关键字无效。</li>
 <li>如果除了第一个参数以外的其他参数都有默认值的时候，<code>explicit</code> 关键字依然有效。这种情况下调用构造函数时只传入一个参数，等效于只有一个参数的类构造函数。</li>
 </ul>
@@ -1416,8 +1437,8 @@ int main()
 </ul>
 <h3 id="异常处理">异常处理</h3>
 <ul>
-<li>
-<p>异常是程序在执行期间产生的问题。<code>C++</code> 异常处理涉及到三个关键字：</p>
+<li>异常是程序在执行期间产生的问题。<code>C++</code> 异常处理涉及到三个关键字：</li>
+</ul>
 <ol>
 <li>
 <p><code>throw</code>: 当问题出现时，程序会抛出一个异常。这是通过使用 <code>throw</code> 关键字来完成的。</p>
@@ -1429,7 +1450,10 @@ int main()
 <p><code>try</code>: <code>try</code> 块中的代码标识将被激活的特定异常。它后面通常跟着一个或多个 <code>catch</code> 块。</p>
 </li>
 </ol>
-</li>
+<h3 id="深拷贝与浅拷贝">深拷贝与浅拷贝</h3>
+<ul>
+<li>浅拷贝只是对指针的拷贝，拷贝后两个指针指向同一个内存空间，深拷贝不但对指针进行拷贝，而且对指针指向的内容进行拷贝，经深拷贝后的指针是指向两个不同地址的指针。</li>
+<li>浅拷贝带来问题的本质在于析构函数释放多次堆内存，使用 <code>std::shared_ptr</code>，可以完美解决这个问题。</li>
 </ul>
 <h2 id="stl"><code>STL</code></h2>
 <h3 id="迭代器">迭代器</h3>
@@ -1468,6 +1492,11 @@ int main()
 <h3 id="unordered_map"><code>unordered_map</code></h3>
 <ul>
 <li>底层基于哈希表实现，无序。</li>
+</ul>
+<h2 id="内容补充">内容补充</h2>
+<ul>
+<li><a href="https://zhuanlan.zhihu.com/p/84316213">计算机网络基础</a></li>
+<li><a href="https://blog.csdn.net/qq_36982160/article/details/89258056">数据库</a></li>
 </ul>
 ]]></content>
     </entry>

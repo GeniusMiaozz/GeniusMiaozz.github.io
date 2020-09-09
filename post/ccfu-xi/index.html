@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>GeniusMiao&#39;s blog.</title>
 <meta name="description" content="醉梦不知天在水，满船新梦压清河。" />
-<link rel="shortcut icon" href="https://geniusmiaozz.github.io/favicon.ico?v=1593253257115">
+<link rel="shortcut icon" href="https://geniusmiaozz.github.io/favicon.ico?v=1599640735414">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
@@ -23,7 +23,7 @@
       <div class="flex lg:block p-4 lg:px-0 items-center fixed lg:static lg:block top-0 right-0 left-0 bg-white z-50">
         <i class="ri-menu-2-line lg:mt-4 text-2xl cursor-pointer animated fadeIn" onclick="openMenu()"></i>
         <a href="https://geniusmiaozz.github.io">
-          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://geniusmiaozz.github.io/images/avatar.png?v=1593253257115" alt="">
+          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://geniusmiaozz.github.io/images/avatar.png?v=1599640735414" alt="">
         </a>
         <h1 class="animated fadeInLeft lg:text-4xl font-extrabold lg:mt-8 mt-0 text-xl" style="animation-delay: 0.2s">GeniusMiao&#39;s blog.</h1>
       </div>
@@ -82,6 +82,7 @@
 <li><a href="#%E6%8A%BD%E8%B1%A1">抽象</a></li>
 <li><a href="#%E7%BB%A7%E6%89%BF">继承</a></li>
 <li><a href="#%E5%A4%9A%E6%80%81">多态</a></li>
+<li><a href="#%E9%87%8D%E8%BD%BD">重载</a></li>
 <li><a href="#%E6%8A%BD%E8%B1%A1%E7%B1%BB">抽象类</a></li>
 <li><a href="#%E5%AF%B9%E8%B1%A1%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80">对象内存布局</a></li>
 <li><a href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0">构造函数</a></li>
@@ -139,6 +140,7 @@
 <ul>
 <li><a href="#%E9%A2%84%E5%A4%84%E7%90%86">预处理</a></li>
 <li><a href="#%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86">异常处理</a></li>
+<li><a href="#%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D">深拷贝与浅拷贝</a></li>
 </ul>
 </li>
 <li><a href="#stl"><code>STL</code></a>
@@ -151,6 +153,7 @@
 <li><a href="#unordered_map"><code>unordered_map</code></a></li>
 </ul>
 </li>
+<li><a href="#%E5%86%85%E5%AE%B9%E8%A1%A5%E5%85%85">内容补充</a></li>
 </ul>
 </li>
 </ul>
@@ -201,7 +204,7 @@
       <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
         <h1 class="text-3xl font-bold lg:mt-16">C/C++复习总结</h1>
         <div class="text-sm text-gray-700 lg:my-8">
-          2020-04-07 / 36 min read
+          2020-04-07 / 37 min read
         </div>
         
         <div class="post-content yue">
@@ -225,7 +228,7 @@
 <li>主要参考书籍包括：</li>
 </ul>
 <ol>
-<li>暂无</li>
+<li>Effective C++(第三版)</li>
 </ol>
 </li>
 </ul>
@@ -268,7 +271,7 @@
 </tr>
 <tr>
 <td style="text-align:center"><code>long int</code></td>
-<td style="text-align:center"><code>8</code></td>
+<td style="text-align:center"><code>4</code></td>
 </tr>
 <tr>
 <td style="text-align:center"><code>float</code></td>
@@ -636,7 +639,7 @@ p = &amp;b//正确：p可以多次赋值，p存储b的地址
 <p>基类的构造函数、析构函数和拷贝构造函数。</p>
 </li>
 <li>
-<p>基类的重载运算符。</p>
+<p>基类的重载赋值运算符。</p>
 </li>
 <li>
 <p>基类的友元函数。</p>
@@ -668,6 +671,27 @@ p = &amp;b//正确：p可以多次赋值，p存储b的地址
 </li>
 <li>
 <p>如果基类中声明虚函数时不进行定义而是进行 <code>virtual &lt;type&gt; &lt;fun()&gt; = 0</code> 的操作，这样就会声明为纯虚函数。通常在处理基类中不能对虚函数给出有意义的实现情况时使用。</p>
+</li>
+</ul>
+<h3 id="重载">重载</h3>
+<ul>
+<li>
+<p>友元运算符的参数规则与类成员运算符的参数规则不同，一元运算符必须显式地声明一个参数，二元运算符必须显式地声明两个参数。类成员运算符重载时, 参数中隐含了一 个 <code>this</code> 指针.</p>
+</li>
+<li>
+<p>重载运算符不能改变原有运算符的优先级，结合性和操作数个数。</p>
+</li>
+<li>
+<p>重载运算符不能使用缺省参数。</p>
+</li>
+<li>
+<p>除赋值运算符外，重载运算符可由派生类继承下去。</p>
+</li>
+<li>
+<p>运算符 <code>=、()、[]、-&gt;</code> 可作为类成员运算符，不能作为友员运算符。</p>
+</li>
+<li>
+<p>运算符 <code>“.”、“::” 、“?:”</code> 不能重载。</p>
 </li>
 </ul>
 <h3 id="抽象类">抽象类</h3>
@@ -882,7 +906,7 @@ p2 = p1; //auto_ptr不会报错
 <pre><code class="language-C++">uqinue_ptr&lt;string&gt; p1(new string (&quot;Hello&quot;));
 unique_ptr&lt;string&gt; p2;
 p2 = p1; //报错！避免p3不再指向有效数据的问题
-p2 = move(ps1); // 正确！
+p2 = move(p1); // 正确！
 p3 = unique_ptr&lt;string&gt;(new string (&quot;World&quot;)); // 正确！右值为临时值。
 </code></pre>
 </li>
@@ -1162,7 +1186,7 @@ int main()
 </ul>
 <h3 id="explicit"><code>explicit</code></h3>
 <ul>
-<li>修饰一个参数的类构造函数时，可以防止隐式转换和复制初始化。</li>
+<li>修饰一个参数的类构造函数时，可以防止隐式转换和复制初始化，禁止编译器执行非预期（往往也不被期望）的类型转换。</li>
 <li>如果类构造函数参数大于或等于两个时，是不会产生隐式转换的，此时 <code>explicit</code> 关键字无效。</li>
 <li>如果除了第一个参数以外的其他参数都有默认值的时候，<code>explicit</code> 关键字依然有效。这种情况下调用构造函数时只传入一个参数，等效于只有一个参数的类构造函数。</li>
 </ul>
@@ -1264,8 +1288,8 @@ int main()
 </ul>
 <h3 id="异常处理">异常处理</h3>
 <ul>
-<li>
-<p>异常是程序在执行期间产生的问题。<code>C++</code> 异常处理涉及到三个关键字：</p>
+<li>异常是程序在执行期间产生的问题。<code>C++</code> 异常处理涉及到三个关键字：</li>
+</ul>
 <ol>
 <li>
 <p><code>throw</code>: 当问题出现时，程序会抛出一个异常。这是通过使用 <code>throw</code> 关键字来完成的。</p>
@@ -1277,7 +1301,10 @@ int main()
 <p><code>try</code>: <code>try</code> 块中的代码标识将被激活的特定异常。它后面通常跟着一个或多个 <code>catch</code> 块。</p>
 </li>
 </ol>
-</li>
+<h3 id="深拷贝与浅拷贝">深拷贝与浅拷贝</h3>
+<ul>
+<li>浅拷贝只是对指针的拷贝，拷贝后两个指针指向同一个内存空间，深拷贝不但对指针进行拷贝，而且对指针指向的内容进行拷贝，经深拷贝后的指针是指向两个不同地址的指针。</li>
+<li>浅拷贝带来问题的本质在于析构函数释放多次堆内存，使用 <code>std::shared_ptr</code>，可以完美解决这个问题。</li>
 </ul>
 <h2 id="stl"><code>STL</code></h2>
 <h3 id="迭代器">迭代器</h3>
@@ -1316,6 +1343,11 @@ int main()
 <h3 id="unordered_map"><code>unordered_map</code></h3>
 <ul>
 <li>底层基于哈希表实现，无序。</li>
+</ul>
+<h2 id="内容补充">内容补充</h2>
+<ul>
+<li><a href="https://zhuanlan.zhihu.com/p/84316213">计算机网络基础</a></li>
+<li><a href="https://blog.csdn.net/qq_36982160/article/details/89258056">数据库</a></li>
 </ul>
 
         </div>
